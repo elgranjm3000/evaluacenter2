@@ -1,0 +1,4 @@
+.sonata-ba-list-field .open > .dropdown-menu {
+    position: relative;
+    display: contents;
+}

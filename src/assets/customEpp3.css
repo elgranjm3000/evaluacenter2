@@ -1,0 +1,97 @@
+.ibox-gray {
+  background-color: #fdfdfd;
+}
+
+.ibox-content-gray {
+  background-color: #f9f9f9;
+}
+
+.gray-bg {
+  background-color: #f1f1f1;
+}
+
+.ibox-inverse > .ibox-title {
+  /**
+    background-color: #2f4050;
+    color: #ededed;
+    **/
+  background-color: #e3e3e6;
+}
+
+.ibox-special {
+  /** border: 1px solid #E0E0E0; **/
+}
+
+/** Poner el menú de descarga por encima del resto de elementos **/
+.dropup {
+  position: absolute;
+  z-index: 1000;
+}
+
+.ibox-special > .ibox-content {
+  background-color: #f5f5f5;
+}
+
+.ibox-gray {
+  background-color: #f3f3f3;
+}
+
+.btn-space {
+  margin-right: 5px;
+}
+
+/* Rcslider */
+.radar-slider {
+  width: calc(100% - 80px);
+  padding-top: 10px;
+}
+
+.radar-slider .rc-slider-mark-text small,
+.radar-slider .rc-slider-mark-text b {
+  color: rgb(119, 119, 119);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.rc-slider-mark > span:nth-child(1) {
+  position: relative;
+  left: 7px !important;
+  bottom: 2px !important;
+}
+
+.radar-slider .rc-slider-mark-text.slider-mark-text-active small,
+.radar-slider .rc-slider-mark-text.slider-mark-text-active b {
+  font-weight: 700 !important;
+}
+
+.table-border-white tbody tr td {
+  border-top: 1px solid #fff !important;
+}
+
+/** PACE **/
+body.panel_body_class > :not(.pace),
+body.panel_body_class:before,
+body.panel_body_class:after {
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -moz-transition: opacity 0.4s ease-in-out;
+  -o-transition: opacity 0.4s ease-in-out;
+  -ms-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+
+body.panel_body_class:not(.pace-done) > :not(.pace),
+body.panel_body_class:not(.pace-done):before,
+body.panel_body_class:not(.pace-done):after {
+  opacity: 0;
+}
+
+/** MODALBACKDROP FOR SAFARI**/
+div.modal-backdrop {
+  z-index: -1;
+}
+
+/** WORK AROUND FOR COPYTOCLIPBOARD ERROR **/
+body > span {
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(0, 0, 0) !important;
+}

@@ -1,0 +1,4 @@
+#toast-container>.toast-success, #toast-container>.toast-error, #toast-container>.toast-warning, #toast-container>.toast-info {
+
+    background-image: none !important;
+}

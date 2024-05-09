@@ -1,0 +1,3 @@
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {  border: none;  }
+.dataTables_length select { margin-left: 50% }
+.dataTables_length label { margin-left: 5% }
