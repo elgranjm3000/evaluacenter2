@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
-import { Grid, Paper, Typography, TextField, Button, Link, CssBaseline,Alert } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import theme from './theme/theme';
+import React, {useState, useEffect } from 'react';
+import '../assets/style.css';
+import '../assets/customEpp3.css';
+import '../assets/plugins/iCheck/custom.css';
+//import theme from './theme/theme';
+
+
+
 
 
 const Login = ({handleLogin,isLoggedIn}) => {
@@ -17,60 +21,67 @@ const Login = ({handleLogin,isLoggedIn}) => {
 
     
         return (
-            
-<ThemeProvider theme={theme}>
-            <Grid container justifyContent="center" alignItems="center" >
-            <Grid item xs={12} sm={8} md={6} lg={4}>
-           
-                <Paper style={{ padding: 20, textAlign: 'center' }}>
-                    <img src="https://evaluacenter.com/bundles/epp3corekernel/images/logo.png" alt="Logo" style={{ marginBottom: 20, maxWidth: '100%' }} />
-                    <Typography variant="h2" component="h2">
-                            Evaluacenter
-                    </Typography>
-                    {isLoggedIn !== null && !isLoggedIn && (
-  <Alert severity="error">
-    Credenciales no válidas.
+<div>
+            <div className="gray-bg">
+                <div className="row">
+                     <div className="col-md-12 text-center">
+                             <div className="lang-selector">
+                                selecctor
+                                </div>
+                     
+                     </div>
+                </div>
+            </div>
+            <div className="middle-box text-center loginscreen animated fadeInDown">
+            <div>
+                <div>
+                    <h1 className="logo-name">
+                        <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
+                    </h1>
+                </div>
+                <h2>Evaluacenter</h2>
 
-  </Alert>
-)}
-                    <form onSubmit={handleSubmit}>
-                        <TextField
-                            fullWidth
-                            label="Email"
-                            variant="outlined"
-                            placeholder="Email"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}                            
+                <form className="m-t-lg" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            placeholder="Correo electrónico"
                             className="form-control"
+                            id="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
                         />
-                        <TextField
-                            fullWidth
-                            label="Contraseña"
-                            variant="outlined"
-                            placeholder="Contraseña"
+                    </div>
+                    <div className="form-group">
+                        <input
                             type="password"
+                            placeholder="Contraseña"
+                            className="form-control"
+                            id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            style={{ marginBottom: 10 }}
+                            required
                         />
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            type="submit"
-                            style={{ marginBottom: 10 }}
-                        >
-                            Entrar
-                        </Button>
-                        <Typography variant="body2">
-                            <Link href="/resetting/request">¿Olvidaste tu contraseña?</Link>
-                        </Typography>
-                    </form>
-                </Paper>
-            </Grid>
-        </Grid>
+                    </div>
 
-        </ThemeProvider>
+                    <input
+                        type="submit"
+                        className="btn btn-primary block full-width m-b"
+                        value="Iniciar sesión"
+                    />
+
+                    <div className="form-group">
+                        <a href="/resetting/request"><small>¿Olvidaste tu contraseña?</small></a>
+                    </div>
+                </form>
+
+                <p className="m-t"><small>© People Performance International LLC</small></p>
+            </div>
+        </div>
+</div>            
+
+            
 
         );
 }
