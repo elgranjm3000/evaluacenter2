@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/:path*",
+        "destination": "http://epp3.ovh:5000/:path*"
+      }
+    ]
+  }
