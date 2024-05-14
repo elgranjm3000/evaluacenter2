@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getMyEvaluation } from '../api/api';
+import { getMyEvaluation } from '../../api/api';
+import Menu from '../Menu/index'
+import List from './List';
+import Ibox from '../Ibox/index'
+import  styles  from './style';
 
 const ListTask = ({ profileData, onLogout }) => {
   const [listTask, setListTask] = useState([]);
@@ -7,11 +11,9 @@ const ListTask = ({ profileData, onLogout }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      alert("no detecto profile");
       
 
       if (profileData && profileData.userInfo.user_id) {
-        alert("profile");
         try {
           const response = await getMyEvaluation(profileData.userInfo.user_id, profileData.jwt_token);
           console.log(response.data.data);
@@ -33,7 +35,7 @@ const ListTask = ({ profileData, onLogout }) => {
   };
 
   return (
-    <div>
+   /* <div>
       <h1>Listado de tareas</h1>
       <button onClick={handleLogout}>Logout</button>
       {loading ? (
@@ -45,7 +47,12 @@ const ListTask = ({ profileData, onLogout }) => {
           ))}
         </div>
       )}
-    </div>
+    </div>*/
+
+        <div>
+            <Menu handleLogout={handleLogout} />
+            <List listTask={listTask} />
+        </div>
   );
 };
 
