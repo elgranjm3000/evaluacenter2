@@ -3,8 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "http://epp3.ovh:5000",
-  "homepage":"https://evaluacenter2.vercel.app/",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",

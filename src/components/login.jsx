@@ -1,12 +1,6 @@
-import React, {useState, useEffect } from 'react';
-import '../assets/style.css';
-import '../assets/customEpp3.css';
-import '../assets/plugins/iCheck/custom.css';
-//import theme from './theme/theme';
-
-
-
-
+import React, {useState } from 'react';
+import { Container, Grid, Typography, TextField, Button, Link } from '@mui/material';
+import SelectLanguaje from './Select/index'
 
 const Login = ({handleLogin,isLoggedIn}) => {
     const [username, setUsername] = useState('');
@@ -17,72 +11,70 @@ const Login = ({handleLogin,isLoggedIn}) => {
         handleLogin(username,password)
             
     }
-
-
     
         return (
-<div>
+     <div>
             <div className="gray-bg">
-                <div className="row">
-                     <div className="col-md-12 text-center">
-                             <div className="lang-selector">
-                                selecctor
-                                </div>
-                     
-                     </div>
-                </div>
+              <Container>
+                <Grid container justifyContent="center" alignItems="center" spacing={2}>
+                  <Grid item xs={12} md={6}>
+                    <SelectLanguaje /> {/* Asegúrate de pasar las props necesarias */}
+                  </Grid>
+                </Grid>
+              </Container>
             </div>
             <div className="middle-box text-center loginscreen animated fadeInDown">
-            <div>
-                <div>
-                    <h1 className="logo-name">
-                        <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
-                    </h1>
-                </div>
-                <h2>Evaluacenter</h2>
-
-                <form className="m-t-lg" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            placeholder="Correo electrónico"
-                            className="form-control"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
+              <Container>
+                <Grid container justifyContent="center" alignItems="center" spacing={2}>
+                  <Grid item xs={6} md={6}>
+                    <div>
+                      <div>
+                        <Typography variant="h1" component="h1" className="logo-name" style={{marginTop:'20px'}}>
+                          <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
+                        </Typography>
+                      </div>
+                      <Typography variant="h5" component="h5"  style={{color:'#868686'}}>Evaluacenter</Typography>
+                      <form  onSubmit={handleSubmit}>
+                        <TextField
+                          type="text"
+                          label="Correo electrónico"
+                          variant="outlined"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                          fullWidth
+                          required
+                          style={{marginBottom:'10px'}}
                         />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            placeholder="Contraseña"
-                            className="form-control"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
+                        <TextField
+                          type="password"
+                          label="Contraseña"
+                          variant="outlined"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          fullWidth
+                          required
+                          style={{marginBottom:'10px'}}
                         />
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          fullWidth
+                          style={{backgroundColor:'#51b198'}}
+                        >
+                          Iniciar sesión
+                        </Button>
+                        <div>
+                          <Link href="/resetting/request"><small>¿Olvidaste tu contraseña?</small></Link>
+                        </div>
+                      </form>
+                      <Typography variant="body2" style={{color:'#868686'}}><small>© People Performance International LLC</small></Typography>
                     </div>
-
-                    <input
-                        type="submit"
-                        className="btn btn-primary block full-width m-b"
-                        value="Iniciar sesión"
-                    />
-
-                    <div className="form-group">
-                        <a href="/resetting/request"><small>¿Olvidaste tu contraseña?</small></a>
-                    </div>
-                </form>
-
-                <p className="m-t"><small>© People Performance International LLC</small></p>
+                  </Grid>
+                </Grid>
+              </Container>
             </div>
-        </div>
-</div>            
-
-            
-
+          </div>   
         );
 }
 

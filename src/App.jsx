@@ -5,8 +5,6 @@ import Login from './components/login'
 import ListTask from './components/evaluation/ListTask';
 import { login } from './api/api'
 import { Navigate } from 'react-router-dom';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-import { Helmet } from 'react-helmet';
 
 
 function App() {
@@ -54,11 +52,7 @@ function App() {
 
   return (
     <>
-         <Router>
-            <Helmet>
-              <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
-              <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" />
-          </Helmet>
+         <Router>       
 
            <Routes>
                 <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
