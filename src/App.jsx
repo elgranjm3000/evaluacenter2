@@ -52,12 +52,11 @@ function App() {
   };
 
   const onSendData = useCallback(() =>{
-    telegram.sendData(JSON.stringify(isLoggedIn))
-  },[isLoggedIn])
+    telegram.sendData(JSON.stringify(profileData))
+  },[profileData])
 
   useEffect(() => {
     telegram.onEvent('mainButtonClicked',onSendData);
-    console.log(onSendData);
     
     return () => telegram.offEvent('mainButtonClicked',onSendData)
   },[onSendData])
