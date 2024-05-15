@@ -65,6 +65,8 @@ function App() {
   },[isLoggedIn])
 
   useEffect(() => {
+    window.addEventListener('resize', onCheckout);
+
     telegram.onEvent('mainButtonClicked',onSendData);
     
     return () => telegram.offEvent('mainButtonClicked',onSendData)
