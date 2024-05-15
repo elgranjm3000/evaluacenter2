@@ -16,7 +16,8 @@ const SelectLanguaje = () => {
                           id="language-select"
                           value={language}
                           onChange={handleChange}
-                          style={{height:'40px'}}
+                          style={{height:'40px',color:"#ffffff"}}
+                          
                         >
                               {listLanguaje.map((item) => (
                                   <MenuItem key={item.key} value={item.key}>

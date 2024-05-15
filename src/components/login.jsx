@@ -33,7 +33,7 @@ const Login = ({handleLogin,isLoggedIn}) => {
                           <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
                         </Typography>
                       </div>
-                      <Typography variant="h5" component="h5"  style={{color:'#868686'}}>Evaluacenter</Typography>
+                      <Typography variant="h5" component="h5"  style={{color:'#ffffff'}}>Evaluacenter</Typography>
                       <form  onSubmit={handleSubmit}>
                         <TextField
                           type="text"
@@ -44,6 +44,12 @@ const Login = ({handleLogin,isLoggedIn}) => {
                           fullWidth
                           required
                           style={{marginBottom:'10px'}}
+                          InputLabelProps={{
+                            style: { color: '#ffffff' }, // Color del placeholder
+                          }}
+                          InputProps={{
+                            style: { color: '#ffffff', background: 'none' }, // Color del texto
+                          }}
                         />
                         <TextField
                           type="password"
@@ -54,6 +60,12 @@ const Login = ({handleLogin,isLoggedIn}) => {
                           fullWidth
                           required
                           style={{marginBottom:'10px'}}
+                          InputLabelProps={{
+                            style: { color: '#ffffff' }, // Color del placeholder
+                          }}
+                          InputProps={{
+                            style: { color: '#ffffff', background: 'none' }, // Color del texto
+                          }}
                         />
                         <Button
                           type="submit"
@@ -68,7 +80,7 @@ const Login = ({handleLogin,isLoggedIn}) => {
                           <Link href="/resetting/request"><small>¿Olvidaste tu contraseña?</small></Link>
                         </div>
                       </form>
-                      <Typography variant="body2" style={{color:'#868686'}}><small>© People Performance International LLC</small></Typography>
+                      <Typography variant="body2" style={{color:'#ffffff'}}><small>© People Performance International LLC</small></Typography>
                     </div>
                   </Grid>
                 </Grid>
