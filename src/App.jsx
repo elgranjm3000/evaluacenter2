@@ -14,6 +14,9 @@ function App() {
 
   useEffect(() => {
     telegram.ready();
+  })
+
+  useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn');
     const storedProfileData = localStorage.getItem('profileData');
     if (loggedIn === 'true' && storedProfileData) {
@@ -53,8 +56,8 @@ function App() {
   };
 
   const onSendData = useCallback(() =>{
-    telegram.sendData(JSON.stringify(profileData))
-  },[profileData])
+    telegram.sendData(JSON.stringify(isLoggedIn))
+  },[isLoggedIn])
 
   useEffect(() => {
     telegram.onEvent('mainButtonClicked',onSendData);
