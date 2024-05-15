@@ -2,14 +2,14 @@ import React, {useState } from 'react';
 import { Container, Grid, Typography, TextField, Button, Link } from '@mui/material';
 import SelectLanguaje from './Select/index'
 
-const Login = ({handleLogin,isLoggedIn}) => {
+const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();       
         handleLogin(username,password)
-            
+        onCheckout() 
     }
     
         return (
@@ -34,7 +34,7 @@ const Login = ({handleLogin,isLoggedIn}) => {
                         </Typography>
                       </div>
                       <Typography variant="h5" component="h5"  style={{color:'#ffffff'}}>Evaluacenter</Typography>
-                      <form  onSubmit={handleSubmit}>
+                      <form  onSubmit={handleSubmit} >
                         <TextField
                           type="text"
                           label="Correo electrónico"

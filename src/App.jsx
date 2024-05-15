@@ -55,6 +55,11 @@ function App() {
     
   };
 
+  const onCheckout = () => {
+    telegram.MainButton.text = 'ingresar';
+    telegram.MainButton.show();
+  }
+
   const onSendData = useCallback(() =>{
     telegram.sendData(JSON.stringify(isLoggedIn))
   },[isLoggedIn])
@@ -70,7 +75,7 @@ function App() {
          <Router>       
 
            <Routes>
-                <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
+                <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} />} />
                 <Route exact path="/task"
                 element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} /> : <Navigate to="/" />}
               />
