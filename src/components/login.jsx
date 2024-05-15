@@ -26,7 +26,7 @@ const Login = ({handleLogin,isLoggedIn}) => {
             <div className="middle-box text-center loginscreen animated fadeInDown">
               <Container>
                 <Grid container justifyContent="center" alignItems="center" spacing={2}>
-                  <Grid item xs={6} md={6}>
+                  <Grid item xs={12} md={12}>
                     <div>
                       <div>
                         <Typography variant="h1" component="h1" className="logo-name" style={{marginTop:'20px'}}>
