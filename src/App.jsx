@@ -13,6 +13,7 @@ function App() {
   const [profileData, setProfileData] = useState(null);
 
   useEffect(() => {
+    telegram.ready();
     const loggedIn = localStorage.getItem('isLoggedIn');
     const storedProfileData = localStorage.getItem('profileData');
     if (loggedIn === 'true' && storedProfileData) {
