@@ -6,6 +6,7 @@ import ListTask from './components/evaluation/ListTask';
 import { login } from './api/api'
 import { Navigate } from 'react-router-dom';
 
+const telegram = window.Telegram.WebApp;
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -49,6 +50,17 @@ function App() {
       
     
   };
+
+  const onSendData = useCallback(() =>{
+    telegram.sendData(JSON.stringify(isLoggedIn))
+  },[isLoggedIn])
+
+  useEffect(() => {
+    telegram.onEvent('mainButtonClicked',onSendData);
+    console.log(onSendData);
+    
+    return () => telegram.offEvent('mainButtonClicked',onSendData)
+  },[onSendData])
 
   return (
     <>
