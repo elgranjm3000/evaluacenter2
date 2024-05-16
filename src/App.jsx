@@ -60,12 +60,12 @@ function App() {
     telegram.MainButton.show();
   }
 
+
   const onSendData = useCallback(() =>{
     telegram.sendData(JSON.stringify(isLoggedIn))
   },[isLoggedIn])
 
   useEffect(() => {
-    window.addEventListener('resize', onCheckout);
 
     telegram.onEvent('mainButtonClicked',onSendData);
     
