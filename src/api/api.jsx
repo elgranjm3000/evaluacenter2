@@ -2,6 +2,9 @@ import axios from 'axios';
 axios.defaults.baseURL = "http://epp3.ovh:5000";
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
  //axios.defaults.headers.common['Content-Type'] = 'application/json';
+ axios.defaults.validateStatus = function (status) {
+  return status < 500; // Permitir redirecciones HTTP
+};
 
 
 export const login = async (email, password) => {
