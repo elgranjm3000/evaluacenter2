@@ -14,7 +14,7 @@ export const login = async (email, password) => {
         account_id: '1'
       },
       headers: {
-        Authorization: `${token}` // Reemplaza 'token' con tu token de autorización
+        Authorization: `${token}`
       }
     });     
 
