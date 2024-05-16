@@ -10,7 +10,7 @@ export default defineConfig({
     proxy: {
         '/api': {
             target: 'http://epp3.ovh:5000',
-            changeOrigin: false
+            changeOrigin: true
         }
     }
     
