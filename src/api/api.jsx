@@ -5,9 +5,7 @@ axios.defaults.baseURL = "http://epp3.ovh:5000";
 
 
 export const login = async (email, password) => {
-    const response = await axios.post(`/api/login`, { email: email, password: password }, headers: {
-      'Content-Type': 'application/json'
-    });     
+    const response = await axios.post(`/api/login`, { email: email, password: password });     
     return response;
   };
   
