@@ -48,7 +48,7 @@ function App() {
         setIsLoggedIn(false);
         console.error('Error 401: No autorizado');
       } else {
-        console.error('Otro error:', error.message);
+        console.error('Otro error:', error);
       }
     });
       
