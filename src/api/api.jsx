@@ -1,13 +1,14 @@
 import axios from 'axios';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 
 export const login = async (email, password) => {
-    const response = await axios.post(`/api/login`, { email: email, password: password });     
+    const response = await axios.post(`${apiUrl}/api/login`, { email: email, password: password });     
     return response;
   };
   
   export const getMyEvaluation = async (userId,token) => {
-      const response = await axios.get(`/api/my-evaluations`, 
+      const response = await axios.get(`${apiUrl}/api/my-evaluations`, 
       {
         params: {
         user_id: userId,
