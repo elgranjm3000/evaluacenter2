@@ -1,11 +1,13 @@
 import axios from 'axios';
 axios.defaults.baseURL = "http://epp3.ovh:5000";
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
- axios.defaults.headers.common['Content-Type'] = 'application/json';
+ //axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 
 export const login = async (email, password) => {
-    const response = await axios.post(`/api/login`, { email: email, password: password });     
+    const response = await axios.post(`/api/login`, { email: email, password: password }, headers: {
+      'Content-Type': 'application/json'
+    });     
     return response;
   };
   
