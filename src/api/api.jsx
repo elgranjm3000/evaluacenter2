@@ -1,8 +1,8 @@
 import axios from 'axios';
-axios.defaults.baseURL = "https://backednodechile.onrender.com";
+axios.defaults.baseURL = "http://epp3.ovh:5000";
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
- axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
- 
+ axios.defaults.headers.common['Content-Type'] = 'application/json';
+
 
 export const login = async (email, password) => {
     const response = await axios.post(`/api/login`, { email: email, password: password });     
