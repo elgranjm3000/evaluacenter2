@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 
-const List = ({listTask}) => {
+const List = ({listTask,onCheckoutList}) => {
 
 
 return ( 
@@ -27,7 +27,7 @@ return (
             <TableRow style={{ borderBottom: 'none' }} key={index}>
                 <TableCell style={{ borderBottom: 'none' }} >{task.cache_evaluation_type_main}</TableCell>
                 <TableCell style={{ borderBottom: 'none' }}>
-                                <Button variant="contained" style={{ backgroundColor:'#70ad47',with:'100%' }} >
+                                <Button variant="contained" style={{ backgroundColor:'#70ad47',width:'100%' }} onClick={onCheckoutList}>
                                     Realizar esta evaluacion
                                 </Button>
                 </TableCell>            

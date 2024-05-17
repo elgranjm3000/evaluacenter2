@@ -5,7 +5,7 @@ import List from './List';
 import Ibox from '../Ibox/index'
 import  styles  from './style';
 
-const ListTask = ({ profileData, onLogout }) => {
+const ListTask = ({ profileData, onLogout, onCheckout }) => {
   const [listTask, setListTask] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,10 @@ const ListTask = ({ profileData, onLogout }) => {
     onLogout();
   };
 
+  const onCheckoutList = () => {
+    onCheckout();
+  }
+
   return (
    /* <div>
       <h1>Listado de tareas</h1>
@@ -51,7 +55,7 @@ const ListTask = ({ profileData, onLogout }) => {
 
         <div>
             <Menu handleLogout={handleLogout} />
-            <List listTask={listTask} />
+            <List listTask={listTask} onCheckoutList={onCheckoutList} />
         </div>
   );
 };

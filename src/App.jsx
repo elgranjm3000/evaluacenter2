@@ -56,7 +56,7 @@ function App() {
   };
 
   const onCheckout = () => {
-    telegram.MainButton.text = 'ingresar';
+    telegram.MainButton.text = 'Comenzar la evaluacion';
     telegram.MainButton.show();
   }
 
@@ -79,7 +79,7 @@ function App() {
            <Routes>
                 <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} />} />
                 <Route exact path="/task"
-                element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} /> : <Navigate to="/" />}
+                element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
               />
            </Routes> 
 
