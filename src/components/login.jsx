@@ -9,7 +9,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();       
         handleLogin(username,password)
-        onCheckout() 
+        //onCheckout() 
     }
     
         return (
