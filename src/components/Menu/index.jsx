@@ -12,11 +12,14 @@ import Alert from '@mui/material/Alert';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import IconButton from '@mui/material/IconButton';
 import SelectLanguaje from '../Select/index'
+import { useTranslation } from 'react-i18next';
+
 
 const menu = ({handleLogout}) => {
 // Recuperar el objeto de localStorage
 const profileData = JSON.parse(localStorage.getItem('profileData'));
 
+const { t } = useTranslation();
 
  
 return ( 
@@ -29,7 +32,7 @@ return (
                     <TableCell style={{ color: "#ffffff",textAlign:'center'}}>
                         
                     <Alert severity="info" icon={false}>
-                        Mis evaluaciones
+                            {t('headerMyTest')}
                     </Alert>
 
                     </TableCell>            

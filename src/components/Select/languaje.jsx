@@ -3,8 +3,9 @@ const listLanguaje = [
       language: 'Ingles (English)',
       flag: 'https://evaluacenter.com/bundles/epp3corekernel/images/flags/EN.png',
       key: 1,
+      lang : 'en'
     },
-    {
+    /*{
       language: 'Italiano (Italiano)',
       flag: 'https://evaluacenter.com/bundles/epp3corekernel/images/flags/IT.png',
       key: 2,
@@ -28,12 +29,13 @@ const listLanguaje = [
       language: 'Portugués (Portugués)',
       flag: 'https://evaluacenter.com/bundles/epp3corekernel/images/flags/PT.png',
       key: 6,
-    },
+    },*/
 
     {
         language: 'Español',
         flag: 'https://evaluacenter.com/bundles/epp3corekernel/images/flags/ES.png',
         key: 7,
+        lang : 'es'
       },
   ]
   

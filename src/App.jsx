@@ -5,12 +5,22 @@ import Login from './components/login'
 import ListTask from './components/evaluation/ListTask';
 import { login } from './api/api'
 import { Navigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import i18n from './i18n'; // Importa la configuración de i18n
 
 const telegram = window.Telegram.WebApp;
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [profileData, setProfileData] = useState(null);
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage) {
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, [i18n]);
 
   useEffect(() => {
     telegram.ready();
@@ -74,15 +84,13 @@ function App() {
 
   return (
     <>
-         <Router>       
-
+         <Router>   
            <Routes>
                 <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} />} />
                 <Route exact path="/task"
                 element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
               />
            </Routes> 
-
 
     </Router>
     </>

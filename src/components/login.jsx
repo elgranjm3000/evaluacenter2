@@ -1,10 +1,13 @@
 import React, {useState } from 'react';
 import { Container, Grid, Typography, TextField, Button, Link } from '@mui/material';
 import SelectLanguaje from './Select/index'
+import { useTranslation } from 'react-i18next';
+
 
 const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const { t } = useTranslation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();       
@@ -14,6 +17,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     
         return (
      <div>
+
             <div className="gray-bg">
               <Container>
                 <Grid container justifyContent="center" alignItems="center" spacing={2}>
@@ -37,7 +41,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                       <form  onSubmit={handleSubmit} >
                         <TextField
                           type="text"
-                          label="Correo electrónico"
+                          label={t('email')}
                           variant="outlined"
                           value={username}
                           onChange={(e) => setUsername(e.target.value)}
@@ -53,7 +57,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                         />
                         <TextField
                           type="password"
-                          label="Contraseña"
+                          label={t('password')}
                           variant="outlined"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
@@ -74,10 +78,10 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                           fullWidth
                           style={{backgroundColor:'#51b198'}}
                         >
-                          Iniciar sesión
+                          {t('login')}
                         </Button>
                         <div>
-                          <Link href="/resetting/request"><small>¿Olvidaste tu contraseña?</small></Link>
+                          <Link href="/resetting/request"><small>{t('remenberPassword')}</small></Link>
                         </div>
                       </form>
                       <Typography variant="body2" style={{color:'#ffffff'}}><small>© People Performance International LLC</small></Typography>

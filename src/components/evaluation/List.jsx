@@ -7,9 +7,12 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { useTranslation } from 'react-i18next';
 
 
 const List = ({listTask,onCheckoutList}) => {
+
+  const { t } = useTranslation();
 
 
 return ( 
@@ -19,7 +22,7 @@ return (
       <Table style={{ fontSize:'1rem'  }}>
         <TableHead>
           <TableRow>
-            <TableCell colSpan={2}>Mis evaluaciones asignadas</TableCell>            
+            <TableCell colSpan={2}>{t('myTest')}</TableCell>            
           </TableRow>
         </TableHead>
         <TableBody>
@@ -28,7 +31,7 @@ return (
                 <TableCell style={{ borderBottom: 'none' }} >{task.cache_evaluation_type_main}</TableCell>
                 <TableCell style={{ borderBottom: 'none' }}>
                                 <Button variant="contained" style={{ backgroundColor:'#70ad47',width:'100%' }} onClick={onCheckoutList}>
-                                    Realizar esta evaluacion
+                                {t('openTest')}
                                 </Button>
                 </TableCell>            
             </TableRow>

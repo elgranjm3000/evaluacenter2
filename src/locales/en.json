@@ -1,0 +1,11 @@
+{
+    "title": "Welcome to My App!",
+    "description": "This is a description of my app in English.",
+    "email" : "Email",
+    "password": "Password",
+    "login": "Login",
+    "remenberPassword": "Remenber password?",
+    "myTest": "My assigned tests",
+    "headerMyTest": "My assigned",
+    "openTest":"Perform this evaluation"
+}
