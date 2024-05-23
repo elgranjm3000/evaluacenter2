@@ -1,13 +1,26 @@
-import React, {useState } from 'react';
+import React, {useState,useEffect } from 'react';
 import { Container, Grid, Typography, TextField, Button, Link } from '@mui/material';
 import SelectLanguaje from './Select/index'
 import { useTranslation } from 'react-i18next';
+import WelcomeScreen from '../WelcomeScreen';
 
 
 const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showWelcome, setShowWelcome] = useState(true);
+
     const { t } = useTranslation();
+
+    useEffect(() => {
+      // Cambia a la pantalla de inicio de sesión después de 3 segundos
+      const timer = setTimeout(() => {
+        setShowWelcome(false);
+      }, 300000);
+  
+      // Limpia el temporizador si el componente se desmonta
+      return () => clearTimeout(timer);
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();       
@@ -16,81 +29,92 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     }
     
         return (
-     <div>
-
-            <div className="gray-bg">
-              <Container>
-                <Grid container justifyContent="center" alignItems="center" spacing={2}>
-                  <Grid item xs={12} md={6}>
-                    <SelectLanguaje /> {/* Asegúrate de pasar las props necesarias */}
+         
+          <div>
+          {showWelcome ? (
+            <WelcomeScreen />
+          ) : (
+            <div>
+              <div className="gray-bg">
+                <Container>
+                  <Grid container justifyContent="center" alignItems="center" spacing={2}>
+                    <Grid item xs={12} md={6}>
+                      <SelectLanguaje /> {/* Asegúrate de pasar las props necesarias */}
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Container>
-            </div>
-            <div className="middle-box text-center loginscreen animated fadeInDown">
-              <Container>
-                <Grid container justifyContent="center" alignItems="center" spacing={2}>
-                  <Grid item xs={12} md={12}>
-                    <div>
+                </Container>
+              </div>
+              <div className="middle-box text-center loginscreen animated fadeInDown">
+                <Container>
+                  <Grid container justifyContent="center" alignItems="center" spacing={2}>
+                    <Grid item xs={12} md={12}>
                       <div>
-                        <Typography variant="h1" component="h1" className="logo-name" style={{marginTop:'20px'}}>
-                          <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
+                        <div>
+                          <Typography variant="h1" component="h1" className="logo-name" style={{ marginTop: '20px' }}>
+                            <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
+                          </Typography>
+                        </div>
+                        <Typography variant="h5" component="h5" style={{ color: '#ffffff' }}>
+                          Evaluacenter
+                        </Typography>
+                        <form onSubmit={handleSubmit}>
+                          <TextField
+                            type="text"
+                            label={t('email')}
+                            variant="outlined"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            fullWidth
+                            required
+                            style={{ marginBottom: '10px' }}
+                            InputLabelProps={{
+                              style: { color: '#ffffff' }, // Color del placeholder
+                            }}
+                            InputProps={{
+                              style: { color: '#ffffff', background: 'none' }, // Color del texto
+                            }}
+                          />
+                          <TextField
+                            type="password"
+                            label={t('password')}
+                            variant="outlined"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            fullWidth
+                            required
+                            style={{ marginBottom: '10px' }}
+                            InputLabelProps={{
+                              style: { color: '#ffffff' }, // Color del placeholder
+                            }}
+                            InputProps={{
+                              style: { color: '#ffffff', background: 'none' }, // Color del texto
+                            }}
+                          />
+                          <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            fullWidth
+                            style={{ backgroundColor: '#51b198' }}
+                          >
+                            {t('login')}
+                          </Button>
+                          <div>
+                            <Link href="/resetting/request"><small>{t('remenberPassword')}</small></Link>
+                          </div>
+                        </form>
+                        <Typography variant="body2" style={{ color: '#ffffff' }}>
+                          <small>© People Performance International LLC</small>
                         </Typography>
                       </div>
-                      <Typography variant="h5" component="h5"  style={{color:'#ffffff'}}>Evaluacenter</Typography>
-                      <form  onSubmit={handleSubmit} >
-                        <TextField
-                          type="text"
-                          label={t('email')}
-                          variant="outlined"
-                          value={username}
-                          onChange={(e) => setUsername(e.target.value)}
-                          fullWidth
-                          required
-                          style={{marginBottom:'10px'}}
-                          InputLabelProps={{
-                            style: { color: '#ffffff' }, // Color del placeholder
-                          }}
-                          InputProps={{
-                            style: { color: '#ffffff', background: 'none' }, // Color del texto
-                          }}
-                        />
-                        <TextField
-                          type="password"
-                          label={t('password')}
-                          variant="outlined"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          fullWidth
-                          required
-                          style={{marginBottom:'10px'}}
-                          InputLabelProps={{
-                            style: { color: '#ffffff' }, // Color del placeholder
-                          }}
-                          InputProps={{
-                            style: { color: '#ffffff', background: 'none' }, // Color del texto
-                          }}
-                        />
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          color="primary"
-                          fullWidth
-                          style={{backgroundColor:'#51b198'}}
-                        >
-                          {t('login')}
-                        </Button>
-                        <div>
-                          <Link href="/resetting/request"><small>{t('remenberPassword')}</small></Link>
-                        </div>
-                      </form>
-                      <Typography variant="body2" style={{color:'#ffffff'}}><small>© People Performance International LLC</small></Typography>
-                    </div>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Container>
+                </Container>
+              </div>
             </div>
-          </div>   
+          )}
+        </div>
+
         );
 }
 

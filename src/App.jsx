@@ -15,6 +15,9 @@ function App() {
   const [profileData, setProfileData] = useState(null);
   const { i18n } = useTranslation();
 
+
+
+
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage) {
@@ -84,15 +87,21 @@ function App() {
 
   return (
     <>
-         <Router>   
-           <Routes>
-                <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} />} />
-                <Route exact path="/task"
-                element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
-              />
-           </Routes> 
+
+    <Router>   
+    
+      <Routes>
+          <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} />} />
+          <Route exact path="/task"
+          element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
+        />
+      </Routes>
+    
+
 
     </Router>
+
+
     </>
   )
 }
