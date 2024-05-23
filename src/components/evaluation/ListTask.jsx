@@ -4,6 +4,7 @@ import Menu from '../Menu/index'
 import List from './List';
 import Ibox from '../Ibox/index'
 import  styles  from './style';
+import {Container } from '@mui/material';
 
 const ListTask = ({ profileData, onLogout, onCheckout }) => {
   const [listTask, setListTask] = useState([]);
@@ -52,11 +53,12 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
         </div>
       )}
     </div>*/
-
+    <Container maxWidth="sm">     
         <div>
             <Menu handleLogout={handleLogout} />
             <List listTask={listTask} onCheckoutList={onCheckoutList} />
         </div>
+      </Container>
   );
 };
 
