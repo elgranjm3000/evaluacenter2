@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import {Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon } from '@mui/material';
+import {Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon,Grid } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -13,10 +13,13 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import IconButton from '@mui/material/IconButton';
 import SelectLanguaje from '../Select/index'
 import { useTranslation } from 'react-i18next';
+import MenuIcon from '@mui/icons-material/Menu';
+import Typography from '@mui/material/Typography';
+import { fontGrid } from '@mui/material/styles/cssUtils';
 
 
 const menu = ({handleLogout}) => {
-// Recuperar el objeto de localStorage
+// Recuperar el objeto de localStorage  {profileData.userInfo.first_name} {profileData.userInfo.last_name}
 const profileData = JSON.parse(localStorage.getItem('profileData'));
 
 const { t } = useTranslation();
@@ -24,27 +27,28 @@ const { t } = useTranslation();
  
 return ( 
     <Box style={{margin:0}}>
-        <TableContainer component={Paper} style={{ backgroundColor: "#5b9bd5", margin: 0 }}>
+        <TableContainer component={Paper} style={{ backgroundColor: "write", margin: 0 }}>
             <Table style={{ fontSize:'1rem'  }}>
                 <TableHead>
                 <TableRow>
-                    <TableCell style={{ color: "#ffffff",width: "20em", }}>{profileData.userInfo.first_name} {profileData.userInfo.last_name}</TableCell>            
-                    <TableCell style={{ color: "#ffffff",textAlign:'center'}}>
-                        
-                    <Alert severity="info" icon={false}>
-                            {t('headerMyTest')}
-                    </Alert>
-
+                    <TableCell style={{ border:'1px solid' }}>
+                        <Box display="flex" alignItems="center" justifyContent="space-between">   
+                            <IconButton color="inherit">
+                                <MenuIcon />
+                            </IconButton>
+                            <Box flexGrow={1} textAlign="center">
+                                    <Typography variant="h5" style={{fontFamily:"IBM Plex Sans", fontSize:'20px',fontWeight:"700px",lineHeight:"28px",wordWrap:"break-word",fontWeight:"bold"}}>{t('headerMyTest')}</Typography> 
+                            </Box>
+                            <SelectLanguaje />                           
+                            
+                        </Box>
                     </TableCell>            
-                    <TableCell style={{textAlign:"right"}}>
+                         
+                 
 
-                    <SelectLanguaje />
+                   
                         
-    <IconButton color="inherit" onClick={handleLogout}>
-            <ExitToAppIcon />
-        </IconButton>
-                        
-                        </TableCell>            
+                           
                 </TableRow>
                 </TableHead>                
             </Table>

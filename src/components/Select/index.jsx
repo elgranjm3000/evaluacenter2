@@ -31,7 +31,7 @@ const SelectLanguaje = () => {
                           id="language-select"
                           value={i18n.language}
                           onChange={handleChange}
-                          style={{height:'40px',color:"#ffffff"}}
+                          style={{height:'40px',color:"blakc"}}
                           
                         >
                               {listLanguaje.map((item) => (

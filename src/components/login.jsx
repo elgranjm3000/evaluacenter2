@@ -19,7 +19,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
         setShowWelcome(false);
         setVisible(true);
 
-      }, 3000);
+      }, 5000);
   
       return () => clearTimeout(timer);
     }, []);

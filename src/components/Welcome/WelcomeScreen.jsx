@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logo from '../../assets/logo.png'
 import {Zoom, Container, CircularProgress, Box } from '@mui/material';
+import GlobalStyles from './GlobalStyles';
+
 
 const WelcomeScreen = () => {
 
@@ -16,7 +18,10 @@ const WelcomeScreen = () => {
   }, []);
 
   return (
-    <Container maxWidth="sm">
+    <>
+    <GlobalStyles />
+
+    <Container maxWidth="sm" style={styles.container}>
    
        <Zoom in={visible} timeout={500}>
         <div>
@@ -31,33 +36,43 @@ const WelcomeScreen = () => {
             alignItems="center"
           
         >
-            <CircularProgress />
+            <CircularProgress style={styles.blackCircularProgress} />
         </Box>
     </Container>
+    </>
   );
 };
 
 
 const styles = {
+  blackCircularProgress: {
+    color: 'black',
+    marginTop:'20px'
+},
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
+    justifyContent: 'center',    
     backgroundColor: '#1787D8',
+    color: '#fff',
+   
   },
   title_1:{
     color: 'write',
-    fontSize: '16',
+    fontSize: '35px',
     fontFamily: 'Hiragino Sans',
     fontWeight: '300',
-    wordWrap: 'break-word'
+    wordWrap: 'break-word',
+    marginBottom: '1px'
   },
-  title_2:{
-    color: '#80BFF0',
-    fontSize: '8',
-    fontFamily: 'Inter'   
+  title_2:{    
+    color: 'write',
+    fontSize: '15px',
+    fontFamily: 'Inter',
+    marginLeft:'140px',
+    letterSpacing: '2.40px',
+    wordWrap: 'break-word',
   }
   
 };

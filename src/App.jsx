@@ -7,6 +7,7 @@ import { login } from './api/api'
 import { Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18n from './i18n'; // Importa la configuración de i18n
+import NotFound from './components/NotFound';
 
 const telegram = window.Telegram.WebApp;
 
@@ -95,6 +96,7 @@ function App() {
           <Route exact path="/task"
           element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
         />
+          <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>
     
 
