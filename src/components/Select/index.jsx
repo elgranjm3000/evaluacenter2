@@ -31,16 +31,18 @@ const SelectLanguaje = () => {
                           id="language-select"
                           value={i18n.language}
                           onChange={handleChange}
-                          style={{height:'40px',color:"blakc"}}
+                          style={{height:'40px',color:"black", borderRadius: '100px'}}
                           
                         >
                               {listLanguaje.map((item) => (
                                   <MenuItem key={item.key} value={item.lang}>
                                   <img src={item.flag} alt={item.language} style={{ width: '20px', marginRight: '5px' }} />
-                                  {item.language}
+                                 
                                   </MenuItem>
                               ))}
                         </Select>
+
+                      
                   </FormControl>
         
     )

@@ -7,5 +7,7 @@
     "remenberPassword": "Remenber password?",
     "myTest": "My assigned tests",
     "headerMyTest": "My assigned",
-    "openTest":"Perform this evaluation"
+    "openTest":"Perform this evaluation",
+    "pending":"There are no pending evaluations",
+    "pendingDetails":"You can review your review history or set up notifications to stay informed of new reviews."
 }

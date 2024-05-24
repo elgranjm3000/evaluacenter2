@@ -9,8 +9,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useTranslation } from 'react-i18next';
 import { Link as MuiLink } from '@mui/material';
-
-
+import GlobalStyles from './GlobalStyles';
+import Group from '../../assets/group.png'
+import  styles  from './style';
+import ListNotFound from './ListNotFound';
 
 const List = ({listTask,onCheckoutList}) => {
 
@@ -18,10 +20,16 @@ const List = ({listTask,onCheckoutList}) => {
 
 
 return ( 
+
+  <>
+    <GlobalStyles />
     <Box> 
-    {listTask.map((task, index) => (
+        
+
+{listTask.length > 0 ? (
+    listTask.map((task, index) => (
       
-          <Card style={{padding:'10px', border:'1px solid', margin:'10px'}}>
+          <Card style={{padding:'10px', border:'1px #DBDBDB solid', margin:'10px', borderRadius: '8px'}}>
             <CardHeader 
                 title={task.cache_evaluation_type_main}                
                 titleTypographyProps={{ align: 'left' }}
@@ -35,34 +43,13 @@ return (
           </CardContent>
             
           </Card>
-    ))}  
-
-{/* <TableContainer component={Paper} >
-      <Table style={{ fontSize:'1rem'  }}>
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={2}>{t('myTest')}</TableCell>            
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {listTask.map((task, index) => (
-            <TableRow style={{ borderBottom: 'none' }} key={index}>
-                <TableCell style={{ borderBottom: 'none' }} >{task.cache_evaluation_type_main}</TableCell>
-                <TableCell style={{ borderBottom: 'none' }}>
-                                <Button variant="contained" style={{ backgroundColor:'#70ad47',width:'100%' }} onClick={onCheckoutList}>
-                                {t('openTest')}
-                                </Button>
-                </TableCell>            
-            </TableRow>
-         ))}  
-         
-        </TableBody>
-      </Table>
-        </TableContainer> */}
-
-
+    )) 
+  
+  ) : (
+    <ListNotFound/>
+  )}
     </Box>
-    
+    </>
    );
  };
  

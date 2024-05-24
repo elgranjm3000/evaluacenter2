@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { getMyEvaluation } from '../../api/api';
 import Menu from '../Menu/index'
 import List from './List';
-import Ibox from '../Ibox/index'
-import  styles  from './style';
 import {Container } from '@mui/material';
 
 const ListTask = ({ profileData, onLogout, onCheckout }) => {

@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import { fontGrid } from '@mui/material/styles/cssUtils';
+import GlobalStyles from '../evaluation/GlobalStyles';
 
 
 const menu = ({handleLogout}) => {
@@ -31,13 +32,13 @@ return (
             <Table style={{ fontSize:'1rem'  }}>
                 <TableHead>
                 <TableRow>
-                    <TableCell style={{ border:'1px solid' }}>
+                    <TableCell>
                         <Box display="flex" alignItems="center" justifyContent="space-between">   
-                            <IconButton color="inherit">
-                                <MenuIcon />
+                            <IconButton color="inherit" onClick={handleLogout}>
+                                <MenuIcon style={{color:"#6B9CEB"}} />
                             </IconButton>
                             <Box flexGrow={1} textAlign="center">
-                                    <Typography variant="h5" style={{fontFamily:"IBM Plex Sans", fontSize:'20px',fontWeight:"700px",lineHeight:"28px",wordWrap:"break-word",fontWeight:"bold"}}>{t('headerMyTest')}</Typography> 
+                                    <Typography variant="h5" style={{fontFamily:"IBM Plex Sans", fontSize:'14px',fontWeight:"700px",lineHeight:"28px",wordWrap:"break-word",fontWeight:"bold"}}>{t('headerMyTest')}</Typography> 
                             </Box>
                             <SelectLanguaje />                           
                             
