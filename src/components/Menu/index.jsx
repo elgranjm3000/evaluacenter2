@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import {Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon,Grid, Menu, Fade, Backdrop,Drawer, List, ListItem, ListItemText,Popover } from '@mui/material';
+import {Divider, Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon,Grid, Menu, Fade, Backdrop,Drawer, List, ListItem, ListItemText,Popover } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -13,10 +13,14 @@ import { useTranslation } from 'react-i18next';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import style from './style'
-
+import StoreIcon from '@mui/icons-material/Store';
+import logo from '../../assets/imgLogo.png'
+import people from '../../assets/people.png'
+import TaskIcon from '@mui/icons-material/Task';
+import {  Link } from 'react-router-dom';
 
 const menu = ({handleLogout}) => {
-// Recuperar el objeto de localStorage  {profileData.userInfo.first_name} {profileData.userInfo.last_name}
+// Recuperar el objeto de localStorage  
 const profileData = JSON.parse(localStorage.getItem('profileData'));
 
 const { t } = useTranslation();
@@ -28,9 +32,7 @@ const [drawerStyle, setDrawerStyle] = useState({});
 const handleClick = (event) => {
   setAnchorEl(event.currentTarget);
   const buttonRect = event.currentTarget.getBoundingClientRect();
-    setDrawerStyle({
-      top: buttonRect.top,
-      left: buttonRect.left,
+    setDrawerStyle({    
       transform: 'translateX(0)', // Asegura que el Drawer no se mueva al abrir
     });
   setOpen(true);
@@ -68,22 +70,31 @@ return (
                                     open={open}
                                     onClose={handleClose}
                                     ModalProps={{
-                                    keepMounted: true, // Mejora el rendimiento al no desmontar el componente
+                                    keepMounted: true, 
                                     }}
                                     PaperProps={{
                                     style: { ...style.drawer, ...drawerStyle },
                                     }}                          
                             >
                                         <List>
-                                        <ListItem button onClick={handleLogout}>
-                                            <ListItemText primary="Cerrar sesión" />
-                                        </ListItem>
-                                        <ListItem button onClick={handleToggleDrawer(false)}>
-                                            <ListItemText primary="Opción 2" />
-                                        </ListItem>
-                                        <ListItem button onClick={handleToggleDrawer(false)}>
-                                            <ListItemText primary="Opción 3" />
-                                        </ListItem>
+                                                <ListItem>
+                                                    <img src={logo}></img><img src={people}></img>
+                                                </ListItem>
+                                                <ListItem button >
+                                                    <IconButton color="inherit"><StoreIcon style={style.menuFront} /></IconButton> <ListItemText primary="Escritorio" />
+                                                </ListItem>
+                                                <ListItem button component={Link} to="/task">
+                                                    <IconButton color="inherit"><TaskIcon style={style.menuFront} /></IconButton> <ListItemText primary="Mi Escritorio Personal" />
+                                                </ListItem>
+                                                <ListItem button onClick={handleLogout}>
+                                                    <IconButton color="inherit"><ExitToAppIcon style={style.menuFront} /></IconButton> <ListItemText primary="Salir " />
+                                                </ListItem>
+                                                <Divider style={style.divider} />
+
+                                                <ListItem button onClick={handleLogout}>
+                                                {profileData.userInfo.first_name} {profileData.userInfo.last_name}
+                                                </ListItem>
+                                                
                                         </List>
                         </Drawer>
                             <Box flexGrow={1} textAlign="center">

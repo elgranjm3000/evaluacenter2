@@ -9,5 +9,23 @@
     "headerMyTest": "Mis evaluaciones",
     "openTest":"Realizar esta evaluacion",
     "pending":"No hay evaluaciones pendientes",
-    "pendingDetails":"Puedes revisar tu historial de evaluaciones o configurar notificaciones para estar al tanto de las nuevas evaluaciones."
+    "pendingDetails":"Puedes revisar tu historial de evaluaciones o configurar notificaciones para estar al tanto de las nuevas evaluaciones.",    
+    
+    "register":{
+      "welcomeEvaluaCenter": "¡Bienvenido a Evaluacenter",
+      "notePassword": "Cree y confirme su contraseña para activar su usuario",
+      "emailUser": "Email de usuario",
+      "confirmUser": "Confirme su email de usuario",
+      "placeHolderEmail": "Ingrese su email",
+      "passwordNew": "Nueva contraseña",
+      "keyPasswordNew":"Ingrese una nueva contraseña",      
+      "passwordNewRepeat": "Repetir contraseña",
+      "keyPasswordNewRepeat":"Ingrese una nueva contraseña",
+      "norm": "Minimo 8 caracteres, 1 mayuscula, 1 numero y 1 simbolo",
+      "active": "Activar usuario",
+      "notActive" : "Esta no es su evaluacion, por favor, consulte con su evaluador",
+      "emailsDoNotMatch":"Esta no es su evaluacion, por favor, consulte con su evaluador"
+    }
+
+       
   }

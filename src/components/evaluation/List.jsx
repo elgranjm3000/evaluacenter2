@@ -35,8 +35,7 @@ return (
                 titleTypographyProps={{ align: 'left' }}
                 subheaderTypographyProps={{ align: 'left' }}
             />
-          <CardContent style={{ textAlign: 'left', paddingTop:'1px'  }}>
-          
+          <CardContent style={{ textAlign: 'left', paddingTop:'1px'  }}>          
                     <MuiLink href="#" target="_blank" rel="noopener noreferrer">
                         {t('openTest')}
                     </MuiLink>

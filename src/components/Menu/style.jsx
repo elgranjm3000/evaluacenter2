@@ -10,6 +10,9 @@ const styles = {
   menuIcon:{
     color:"#6B9CEB"
   },
+  menuFront:{
+    color: "#272727"
+  },
   textStyle: {
     fontFamily:fontFamily, 
     fontSize:'14px',
@@ -23,7 +26,16 @@ const styles = {
   },
   drawer: {
     position: 'absolute',
-    transition: 'none', // Eliminar la transición predeterminada para una posición precisa
+    transition: 'none', 
+  },
+  multilineText: {
+    whiteSpace: 'normal',
+    wordBreak: 'break-word',
+  },
+  divider: {
+    margin: '20px 14px 0px 14px', 
+    backgroundColor: '#989B9B', 
+    border: '1px #989B9B solid'
   },
 
 };

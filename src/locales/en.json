@@ -9,5 +9,17 @@
     "headerMyTest": "My assigned",
     "openTest":"Perform this evaluation",
     "pending":"There are no pending evaluations",
-    "pendingDetails":"You can review your review history or set up notifications to stay informed of new reviews."
+    "pendingDetails":"You can review your review history or set up notifications to stay informed of new reviews.",
+    
+    "register":{
+        "welcomeEvaluaCenter": "Welcome to Evaluacenter",
+        "notePassword": "Create and confirm your password to activate your user",
+        "emailUser": "User email",
+        "confirmUser": "Confirm your user email",
+        "passwordNew": "New password",
+        "passwordNewRepeat": "Repeat password",
+        "norm": "Minimum 8 characters, 1 uppercase, 1 number and 1 symbol",
+        "active": "Activate user",
+        "notActive" : "This is not your evaluation, please consult your evaluator"
+    }
 }
