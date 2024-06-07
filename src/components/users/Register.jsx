@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import GlobalStyles from './GlobalStyles';
 
 
 const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
@@ -16,11 +17,12 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
     const [passwordRepeat, setPasswordRepeat] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
-
+    const [errorPasswordValidate, setErrorPasswordValidate] = useState(false);
 
     const [showWelcome, setShowWelcome] = useState(true);
     const [visible, setVisible] = useState(false);
     const [error, setError] = useState(false);
+    const [errorPassword, setErrorPassword] = useState(false);
 
 
     const { t } = useTranslation();
@@ -51,6 +53,17 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
       return () => clearTimeout(timer);
     }, []);
 
+    const handlePasswordChange = (e) => {
+      setPassword(e.target.value);
+      validatePassword(e.target.value, passwordRepeat);
+      validPassword(e.target.value)
+    };
+
+    const handlePasswordRepeatChange = (e) => {
+      setPasswordRepeat(e.target.value);
+      validatePassword(password, e.target.value);
+    };
+
     const handleEmailChange = (e) => {
       setUsername(e.target.value);
       validateEmails(e.target.value, emailRepeat);
@@ -59,6 +72,12 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
     const handleEmailRepeatChange = (e) => {
       setEmailRepeat(e.target.value);
       validateEmails(username, e.target.value);
+    };
+
+
+    const validPassword = (password) => {
+      const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      setErrorPasswordValidate(false);
     };
   
     const validateEmails = (email1, email2) => {
@@ -69,6 +88,14 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
       }
     };
 
+    const validatePassword= (password1, password2) => {
+      if (password1 !== password2) {
+        setErrorPassword(true);
+      } else {
+        setErrorPassword(false);
+      }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();       
         handleLogin(username,password)
@@ -76,7 +103,8 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
     }
     
         return (
-         
+          <>
+          <GlobalStyles />    
           <div>
           {showWelcome ? (
             <WelcomeScreen />
@@ -103,14 +131,14 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
                                   </Typography>
                                 </div>
-                                <Typography variant="h5" component="h5" style={{ color: '#ffffff' }}>
+                                <Typography variant="h5" component="h5" style={{ color: 'black' }}>
                                       {t('register.welcomeEvaluaCenter')}
                                 </Typography>
                                 <Typography variant="h2" component="h2" style={{ fontSize: '12px' }}>
                                       {t('register.notePassword')}
                                 </Typography>
                                 <form onSubmit={handleSubmit}>
-                                  <label htmlFor="username" style={{ color: '#ffffff', marginTop: '20px', display: 'block', textAlign:"left" }}>
+                                  <label htmlFor="username" style={{ color: 'black', marginTop: '20px', display: 'block', textAlign:"left" }}>
                                         {t('register.emailUser')}
                                   </label>
                                   <TextField
@@ -123,15 +151,15 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     required
                                     style={{ marginBottom: '10px' }}
                                     InputLabelProps={{
-                                      style: { color: '#ffffff' }, // Color del placeholder
+                                      style: { color: 'black' }, // Color del placeholder
                                       shrink: !!username,
                                     }}
                                     InputProps={{
-                                      style: { color: '#ffffff', background: 'none' }, // Color del texto
+                                      style: { color: 'black', background: 'none' }, // Color del texto
                                     }}
                                     error={error}
                                   />
-                                  <label htmlFor="username" style={{ color: '#ffffff', marginTop: '20px', display: 'block', textAlign:"left" }}>
+                                  <label htmlFor="username" style={{ color: 'black', marginTop: '20px', display: 'block', textAlign:"left" }}>
                                       {t('register.emailUser')}
                                   </label>
                                   <TextField
@@ -144,16 +172,16 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     required
                                     style={{ marginBottom: '10px' }}
                                     InputLabelProps={{
-                                      style: { color: '#ffffff' }, // Color del placeholder
+                                      style: { color: 'black' }, // Color del placeholder
                                     }}
                                     InputProps={{
-                                      style: { color: '#ffffff', background: 'none' }, // Color del texto
+                                      style: { color: 'black', background: 'none' }, // Color del texto
                                     }}
                                     error={error}
                                     helperText={error ? t('register.emailsDoNotMatch') : ''}
                                   />
 
-                                  <label style={{ color: '#ffffff', marginTop: '20px', display: 'block', textAlign:"left" }}>
+                                  <label style={{ color: 'black', marginTop: '20px', display: 'block', textAlign:"left" }}>
                                       {t('register.passwordNew')}
                                   </label>
                                   <TextField
@@ -161,15 +189,15 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     placeholder={t('register.keyPasswordNew')}
                                     variant="outlined"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={handlePasswordChange}
                                     fullWidth
                                     required
                                     style={{ marginBottom: '10px' }}
                                     InputLabelProps={{
-                                      style: { color: '#ffffff' }, // Color del placeholder
+                                      style: { color: 'black' }, // Color del placeholder
                                     }}
                                     InputProps={{
-                                      style: { color: '#ffffff', background: 'none' }, // Color del texto
+                                      style: { color: 'black', background: 'none' }, // Color del texto
                                       endAdornment: (
                                         <InputAdornment position="end">
                                           <IconButton
@@ -183,9 +211,11 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
                                         </InputAdornment>
                                       ),
                                     }}
+                                    error={errorPasswordValidate}
+                                    helperText={errorPasswordValidate ? t('register.passwordValidate') : ''}
                                   />
 
-                                  <label style={{ color: '#ffffff', marginTop: '20px', display: 'block', textAlign:"left" }}>
+                                  <label style={{ color: 'black', marginTop: '20px', display: 'block', textAlign:"left" }}>
                                       {t('register.passwordNewRepeat')}
                                   </label>
                                   <TextField
@@ -193,15 +223,15 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     placeholder={t('register.keyPasswordNewRepeat')}
                                     variant="outlined"
                                     value={passwordRepeat}
-                                    onChange={(e) => setPasswordRepeat(e.target.value)}
+                                    onChange={handlePasswordRepeatChange}
                                     fullWidth
                                     required
                                     style={{ marginBottom: '10px' }}
                                     InputLabelProps={{
-                                      style: { color: '#ffffff' }, // Color del placeholder
+                                      style: { color: 'black' }, // Color del placeholder
                                     }}
                                     InputProps={{
-                                      style: { color: '#ffffff', background: 'none' }, // Color del texto
+                                      style: { color: 'black', background: 'none' }, // Color del texto
                                       endAdornment: (
                                         <InputAdornment position="end">
                                           <IconButton
@@ -215,9 +245,11 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
                                         </InputAdornment>
                                       ),
                                     }}
+                                    error={errorPassword}
+                                    helperText={errorPassword ? t('register.passwordMatch') : ''}
                                   />
 
-                                  <label style={{ color: '#ffffff', marginBottom: '20px', display: 'block', textAlign:"left", fontSize:"12.8px" }}>
+                                  <label style={{ color: 'black', marginBottom: '20px', display: 'block', textAlign:"left", fontSize:"12.8px" }}>
                                       {t('register.norm')}
                                   </label>
 
@@ -230,11 +262,9 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
                                   >
                                     {t('register.active')}
                                   </Button>
-                                  <div>
-                                    <Link href="/resetting/request"><small>{t('remenberPassword')}</small></Link>
-                                  </div>
+                                 
                                 </form>
-                                <Typography variant="body2" style={{ color: '#ffffff' }}>
+                                <Typography variant="body2" style={{ color: 'black' }}>
                                   <small>© People Performance International LLC</small>
                                 </Typography>
                               </div>
@@ -247,7 +277,9 @@ const Register = ({handleLogin,onCheckout,isLoggedIn}) => {
               </Container>
           )}
         </div>
+        </>
         );
+      
 }
 
 export default Register;

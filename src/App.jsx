@@ -6,9 +6,10 @@ import ListTask from './components/evaluation/ListTask';
 import { login } from './api/api'
 import { Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import i18n from './i18n'; // Importa la configuración de i18n
+import i18n from './i18n'; 
 import NotFound from './components/NotFound';
 import Register from './components/users/Register';
+import Test from './components/test/disc/Test'
 
 const telegram = window.Telegram.WebApp;
 
@@ -98,6 +99,7 @@ function App() {
           element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
         />
           <Route exact path="/register" element={<Register/>}></Route>
+          <Route exact path="/discpremium" element={<Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />}></Route>
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>
     

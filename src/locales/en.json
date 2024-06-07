@@ -20,6 +20,7 @@
         "passwordNewRepeat": "Repeat password",
         "norm": "Minimum 8 characters, 1 uppercase, 1 number and 1 symbol",
         "active": "Activate user",
-        "notActive" : "This is not your evaluation, please consult your evaluator"
+        "notActive" : "This is not your evaluation, please consult your evaluator",
+        "passwordMatch":"Password does not match"
     }
 }

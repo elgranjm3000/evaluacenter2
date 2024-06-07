@@ -24,7 +24,8 @@
       "norm": "Minimo 8 caracteres, 1 mayuscula, 1 numero y 1 simbolo",
       "active": "Activar usuario",
       "notActive" : "Esta no es su evaluacion, por favor, consulte con su evaluador",
-      "emailsDoNotMatch":"Esta no es su evaluacion, por favor, consulte con su evaluador"
+      "emailsDoNotMatch":"Esta no es su evaluacion, por favor, consulte con su evaluador",
+      "passwordMatch": "La contraseña no coincide"
     }
 
        

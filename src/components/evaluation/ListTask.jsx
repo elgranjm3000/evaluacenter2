@@ -53,7 +53,7 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
     </div>*/
     <Container maxWidth="sm">     
         <div>
-            <Menu handleLogout={handleLogout} />
+            <Menu handleLogout={handleLogout} titleFist="Evaluacion" />
             <List listTask={listTask} onCheckoutList={onCheckoutList} />
         </div>
       </Container>

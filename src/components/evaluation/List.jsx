@@ -29,14 +29,15 @@ return (
 {listTask.length > 0 ? (
     listTask.map((task, index) => (
       
-          <Card style={{padding:'10px', border:'1px #DBDBDB solid', margin:'10px', borderRadius: '8px'}}>
+          <Card style={{padding:'1px', border:'1px #DBDBDB solid', margin:'10px', borderRadius: '8px'}}>
             <CardHeader 
-                title={task.cache_evaluation_type_main}                
-                titleTypographyProps={{ align: 'left' }}
-                subheaderTypographyProps={{ align: 'left' }}
+                title={task.cache_evaluation_category_main}                
+                titleTypographyProps={{ align: 'left',style: { fontWeight: 'bold' } }}
+                subheaderTypographyProps={{ align: 'left' }}              
+
             />
           <CardContent style={{ textAlign: 'left', paddingTop:'1px'  }}>          
-                    <MuiLink href="#" target="_blank" rel="noopener noreferrer">
+                    <MuiLink href="/discpremium" rel="noopener noreferrer">
                         {t('openTest')}
                     </MuiLink>
           </CardContent>

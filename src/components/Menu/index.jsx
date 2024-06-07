@@ -18,8 +18,9 @@ import logo from '../../assets/imgLogo.png'
 import people from '../../assets/people.png'
 import TaskIcon from '@mui/icons-material/Task';
 import {  Link } from 'react-router-dom';
+import { Link as MuiLink } from '@mui/material';
 
-const menu = ({handleLogout}) => {
+const menu = ({handleLogout,titleFist}) => {
 // Recuperar el objeto de localStorage  
 const profileData = JSON.parse(localStorage.getItem('profileData'));
 
@@ -83,6 +84,7 @@ return (
                                                 <ListItem button >
                                                     <IconButton color="inherit"><StoreIcon style={style.menuFront} /></IconButton> <ListItemText primary="Escritorio" />
                                                 </ListItem>
+                                                
                                                 <ListItem button component={Link} to="/task">
                                                     <IconButton color="inherit"><TaskIcon style={style.menuFront} /></IconButton> <ListItemText primary="Mi Escritorio Personal" />
                                                 </ListItem>
@@ -98,7 +100,7 @@ return (
                                         </List>
                         </Drawer>
                             <Box flexGrow={1} textAlign="center">
-                                    <Typography variant="h5" style={style.textStyle}>{t('headerMyTest')}</Typography> 
+                                    <Typography variant="h5" style={style.textStyle}>{titleFist}</Typography> 
                             </Box>
                             <SelectLanguaje />                           
                             
