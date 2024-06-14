@@ -1,5 +1,5 @@
 import React, {useState,useEffect } from 'react';
-import { Container, Grid, Typography, TextField, Button, Link, Fade } from '@mui/material';
+import { Container, Grid, Typography, TextField, Button, Link, Fade,Step, StepLabel, Stepper } from '@mui/material';
 import SelectLanguaje from '../../Select/languaje'
 import { useTranslation } from 'react-i18next';
 import GlobalStyles from './GlobalStyles';
@@ -10,24 +10,26 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import people_rushing from '../../../assets/test/people-rushing.svg'
 import done from '../../../assets/test/done.svg'
 import asking_question from '../../../assets/test/asking-question.svg'
 import online_shopping from '../../../assets/test/online-shopping.svg'
+import List from './List'
+import Instrucction from './Instrucction';
+
+const steps = ['Step One', 'Step Two', 'Step Three', 'Step For'];
 
 const Test = ({ profileData, onLogout, onCheckout }) => {
 
-  const [checked, setChecked] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [activeStep, setActiveStep] = useState(0);
 
 
     const { t } = useTranslation();
 
   
-    const handleChange = (event) => {
-      setChecked(event.target.checked);
-    };
+   
 
     const handleLogout = () => {
         localStorage.removeItem('isLoggedIn');
@@ -35,9 +37,45 @@ const Test = ({ profileData, onLogout, onCheckout }) => {
         onLogout();
       };
     
+      const toggleAccordion = () => {
+        console.log(isOpen);
+        setIsOpen(!isOpen);
+        console.log(isOpen);
+    };
+    
       const onCheckoutList = () => {
         onCheckout();
       }
+
+
+      const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      };
+
+
+      const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+      };
+    
+      const handleReset = () => {
+        setActiveStep(0);
+      };
+
+
+      const getStepContent = (step) => {
+        switch (step) {
+          case 0:
+            return <List profileData = {profileData} steps={step} valueProgress="25" />;
+          case 1:
+            return <List profileData = {profileData} steps={step} valueProgress="50"/>;
+          case 2:
+            return <List profileData = {profileData} steps={step} valueProgress="75"/>;
+          case 3:
+              return <List profileData = {profileData} steps={step} valueProgress="100"/>;
+          default:
+            return 'Unknown step';
+        }
+      };
     
 
     
@@ -49,7 +87,7 @@ const Test = ({ profileData, onLogout, onCheckout }) => {
             
                 <Menu handleLogout={handleLogout} titleFist="Disc Premium" />
 
-                <Box display="flex"  justifyContent="space-between" style={{marginTop:'20px'}}>      
+                <Box display="flex"  justifyContent="space-between" style={{marginTop:'20px'}} onClick={toggleAccordion}>      
                         <Typography variant="body1" style={{ textAlign: 'left', color:'black', fontWeight:'bold' }}>
                           ¿Cómo realizo este test?
                         </Typography>
@@ -58,87 +96,44 @@ const Test = ({ profileData, onLogout, onCheckout }) => {
                         </Typography>
                 </Box>
 
-              <div>
-<Box style={{padding:"50px"}}>
+             
+
+              {isOpen ? <Instrucction/> 
+              : 
+              <Box sx={{ width: '100%' }}>
   
-<Box borderBottom={1} borderColor="divider">
-                <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={people_rushing}
-                        alt="Imagen"
-                        sx={{ width: 58, height: 58, objectFit: 'cover' }}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                        No medite demasiado las respuestas, deberia tardar no mas de 15 minutos en total
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
- </Box>
- <Box borderBottom={1} borderColor="divider" style={{marginTop:'30px'}}>
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={done}
-                        alt="Imagen"
-                        sx={{ width: 58, height: 58, objectFit: 'cover' }}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                        No hay respuestas correctas ni equivocadas, trate de ser lo mas sincero posible
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
-</Box>
-
-<Box borderBottom={1} borderColor="divider" style={{marginTop:'30px'}}>
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={asking_question}
-                        alt="Imagen"
-                        sx={{ width: 58, height: 58, objectFit: 'cover' }}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                        Al contestar piense en cómo es usted sólo en el ambiente en el que está siendo evaluado (profesional, personal o social), no los mezcle
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
-  </Box>
-  <Box borderBottom={1} borderColor="divider" style={{marginTop:'30px'}}>
-
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={online_shopping}
-                        alt="Imagen"
-                        sx={{ width: 58, height: 58, objectFit: 'cover' }}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                        Ordene arrastrando las 4 palabras, siendo la más alta la que más le describe y la más baja la que menos le describe, aunque no se sienta 100% identificado
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
+      <div>
+        {activeStep === steps.length ? (
+          <div>
+            <Typography variant="h6" gutterBottom>
+              All steps completed
+            </Typography>
+            <Button onClick={handleReset}>Reset</Button>
+          </div>
+        ) : (
+          <div>
+            <div>{getStepContent(activeStep)}</div>
+            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+              <Button
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                sx={{ mr: 1 }}
+              >
+                Back
+              </Button>
+              <Box sx={{ flex: '1 1 auto' }} />
+              <Button
+                onClick={handleNext}
+              >
+                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              </Button>
             </Box>
+          </div>
+        )}
+      </div>
+    </Box>
+              }
 
-            <FormControlLabel
-      control={<Checkbox checked={checked} onChange={handleChange} />}
-      label="He leído y entendido cómo realizar la evaluación"
-      style={{color:"black", marginTop:'100px'}}
-    />
-  </Box>
-              </div>
           </Container>
           </>
         );
