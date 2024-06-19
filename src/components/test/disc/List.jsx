@@ -5,6 +5,7 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator'; // Importa el
 import { Box, LinearProgress, Typography } from '@mui/material';
 
 const ProgressBar = ({ value }) => {
+    console.log(value);
     return (
       <Box display="flex" alignItems="center">
         <Box width="100%" mr={1}>
@@ -16,7 +17,7 @@ const ProgressBar = ({ value }) => {
   };
 const List = ({ profileData, steps, valueProgress }) => {
     const [items, setItems] = useState([]);
-    
+    console.log(valueProgress);
     useEffect(() => {
         const fetchData = async () => {
             if (profileData && profileData.userInfo.user_id) {
@@ -70,11 +71,14 @@ const List = ({ profileData, steps, valueProgress }) => {
     return (
         <>
         <div>
-      <Typography variant="h6" gutterBottom>
-       /24
+      <Typography variant="h6" gutterBottom style={{'color':"black", 'textAlign':"left", "marginTop":"20px"}}>
+       {(steps+1)*4} de 24
       </Typography>
-      <ProgressBar value="25" />
+      <ProgressBar value={valueProgress} />
     </div>
+        <Typography variant="h6" gutterBottom style={{'color':"black", 'textAlign':"center", "marginTop":"10px"}}>
+            Más le describe
+        </Typography>
         <div className="sortable-list">
             {items.map((item) => (
                 <div
@@ -94,6 +98,9 @@ const List = ({ profileData, steps, valueProgress }) => {
                 </div>
             ))}
         </div>
+        <Typography variant="h6" gutterBottom style={{'color':"black", 'textAlign':"center"}}>
+            Menos le describe
+        </Typography>
         </>
     );
 } 

@@ -18,7 +18,7 @@ import online_shopping from '../../../assets/test/online-shopping.svg'
 import List from './List'
 import Instrucction from './Instrucction';
 
-const steps = ['Step One', 'Step Two', 'Step Three', 'Step For'];
+const steps = ['Step One', 'Step Two', 'Step Three', 'Step For','Step Five','Step Six'];
 
 const Test = ({ profileData, onLogout, onCheckout }) => {
 
@@ -65,13 +65,17 @@ const Test = ({ profileData, onLogout, onCheckout }) => {
       const getStepContent = (step) => {
         switch (step) {
           case 0:
-            return <List profileData = {profileData} steps={step} valueProgress="25" />;
+            return <List profileData = {profileData} steps={step} valueProgress="16" />;
           case 1:
-            return <List profileData = {profileData} steps={step} valueProgress="50"/>;
+            return <List profileData = {profileData} steps={step} valueProgress="32"/>;
           case 2:
-            return <List profileData = {profileData} steps={step} valueProgress="75"/>;
+            return <List profileData = {profileData} steps={step} valueProgress="48"/>;
           case 3:
-              return <List profileData = {profileData} steps={step} valueProgress="100"/>;
+              return <List profileData = {profileData} steps={step} valueProgress="64"/>;
+          case 4:
+                return <List profileData = {profileData} steps={step} valueProgress="80"/>;
+          case 5:
+                  return <List profileData = {profileData} steps={step} valueProgress="100"/>;
           default:
             return 'Unknown step';
         }
@@ -112,22 +116,25 @@ const Test = ({ profileData, onLogout, onCheckout }) => {
           </div>
         ) : (
           <div>
-            <div>{getStepContent(activeStep)}</div>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <div>{getStepContent(activeStep)}</div>          
+           
+
+              <Button variant="contained" color="primary" style={{"width":"100%"}}
+                onClick={handleNext}
+              >
+                {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
+              </Button>
+
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                sx={{ mr: 1 }}
+                variant="contained" className="gray-button" style={{"width":"100%", "marginTop":"15px"}}
               >
-                Back
+                Anterior
               </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button
-                onClick={handleNext}
-              >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
-            </Box>
+            
+              
+           
           </div>
         )}
       </div>

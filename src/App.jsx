@@ -42,6 +42,7 @@ function App() {
   }, []);
 
   const handleLogout = () => {
+    console.log("estoy en app");
     setIsLoggedIn(false);
     setProfileData(null);
   };
@@ -99,7 +100,7 @@ function App() {
           element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
         />
           <Route exact path="/register" element={<Register/>}></Route>
-          <Route exact path="/discpremium" element={<Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />}></Route>
+          <Route exact path="/discpremium" element={isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>
     
