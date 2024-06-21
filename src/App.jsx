@@ -10,6 +10,7 @@ import i18n from './i18n';
 import NotFound from './components/NotFound';
 import Register from './components/users/Register';
 import Test from './components/test/disc/Test'
+import Radar from './components/test/radar/Index'
 
 const telegram = window.Telegram.WebApp;
 
@@ -34,6 +35,7 @@ function App() {
 
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn');
+    console.log(loggedIn);
     const storedProfileData = localStorage.getItem('profileData');
     if (loggedIn === 'true' && storedProfileData) {
       setIsLoggedIn(true);
@@ -88,10 +90,10 @@ function App() {
     
     return () => telegram.offEvent('mainButtonClicked',onSendData)
   },[onSendData])
+  console.log(isLoggedIn);
 
   return (
     <>
-
     <Router>   
     
       <Routes>
@@ -100,7 +102,9 @@ function App() {
           element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
         />
           <Route exact path="/register" element={<Register/>}></Route>
-          <Route exact path="/discpremium" element={isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
+          <Route exact path="/discpremium" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
+          <Route exact path="/radar" element={isLoggedIn === null ? null : isLoggedIn ? <Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
+
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>
     

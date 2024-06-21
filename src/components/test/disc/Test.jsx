@@ -20,7 +20,8 @@ import Instrucction from './Instrucction';
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For','Step Five','Step Six'];
 
-const Test = ({ profileData, onLogout, onCheckout }) => {
+const Test = ({ profileData, onLogout, onCheckout,isLoggedIn }) => {
+
 
   const [isOpen, setIsOpen] = useState(true);
   const [activeStep, setActiveStep] = useState(0);

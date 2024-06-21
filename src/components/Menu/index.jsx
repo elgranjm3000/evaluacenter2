@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import {Divider, Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon,Grid, Menu, Fade, Backdrop,Drawer, List, ListItem, ListItemText,Popover } from '@mui/material';
+import {Divider, Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon,Grid, Menu, Fade, Backdrop,Drawer, List, ListItem, ListItemText,Popover,Collapse } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -19,6 +19,8 @@ import people from '../../assets/people.png'
 import TaskIcon from '@mui/icons-material/Task';
 import {  Link } from 'react-router-dom';
 import { Link as MuiLink } from '@mui/material';
+import { GridView,Apartment, ExpandLess, ExpandMore } from '@mui/icons-material';
+
 
 const menu = ({handleLogout,titleFist}) => {
 // Recuperar el objeto de localStorage  
@@ -29,6 +31,7 @@ const { t } = useTranslation();
 const [anchorEl, setAnchorEl] = useState(null);
 const [open, setOpen] = useState(false);
 const [drawerStyle, setDrawerStyle] = useState({});
+const [submenuOpen, setSubmenuOpen] = useState(false); // Estado para el submenú
 
 const handleClick = (event) => {
   setAnchorEl(event.currentTarget);
@@ -51,6 +54,11 @@ const handleToggleDrawer = (open) => (event) => {
       return;
     }
     setOpen(open);
+  };
+
+
+  const handleSubmenuClick = () => {
+    setSubmenuOpen(!submenuOpen); // Toggle del submenú
   };
  
 return ( 
@@ -82,12 +90,24 @@ return (
                                                     <img src={logo}></img><img src={people}></img>
                                                 </ListItem>
                                                 <ListItem button >
-                                                    <IconButton color="inherit"><StoreIcon style={style.menuFront} /></IconButton> <ListItemText primary="Escritorio" />
+                                                    <IconButton color="inherit"><GridView style={style.menuFront} /></IconButton> <ListItemText primary="Escritorio" />
                                                 </ListItem>
                                                 
-                                                <ListItem button component={Link} to="/task">
-                                                    <IconButton color="inherit"><TaskIcon style={style.menuFront} /></IconButton> <ListItemText primary="Mi Escritorio Personal" />
+                                                <ListItem button onClick={handleSubmenuClick}>
+                                                    <IconButton color="inherit"><Apartment style={style.menuFront} /></IconButton> 
+                                                    <ListItemText primary="Mi empresa" />
+                                                    {submenuOpen ? <ExpandLess /> : <ExpandMore />}
                                                 </ListItem>
+                                              <Collapse in={submenuOpen} timeout="auto" unmountOnExit>
+                                                <List component="div" disablePadding style={{"marginLeft":"20px"}}>
+                                                  <ListItem button component={Link} to="/subtask1">
+                                                    <ListItemText primary="Mis comunicaciones" />
+                                                  </ListItem>
+                                                  <ListItem button component={Link} to="/task">
+                                                    <ListItemText primary="Mis evaluaciones" />
+                                                  </ListItem>
+                                                </List>
+                                              </Collapse>
                                                 <ListItem button onClick={handleLogout}>
                                                     <IconButton color="inherit"><ExitToAppIcon style={style.menuFront} /></IconButton> <ListItemText primary="Salir " />
                                                 </ListItem>
