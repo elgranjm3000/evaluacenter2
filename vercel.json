@@ -1,12 +1,9 @@
 {
-    "version": 2,
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/index.html",
-        "headers": {
-          "x-nextjs-route-handler": "true"
-        }
-      }
-    ]
+  "version": 3,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
