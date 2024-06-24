@@ -37,7 +37,7 @@ return (
 
             />
           <CardContent style={{ textAlign: 'left', paddingTop:'1px'  }}>          
-                    <MuiLink href="/discpremium" rel="noopener noreferrer">
+                    <MuiLink href={`/${task.cache_evaluation_category_main}`} rel="noopener noreferrer">
                         {t('openTest')}
                     </MuiLink>
           </CardContent>

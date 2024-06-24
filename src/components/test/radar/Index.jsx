@@ -1,82 +1,151 @@
-import React, { useState, useEffect, useRef } from 'react';
-import * as d3 from 'd3';
+import React, {useState,useEffect } from 'react';
+import { Container, Grid, Typography, TextField, Button, Link, Fade,Step, StepLabel, Stepper } from '@mui/material';
+import SelectLanguaje from '../../Select/languaje'
+import { useTranslation } from 'react-i18next';
+import Styles from '../Styles';
+import Menu from '../../Menu/index'
 
-const InteractiveEllipse = () => {
-  const [selectedValue, setSelectedValue] = useState(0);
-  const svgRef = useRef(null);
 
-  useEffect(() => {
-    const svg = d3.select(svgRef.current);
-    const width = 400;
-    const height = 400;
-    const radius = 150;
-    const centerX = width / 2;
-    const centerY = height / 2;
-    const values = d3.range(0.5, 10.5, 0.5);
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import people_rushing from '../../../assets/test/people-rushing.svg'
+import done from '../../../assets/test/done.svg'
+import asking_question from '../../../assets/test/asking-question.svg'
+import online_shopping from '../../../assets/test/online-shopping.svg'
+import Radars from './Radars'
+import Instrucction from './Instrucction';
 
-    svg.attr('width', width).attr('height', height);
+const steps = ['Step One', 'Step Two', 'Step Three', 'Step For','Step Five','Step Six'];
 
-    // Draw ellipse
-    svg
-      .append('ellipse')
-      .attr('cx', centerX)
-      .attr('cy', centerY)
-      .attr('rx', radius)
-      .attr('ry', radius / 1.5)
-      .attr('fill', '#3e98c7');
+const Index = ({ profileData, onLogout, onCheckout,isLoggedIn }) => {
 
-    // Draw text for each value
-    svg
-      .selectAll('text')
-      .data(values)
-      .enter()
-      .append('text')
-      .attr('x', (d) => centerX + radius * Math.cos((d / 10) * 2 * Math.PI - Math.PI / 2))
-      .attr('y', (d) => centerY + (radius / 1.5) * Math.sin((d / 10) * 2 * Math.PI - Math.PI / 2))
-      .attr('text-anchor', 'middle')
-      .attr('alignment-baseline', 'middle')
-      .attr('font-size', '12px')
-      .attr('fill', 'black')
-      .text((d) => d);
 
-    // Handle mouse click
-    const handleMouseClick = (event) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const [activeStep, setActiveStep] = useState(0);
 
-      const [x, y] = d3.pointer(event);
-  const textElement = svg
-    .selectAll('text')
-    .nodes()
-    .find((textNode) => {
-      const bbox = textNode.getBBox();
-      return x >= bbox.x && x <= bbox.x + bbox.width && y >= bbox.y && y <= bbox.y + bbox.height;
-    });
 
-  if (textElement) {
-    setSelectedValue(textElement.textContent);
-  }
+    const { t } = useTranslation();
+
+  
+   
+
+    const handleLogout = () => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('profileData');
+        onLogout();
+      };
+    
+      const toggleAccordion = () => {
+        console.log(isOpen);
+        setIsOpen(!isOpen);
+        console.log(isOpen);
     };
+    
+      const onCheckoutList = () => {
+        onCheckout();
+      }
 
-    svg.on('click', handleMouseClick);
 
-    return () => {
-      svg.selectAll('*').remove(); // Cleanup
-    };
-  }, []);
+      const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      };
 
-  return (
-    <div>
-      <svg ref={svgRef}></svg>
-      <div>Selected Value: {selectedValue}</div>
-    </div>
-  );
-};
 
-const Index = () => {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-      <InteractiveEllipse />
-    </div>
-  );
-};
+      const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+      };
+    
+      const handleReset = () => {
+        setActiveStep(0);
+      };
+
+
+      const getStepContent = (step) => {
+        switch (step) {
+          case 0:
+            return <Radars profileData = {profileData} steps={step} valueProgress="16" />;
+          case 1:
+            return <Radars profileData = {profileData} steps={step} valueProgress="32"/>;
+          case 2:
+            return <Radars profileData = {profileData} steps={step} valueProgress="48"/>;
+          case 3:
+              return <Radars profileData = {profileData} steps={step} valueProgress="64"/>;
+          case 4:
+                return <Radars profileData = {profileData} steps={step} valueProgress="80"/>;
+          case 5:
+                  return <Radars profileData = {profileData} steps={step} valueProgress="100"/>;
+          default:
+            return 'Unknown step';
+        }
+      };
+    
+
+    
+        return (
+          <>
+          <Styles/>
+          
+        <Container maxWidth="sm">     
+            
+                <Menu handleLogout={handleLogout} titleFist="Radares" />
+
+                <Box display="flex"  justifyContent="space-between" style={{marginTop:'20px'}} onClick={toggleAccordion}>      
+                        <Typography variant="body1" style={{ textAlign: 'left', color:'black', fontWeight:'bold' }}>
+                          ¿Cómo realizo este test?
+                        </Typography>
+                        <Typography variant="body1" style={{ textAlign: 'right', color:'black', fontWeight:'bold' }}>
+                          X
+                        </Typography>
+                </Box>
+
+             
+
+              {isOpen ? <Instrucction/> 
+              : 
+              <Box sx={{ width: '100%' }}>
+  
+      <div>
+        {activeStep === steps.length ? (
+          <div>
+            <Typography variant="h6" gutterBottom>
+              All steps completed
+            </Typography>
+            <Button onClick={handleReset}>Reset</Button>
+          </div>
+        ) : (
+          <div>
+            <div>{getStepContent(activeStep)}</div>          
+           
+
+              <Button variant="contained" color="primary" style={{"width":"100%"}}
+                onClick={handleNext}
+              >
+                {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
+              </Button>
+
+              <Button
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                variant="contained" className="gray-button" style={{"width":"100%", "marginTop":"15px"}}
+              >
+                Anterior
+              </Button>
+            
+              
+           
+          </div>
+        )}
+      </div>
+    </Box>
+              }
+
+          </Container>
+          </>
+        );
+      
+}
 
 export default Index;

@@ -23,7 +23,7 @@ const List = ({ profileData, steps, valueProgress }) => {
             if (profileData && profileData.userInfo.user_id) {
                 try {
                     const response = await getMyEvaluationDisc(profileData.jwt_token);
-                    const numericSteps = Number(steps); // Convertir steps a número
+                    const numericSteps = Number(steps);
 
                     console.log(response.data.questions[numericSteps].answers);
                     setItems(response.data.questions[numericSteps].answers);
@@ -35,7 +35,7 @@ const List = ({ profileData, steps, valueProgress }) => {
             }
         };
         fetchData();
-    }, [profileData, steps]); // Añadir steps como dependencia
+    }, [profileData, steps]); 
 
    
 

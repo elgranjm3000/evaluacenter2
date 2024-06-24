@@ -3,14 +3,16 @@ import { Container, Grid, Typography, TextField, Button, Link, Fade } from '@mui
 import SelectLanguaje from './Select/index'
 import { useTranslation } from 'react-i18next';
 import WelcomeScreen from './Welcome/WelcomeScreen';
-
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showWelcome, setShowWelcome] = useState(true);
     const [visible, setVisible] = useState(false);
-
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const { t } = useTranslation();
 
@@ -36,7 +38,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
           {showWelcome ? (
             <WelcomeScreen />
           ) : (
-              <Container maxWidth="sm">     
+              <Container  maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: '2rem' }}>     
                   <Fade in={visible} timeout={5000}>
                     <div>
                       <div className="gray-bg">
