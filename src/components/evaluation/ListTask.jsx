@@ -3,10 +3,16 @@ import { getMyEvaluation } from '../../api/api';
 import Menu from '../Menu/index'
 import List from './List';
 import {Container } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 const ListTask = ({ profileData, onLogout, onCheckout }) => {
   const [listTask, setListTask] = useState([]);
   const [loading, setLoading] = useState(true);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +57,7 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
         </div>
       )}
     </div>*/
-    <Container maxWidth="sm">     
+    <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: '2rem' }}>     
         <div>
             <Menu handleLogout={handleLogout} titleFist="Evaluacion" />
             <List listTask={listTask} onCheckoutList={onCheckoutList} />
