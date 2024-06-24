@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import logo from '../../assets/logo.png'
 import {Zoom, Container, CircularProgress, Box } from '@mui/material';
 import GlobalStyles from './GlobalStyles';
-
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const WelcomeScreen = () => {
 
 
   const [visible, setVisible] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
       const interval = setInterval(() => {
@@ -21,7 +24,7 @@ const WelcomeScreen = () => {
     <>
     <GlobalStyles />
 
-    <Container maxWidth="sm" style={styles.container}>
+    <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: '2rem' }}>
    
        <Zoom in={visible} timeout={500}>
         <div>
