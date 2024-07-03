@@ -21,6 +21,9 @@ const List = ({listTask,onCheckoutList}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const classes = styles(isMobile);
+
+
 
 return ( 
 
@@ -32,10 +35,10 @@ return (
 {listTask.length > 0 ? (
     listTask.map((task, index) => (
 
-          <Card style={{padding:'1px', border:'1px #DBDBDB solid', margin:'10px', borderRadius: '8px'}}>
+          <Card style={classes.cardStyle}>
         
             <CardHeader 
-                style={{paddingLeft:"10px", paddingTop:"5px",paddingBottom:"5px"}}
+                style={classes.cardContent}
                 title={task.cache_evaluation_category_main}                
                 titleTypographyProps={{ align: 'left',style: { fontWeight: 'bold', fontSize:"18px" } }}
                 subheaderTypographyProps={{ align: 'left' }}              
