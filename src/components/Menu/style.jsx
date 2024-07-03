@@ -15,7 +15,7 @@ const styles = {
   },
   textStyle: {
     fontFamily:fontFamily, 
-    fontSize:'14px',
+    fontSize:'20px',
     fontWeight:"700",
     lineHeight:"28px",
     wordWrap:"break-word"

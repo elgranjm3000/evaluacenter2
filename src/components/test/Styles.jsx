@@ -37,6 +37,15 @@ const Styles = createGlobalStyle`
   font-size: 24px; /* Tamaño de la fuente de la etiqueta */
   color: red; /* Color de la etiqueta */
 }
+
+open: {
+    maxHeight: '100px', // ajusta esta altura según tu contenido
+    opacity: '1',
+  },
+  closed: {
+    maxHeight: '0',
+    opacity: '0',
+  },
     
 `;
 

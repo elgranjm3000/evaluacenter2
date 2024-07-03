@@ -103,7 +103,7 @@ function App() {
         />
           <Route exact path="/register" element={<Register/>}></Route>
           <Route exact path="/disc" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
-          <Route exact path="/radar" element={isLoggedIn === null ? null : isLoggedIn ? <Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
+          <Route exact path="/radar" element={<Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> }></Route>
 
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>

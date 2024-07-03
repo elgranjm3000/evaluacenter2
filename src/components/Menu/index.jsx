@@ -25,6 +25,8 @@ import { GridView,Apartment, ExpandLess, ExpandMore } from '@mui/icons-material'
 const menu = ({handleLogout,titleFist}) => {
 // Recuperar el objeto de localStorage  
 const profileData = JSON.parse(localStorage.getItem('profileData'));
+const firstName = profileData?.userInfo?.first_name || 'Demo';
+const lastName = profileData?.userInfo?.last_name || 'User';
 
 const { t } = useTranslation();
 
@@ -62,7 +64,7 @@ const handleToggleDrawer = (open) => (event) => {
   };
  
 return ( 
-    <Box style={{margin:0}}>
+    <Box style={{margin:0}} >
         <TableContainer component={Paper} style={style.tableContainer}>
             <Table style={{ fontSize:'1rem'  }}>
                 <TableHead>
@@ -114,12 +116,12 @@ return (
                                                 <Divider style={style.divider} />
 
                                                 <ListItem button onClick={handleLogout}>
-                                                {profileData.userInfo.first_name} {profileData.userInfo.last_name}
+                                                    {`${firstName} ${lastName}`}
                                                 </ListItem>
                                                 
                                         </List>
                         </Drawer>
-                            <Box flexGrow={1} textAlign="center">
+                        <Box flexGrow={1} textAlign="center" style={{marginTop:"1px"}}>
                                     <Typography variant="h5" style={style.textStyle}>{titleFist}</Typography> 
                             </Box>
                             <SelectLanguaje />                           

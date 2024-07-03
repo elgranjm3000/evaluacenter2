@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getMyEvaluation } from '../../api/api';
 import Menu from '../Menu/index'
 import List from './List';
-import {Container } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-
+import {Container,Grid, useMediaQuery, useTheme } from '@mui/material';
 
 const ListTask = ({ profileData, onLogout, onCheckout }) => {
   const [listTask, setListTask] = useState([]);
@@ -57,11 +54,11 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
         </div>
       )}
     </div>*/
-    <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: '2rem' }}>     
-        <div>
-            <Menu handleLogout={handleLogout} titleFist="Evaluacion" />
+    <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: '1rem' }}>     
+          <Grid item xs={12}>
+            <Menu handleLogout={handleLogout} titleFist="Evaluacion" position="static"/>
             <List listTask={listTask} onCheckoutList={onCheckoutList} />
-        </div>
+        </Grid>
       </Container>
   );
 };

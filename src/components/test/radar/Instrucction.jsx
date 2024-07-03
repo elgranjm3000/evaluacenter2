@@ -1,6 +1,6 @@
 import React, { Component,useState,useEffect } from 'react'; 
 
-import {  Typography } from '@mui/material';
+import {  Typography,Fade } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -20,7 +20,9 @@ const Instrucction = () => {
     const handleChange = (event) => {
         setChecked(event.target.checked);
       };
-return ( 
+return (
+  <>
+  <Fade in={true} timeout={1000}>
             <Box style={{padding:"50px"}}>
   
             <Box borderBottom={1} borderColor="divider">
@@ -28,13 +30,13 @@ return (
                                 <Box display="flex" alignItems="center">
                                   <CardMedia
                                     component="img"
-                                    image={people_rushing}
+                                    image={done}
                                     alt="Imagen"
                                     sx={{ width: 58, height: 58, objectFit: 'cover' }}
                                   />
                                   <CardContent>
                                     <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                                    No medite demasiado las respuestas, deberia tardar no mas de 15 minutos en total
+                                        Esta autoevaluación es para su propio beneficio, sea lo más objetivo posible.
                                     </Typography>          
                                   </CardContent>
                                 </Box>
@@ -45,7 +47,7 @@ return (
                     <Box display="flex" alignItems="center">
                       <CardMedia
                         component="img"
-                        image={done}
+                        image={online_shopping}
                         alt="Imagen"
                         sx={{ width: 58, height: 58, objectFit: 'cover' }}
                       />
@@ -58,41 +60,8 @@ return (
               </Card>
 </Box>
 
-<Box borderBottom={1} borderColor="divider" style={{marginTop:'30px'}}>
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={asking_question}
-                        alt="Imagen"
-                        sx={{ width: 58, height: 58, objectFit: 'cover' }}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                        Al contestar piense en cómo es usted sólo en el ambiente en el que está siendo evaluado (profesional, personal o social), no los mezcle
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
-  </Box>
-  <Box borderBottom={1} borderColor="divider" style={{marginTop:'30px'}}>
 
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={online_shopping}
-                        alt="Imagen"
-                        sx={{ width: 58, height: 58, objectFit: 'cover' }}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                        Ordene arrastrando las 4 palabras, siendo la más alta la que más le describe y la más baja la que menos le describe, aunque no se sienta 100% identificado
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
-            </Box>
+
 
             <FormControlLabel
       control={<Checkbox checked={checked} onChange={handleChange} />}
@@ -100,6 +69,8 @@ return (
       style={{color:"black", marginTop:'100px'}}
     />
   </Box>
+  </Fade> 
+  </>
         ); 
      
 } 
