@@ -44,7 +44,7 @@ return (
                 subheaderTypographyProps={{ align: 'left' }}              
 
             />
-          <CardContent style={{ textAlign: 'left', paddingLeft:"10px", paddingTop:"5px",paddingBottom:"10px"  }}>          
+          <CardContent style={classes.cardContentList}> 
                     <MuiLink href={`/${task.cache_evaluation_category_main}`} rel="noopener noreferrer" style={{fontSize:"18px"}}>
                         {t('openTest')}
                     </MuiLink>
