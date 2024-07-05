@@ -40,13 +40,20 @@ const styles = (isMobile) => ({
     borderRadius: '8px'
   },
   cardContent:{
-      paddingLeft: isMobile ? "2px" : "10px",
+      paddingLeft: isMobile ? "5px" : "10px",
       paddingTop: isMobile ? "2px" : "10px",
       paddingBottom: isMobile ? "2px" : "10px"
   },
+  cardText:{
+    fontWeight: 'bold', 
+    fontSize: isMobile ? "12px" : "18px"
+  },
+  cardLink: {
+    fontSize:isMobile ? "12px" : "18px"
+  },
   cardContentList:{
       textAlign: 'left', 
-      paddingLeft:isMobile ? "2px" : "10px", 
+      paddingLeft:isMobile ? "5px" : "10px", 
       paddingTop:isMobile ? "1px" : "5px",
       paddingBottom: isMobile ? "2px" : "10px"
   }

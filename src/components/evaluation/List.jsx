@@ -40,12 +40,12 @@ return (
             <CardHeader 
                 style={classes.cardContent}
                 title={task.cache_evaluation_category_main}                
-                titleTypographyProps={{ align: 'left',style: { fontWeight: 'bold', fontSize:"18px" } }}
+                titleTypographyProps={{ align: 'left',style:  classes.cardText  }}
                 subheaderTypographyProps={{ align: 'left' }}              
 
             />
           <CardContent style={classes.cardContentList}> 
-                    <MuiLink href={`/${task.cache_evaluation_category_main}`} rel="noopener noreferrer" style={{fontSize:"18px"}}>
+                    <MuiLink href={`/${task.cache_evaluation_category_main}`} rel="noopener noreferrer" style={classes.cardLink}>
                         {t('openTest')}
                     </MuiLink>
           </CardContent>
