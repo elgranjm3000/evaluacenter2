@@ -26,12 +26,13 @@ export const login = async (email, password) => {
   };
 
 
-  export const getMyEvaluationDisc = async (token) => {
+  export const getMyEvaluationDisc = async (token,savedLanguage) => {
+
     const response = await axios.get(`/api/disc-evaluation`, 
     {
       params: {
         evaluation_instance_id: '129095',
-        locale: 'es'
+        locale: savedLanguage
     },
     headers: {
       Authorization: `${token}`

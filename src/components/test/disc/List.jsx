@@ -23,13 +23,14 @@ const List = ({ profileData, steps, valueProgress }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const classes = styles(isMobile);
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         const fetchData = async () => {
             if (profileData && profileData.userInfo.user_id) {
                 try {
-                    const response = await getMyEvaluationDisc(profileData.jwt_token);
+                    const savedLanguage = localStorage.getItem('language');
+                    const response = await getMyEvaluationDisc(profileData.jwt_token,savedLanguage);
                     const numericSteps = Number(steps);
 
                     console.log(response.data.questions[numericSteps].answers);
@@ -42,7 +43,7 @@ const List = ({ profileData, steps, valueProgress }) => {
             }
         };
         fetchData();
-    }, [profileData, steps]); 
+    }, [profileData, steps,i18n.language]); 
 
    
 
