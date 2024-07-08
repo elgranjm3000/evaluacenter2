@@ -1,22 +1,12 @@
 import React, {useState,useEffect } from 'react';
-import { Container, Grid, Typography, TextField, Button, Link, Fade,Step, StepLabel, Stepper } from '@mui/material';
-import SelectLanguaje from '../../Select/languaje'
+import { Container, Grid, Typography, TextField, Button, Link, Fade,Step, StepLabel, Stepper,useMediaQuery, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import GlobalStyles from './GlobalStyles';
 import Menu from '../../Menu/index'
-
-
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import people_rushing from '../../../assets/test/people-rushing.svg'
-import done from '../../../assets/test/done.svg'
-import asking_question from '../../../assets/test/asking-question.svg'
-import online_shopping from '../../../assets/test/online-shopping.svg'
 import List from './List'
 import Instrucction from './Instrucction';
+import styles from './style';
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For','Step Five','Step Six'];
 
@@ -25,9 +15,10 @@ const Test = ({ profileData, onLogout, onCheckout,isLoggedIn }) => {
 
   const [isOpen, setIsOpen] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
-
-
-    const { t } = useTranslation();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const classes = styles(isMobile);
+  const { t } = useTranslation();
 
   
    
@@ -94,7 +85,7 @@ const Test = ({ profileData, onLogout, onCheckout,isLoggedIn }) => {
 
                 <Box display="flex"  justifyContent="space-between" style={{marginTop:'20px'}} onClick={toggleAccordion}>      
                         <Typography variant="body1" style={{ textAlign: 'left', color:'black', fontWeight:'bold' }}>
-                          ¿Cómo realizo este test?
+                        {t('labelTest')}
                         </Typography>
                         <Typography variant="body1" style={{ textAlign: 'right', color:'black', fontWeight:'bold' }}>
                           X
@@ -120,7 +111,7 @@ const Test = ({ profileData, onLogout, onCheckout,isLoggedIn }) => {
             <div>{getStepContent(activeStep)}</div>          
            
 
-              <Button variant="contained" color="primary" style={{"width":"100%"}}
+              <Button variant="contained" color="primary" style={classes.nextButton}
                 onClick={handleNext}
               >
                 {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
@@ -129,7 +120,7 @@ const Test = ({ profileData, onLogout, onCheckout,isLoggedIn }) => {
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                variant="contained" className="gray-button" style={{"width":"100%", "marginTop":"15px"}}
+                variant="contained" className="gray-button" style={classes.previousButton}
               >
                 Anterior
               </Button>

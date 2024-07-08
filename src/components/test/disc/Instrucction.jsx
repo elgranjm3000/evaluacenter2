@@ -41,7 +41,7 @@ return (
                                   />
                                   <CardContent>
                                     <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                                    No medite demasiado las respuestas, deberia tardar no mas de 15 minutos en total
+                                        {t('discp.steps1')}
                                     </Typography>          
                                   </CardContent>
                                 </Box>
@@ -58,7 +58,7 @@ return (
                       />
                       <CardContent>
                         <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                        No hay respuestas correctas ni equivocadas, trate de ser lo mas sincero posible
+                          {t('discp.steps2')}
                         </Typography>          
                       </CardContent>
                     </Box>
@@ -76,7 +76,7 @@ return (
                       />
                       <CardContent>
                         <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                        Al contestar piense en cómo es usted sólo en el ambiente en el que está siendo evaluado (profesional, personal o social), no los mezcle
+                          {t('discp.steps3')}
                         </Typography>          
                       </CardContent>
                     </Box>
@@ -94,7 +94,7 @@ return (
                       />
                       <CardContent>
                         <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                        Ordene arrastrando las 4 palabras, siendo la más alta la que más le describe y la más baja la que menos le describe, aunque no se sienta 100% identificado
+                            {t('discp.steps4')}
                         </Typography>          
                       </CardContent>
                     </Box>
@@ -103,7 +103,7 @@ return (
 
             <FormControlLabel
       control={<Checkbox checked={checked} onChange={handleChange} />}
-      label="He leído y entendido cómo realizar la evaluación"
+      label={t('discp.read')}
       style={classes.acceptCheck}
     />
   </Box>

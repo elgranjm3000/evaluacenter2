@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { getMyEvaluationDisc } from '../../../api/api';
 import './App.css'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'; // Importa el nuevo icono
-import { Box, LinearProgress, Typography } from '@mui/material';
+import { Box, LinearProgress, Typography,useMediaQuery, useTheme } from '@mui/material';
+import styles from './style';
+import { useTranslation } from 'react-i18next';
+
 
 const ProgressBar = ({ value }) => {
     console.log(value);
@@ -17,7 +20,11 @@ const ProgressBar = ({ value }) => {
   };
 const List = ({ profileData, steps, valueProgress }) => {
     const [items, setItems] = useState([]);
-    console.log(valueProgress);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const classes = styles(isMobile);
+    const { t } = useTranslation();
+
     useEffect(() => {
         const fetchData = async () => {
             if (profileData && profileData.userInfo.user_id) {
@@ -71,15 +78,16 @@ const List = ({ profileData, steps, valueProgress }) => {
     return (
         <>
         <div>
-      <Typography variant="h6" gutterBottom style={{'color':"black", 'textAlign':"left", "marginTop":"20px"}}>
+      <Typography variant="h6" gutterBottom style={classes.moreDescription}>
        {(steps+1)*4} de 24
       </Typography>
       <ProgressBar value={valueProgress} />
     </div>
-        <Typography variant="h6" gutterBottom style={{'color':"black", 'textAlign':"center", "marginTop":"10px"}}>
-            Más le describe
+        <Typography variant="h6" gutterBottom style={classes.moreDescription}>
+                {t('more')}
+
         </Typography>
-        <div className="sortable-list">
+        <div className="sortable-list" style={classes.sortableList}>
             {items.map((item) => (
                 <div
                     key={item.id}
@@ -89,6 +97,7 @@ const List = ({ profileData, steps, valueProgress }) => {
                     onDragEnd={handleDragEnd}
                     onDragOver={handleDragOver}
                     onDrop={(e) => handleDrop(e, item)}
+                    style={classes.item}
                 >
                     <DragIndicatorIcon style={{color:"black"}} />
                     <div className="details" style={{ color: 'black' }}>
@@ -98,8 +107,8 @@ const List = ({ profileData, steps, valueProgress }) => {
                 </div>
             ))}
         </div>
-        <Typography variant="h6" gutterBottom style={{'color':"black", 'textAlign':"center"}}>
-            Menos le describe
+        <Typography variant="h6" gutterBottom style={classes.moreDescription}>
+                {t('minus')}
         </Typography>
         </>
     );

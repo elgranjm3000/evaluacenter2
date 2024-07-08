@@ -9,8 +9,12 @@
     "headerMyTest": "Mis evaluaciones",
     "openTest":"Realizar evaluacion",
     "pending":"No hay evaluaciones pendientes",
-    "pendingDetails":"Puedes revisar tu historial de evaluaciones o configurar notificaciones para estar al tanto de las nuevas evaluaciones.",    
-    
+    "pendingDetails":"Puedes revisar tu historial de evaluaciones o configurar notificaciones para estar al tanto de las nuevas evaluaciones.",
+    "labelTest": "¿Cómo realizo este test?",
+    "more": "Mas les describe",
+    "minus": "Menos le describe",
+    "radar":"Radares",
+    "disc":"Disc premium",
     "register":{
       "welcomeEvaluaCenter": "¡Bienvenido a Evaluacenter",
       "notePassword": "Cree y confirme su contraseña para activar su usuario",
@@ -26,6 +30,14 @@
       "notActive" : "Esta no es su evaluacion, por favor, consulte con su evaluador",
       "emailsDoNotMatch":"Esta no es su evaluacion, por favor, consulte con su evaluador",
       "passwordMatch": "La contraseña no coincide"
+    },
+
+    "discp":{
+      "steps1": "No medite demasiado las respuestas, deberia tardar no mas de 15 minutos en total",
+      "steps2": "No hay respuestas correctas ni equivocadas, trate de ser lo mas sincero posible",
+      "steps3": "Al contestar piense en cómo es usted sólo en el ambiente en el que está siendo evaluado (profesional, personal o social), no los mezcle",
+      "steps4": "Ordene arrastrando las 4 palabras, siendo la más alta la que más le describe y la más baja la que menos le describe, aunque no se sienta 100% identificado",
+      "read": "He leído y entendido cómo realizar la evaluación"
     }
 
        

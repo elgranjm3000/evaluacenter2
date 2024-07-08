@@ -39,7 +39,7 @@ return (
         
             <CardHeader 
                 style={classes.cardContent}
-                title={task.cache_evaluation_category_main}                
+                title={t(task.cache_evaluation_category_main)}                
                 titleTypographyProps={{ align: 'left',style:  classes.cardText  }}
                 subheaderTypographyProps={{ align: 'left' }}              
 

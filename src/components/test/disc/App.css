@@ -5,7 +5,6 @@
 .sortable-list { 
     background: #ffffff; 
     border-radius: 10px; 
-    padding: 20px; 
     box-shadow: 0 13px 46px rgba(0, 0, 0, 0.1); 
 } 
   
@@ -66,7 +65,7 @@
 } 
   
 .item .details span { 
-    font-size: 1.2rem; 
+    
     font-weight: 500; 
     color: #333; 
     margin-left: 1em;
@@ -74,7 +73,6 @@
   
 .item i { 
     color: #474747; 
-    font-size: 1.13rem; 
 } 
   
 .item.dragging { 

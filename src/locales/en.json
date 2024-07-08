@@ -10,7 +10,11 @@
     "openTest":"Perform evaluation",
     "pending":"There are no pending evaluations",
     "pendingDetails":"You can review your review history or set up notifications to stay informed of new reviews.",
-    
+    "labelTest": "How do I perform this test?",    
+    "more": "I describe more",
+    "minus": "Less describes you",    
+    "radar":"Radares",
+    "disc":"Disc premium",
     "register":{
         "welcomeEvaluaCenter": "Welcome to Evaluacenter",
         "notePassword": "Create and confirm your password to activate your user",
@@ -22,5 +26,12 @@
         "active": "Activate user",
         "notActive" : "This is not your evaluation, please consult your evaluator",
         "passwordMatch":"Password does not match"
+    },
+    "discp":{
+      "steps1": "Do not think too much about the answers, it should take no more than 15 minutes in total",
+      "steps2": "There are no right or wrong answers, try to be as honest as possible",
+      "steps3": "When answering, think about what you are like only in the environment in which you are being evaluated (professional, personal or social), do not mix them",
+      "steps4": "Order by dragging the 4 words, with the highest being the one that describes you the most and the lowest being the one that describes you the least, even if you do not feel 100% identified",
+      "read": "I have read and understood how to perform the evaluation"
     }
 }
