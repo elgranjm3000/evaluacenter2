@@ -2,10 +2,10 @@
 const fontFamily = 'IBM Plex Sans';
 
 
-const styles = {
+const styles = (isMobile) => ({
   tableContainer: {
     backgroundColor: "write", 
-    margin: 0 
+    margin: 0,    
   },
   menuIcon:{
     color:"#6B9CEB"
@@ -38,6 +38,6 @@ const styles = {
     border: '1px #989B9B solid'
   },
 
-};
+});
 
 export default styles

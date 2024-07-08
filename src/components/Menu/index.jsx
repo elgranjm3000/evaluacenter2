@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import {Divider, Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon,Grid, Menu, Fade, Backdrop,Drawer, List, ListItem, ListItemText,Popover,Collapse } from '@mui/material';
+import {Divider, Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon,Grid, Menu, Fade, Backdrop,Drawer, List, ListItem, ListItemText,Popover,Collapse,useMediaQuery, useTheme } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -29,6 +29,9 @@ const firstName = profileData?.userInfo?.first_name || 'Demo';
 const lastName = profileData?.userInfo?.last_name || 'User';
 
 const { t } = useTranslation();
+const theme = useTheme();
+const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+const classes = style(isMobile);
 
 const [anchorEl, setAnchorEl] = useState(null);
 const [open, setOpen] = useState(false);
@@ -65,14 +68,14 @@ const handleToggleDrawer = (open) => (event) => {
  
 return ( 
     <Box style={{margin:0}} >
-        <TableContainer component={Paper} style={style.tableContainer}>
+        <TableContainer component={Paper} style={classes.tableContainer}>
             <Table style={{ fontSize:'1rem'  }}>
                 <TableHead>
                 <TableRow>
                     <TableCell>
                         <Box display="flex" alignItems="center" justifyContent="space-between">   
                             <IconButton color="inherit" onClick={handleClick}>
-                                <MenuIcon style={style.menuIcon} />
+                                <MenuIcon style={classes.menuIcon} />
                             </IconButton>
                             <Backdrop open={open} onClick={handleClose} style={{ zIndex: 1 }} />
 
@@ -84,7 +87,7 @@ return (
                                     keepMounted: true, 
                                     }}
                                     PaperProps={{
-                                    style: { ...style.drawer, ...drawerStyle },
+                                    style: { ...classes.drawer, ...drawerStyle },
                                     }}                          
                             >
                                         <List>
@@ -92,11 +95,11 @@ return (
                                                     <img src={logo}></img><img src={people}></img>
                                                 </ListItem>
                                                 <ListItem button >
-                                                    <IconButton color="inherit"><GridView style={style.menuFront} /></IconButton> <ListItemText primary="Escritorio" />
+                                                    <IconButton color="inherit"><GridView style={classes.menuFront} /></IconButton> <ListItemText primary="Escritorio" />
                                                 </ListItem>
                                                 
                                                 <ListItem button onClick={handleSubmenuClick}>
-                                                    <IconButton color="inherit"><Apartment style={style.menuFront} /></IconButton> 
+                                                    <IconButton color="inherit"><Apartment style={classes.menuFront} /></IconButton> 
                                                     <ListItemText primary="Mi empresa" />
                                                     {submenuOpen ? <ExpandLess /> : <ExpandMore />}
                                                 </ListItem>
@@ -111,9 +114,9 @@ return (
                                                 </List>
                                               </Collapse>
                                                 <ListItem button onClick={handleLogout}>
-                                                    <IconButton color="inherit"><ExitToAppIcon style={style.menuFront} /></IconButton> <ListItemText primary="Salir " />
+                                                    <IconButton color="inherit"><ExitToAppIcon style={classes.menuFront} /></IconButton> <ListItemText primary="Salir " />
                                                 </ListItem>
-                                                <Divider style={style.divider} />
+                                                <Divider style={classes.divider} />
 
                                                 <ListItem button onClick={handleLogout}>
                                                     {`${firstName} ${lastName}`}
@@ -122,7 +125,7 @@ return (
                                         </List>
                         </Drawer>
                         <Box flexGrow={1} textAlign="center" style={{marginTop:"1px"}}>
-                                    <Typography variant="h5" style={style.textStyle}>{titleFist}</Typography> 
+                                    <Typography variant="h5" style={classes.textStyle}>{titleFist}</Typography> 
                             </Box>
                             <SelectLanguaje />                           
                             
