@@ -1,88 +1,92 @@
-import React, { useState, useEffect } from 'react';
-import {
-  grayBg,
-  almostWhite,
-  center,
-  evaluacenterTextColor,
-  btnBgColor,
-  evaluacenterFontRegular,
-} from './globalSyles'
+const fontFamily = 'IBM Plex Sans';
 
-const inputBorderColor = '#e5e6e7';
+const styles = (isMobile) => ({
+  pandingBox: {
+    padding: isMobile ? "5px" : "50px", 
+  },
+  img: {
+    width: 58, 
+    height: 58, 
+    objectFit: 'cover' 
+  },
+  boxMargin:{
+    marginTop: isMobile ? "5px" : "30px", 
+  },
+  acceptCheck:{
+    color:"black", 
+    marginTop: isMobile ? "20px" : "100px", 
+  },
+  contentLetter:{
+        textAlign:"left",
+        fontSize:isMobile ? "10px" : "14px"
+  },
+  item:{
+      padding: isMobile ? "5px" : "20px",
+      fontSize: isMobile ? "10px" : "20px",
+  },
+  sortableList:{
+    padding:isMobile ? "5px" : "20px",
+  },
+  moreDescription:{
+    color:"black", 
+    textAlign:"center", 
+    marginTop:"10px",
+    fontSize: isMobile ? "10px": "20px"
+  },
+  nextButton:{
+    width: "100%",
+    fontSize: isMobile ? "10px": "20px"
+  },
+  previousButton:{
+    width: "100%",
+    fontSize: isMobile ? "10px": "20px",
+    marginTop: "15px"
+  },
+  titleLogin: {
+    color: "#1A2021",
+    fontSize: "20px",
+    fontFamily: fontFamily,
+    fontWeight: '700',    
+    wordWrap: 'break-word',
+  },
+  subTitleLogin: {
+    color: '#1A2021',
+    fontSize: "12.80px",
+    fontFamily: fontFamily,
+    fontWeight: '400',  
+    wordWrap: 'break-word',
+    marginTop: "16px",
+    marginBottom: "24px"
+  },
+  buttonLogin: {
+    color: 'white',
+    fontSize: '16px',
+    fontFamily: fontFamily,
+    fontWeight: '500',    
+    wordWrap: 'break-word',
+    textTransform: 'capitalize'
+  },
+  passwordLoginRecover:{
+    color: '#1A2021',
+    fontSize: "16px",
+    fontFamily: fontFamily,
+    fontWeight: '400',
+    textDecoration: 'underline',    
+    wordWrap: 'break-word'
+  },
+  urlDivPassword:{
+    marginTop:"24px",
+    marginBottom:"24px"
+  },
+  footer:{
+    color: '#535859',
+    fontSize: "12.80",
+    fontFamily: 'IBM Plex Sans',
+    fontWeight: '400',    
+    wordWrap: 'break-word'
+  }
 
-const styles = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  return {
-    container: {
-      flex: 1,
-      justifyContent: center,
-      alignItems: center,
-      backgroundColor: grayBg,
-    },
-    content: {
-      marginTop: 60,
-      flex: 8,
-      justifyContent: center,
-      alignItems: center,
-    },
-    evaluacenter: {
-      marginTop: 20,
-      marginBottom: 10,
-    },
-    messageError: {
-      marginBottom: 20,
-    },
-    image: {
-      height: 100,
-      width: 100,
-    },
-    WrapperImage: {
-      padding: 20,
-    },
-    input: {
-      backgroundColor: almostWhite,
-      borderRadius: 1,
-      borderColor: inputBorderColor,
-      borderWidth: 1,
-      paddingVertical: 3,
-      paddingHorizontal: 12,
-      width: windowWidth - 90,
-      marginTop: 15,
-      fontSize: 14,
-      color: evaluacenterTextColor,
-      fontFamily: evaluacenterFontRegular,
-    },
-    btn: {
-      flexDirection: 'row',
-      backgroundColor: btnBgColor,
-      alignItems: center,
-      justifyContent: center,
-      borderRadius: 3,
-      paddingHorizontal: 12,
-      paddingVertical: 6,
-      width: windowWidth - 90,
-      marginTop: 30,
-    },
-    spin: {
-      marginLeft: 10,
-    },
-    company: {
-      marginTop: 30,
-    },
-  };
-};
+});
 
 export default styles;

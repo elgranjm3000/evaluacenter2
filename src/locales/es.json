@@ -3,7 +3,7 @@
     "description": "Esta es una descripción de mi app en español.",
     "email" : "Correo electronico",
     "password": "Contraseña",
-    "login": "Iniciar Sesion",
+    "login": "Iniciar Sesión",
     "remenberPassword": "¿Olvidaste la contraseña?",
     "myTest": "Mis evaluaciones asignadas",
     "headerMyTest": "Mis evaluaciones",

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import WelcomeScreen from './Welcome/WelcomeScreen';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import styles from './styles'
 
 const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     const [username, setUsername] = useState('');
@@ -13,6 +14,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     const [visible, setVisible] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const classes = styles(isMobile);
 
     const { t } = useTranslation();
 
@@ -35,16 +37,16 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
         return (
          
           <div>
-          {showWelcome ? (
+            {showWelcome ? (
             <WelcomeScreen />
           ) : (
-              <Container  maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: '2rem' }}>     
+              <Container  maxWidth={isMobile ? 'xs' : 'sm'} >     
                   <Fade in={visible} timeout={5000}>
                     <div>
                       <div className="gray-bg">
                         <Container>
                           <Grid container justifyContent="center" alignItems="center" spacing={2}>
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={12} style={{textAlign:"right"}}>
                               <SelectLanguaje /> {/* Asegúrate de pasar las props necesarias */}
                             </Grid>
                           </Grid>
@@ -60,8 +62,11 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
                                   </Typography>
                                 </div>
-                                <Typography variant="h5" component="h5" style={{ color: '#ffffff' }}>
-                                  Evaluacenter
+                                <Typography variant="h5" component="h5" style={ classes.titleLogin }>
+                                  ¡Bienvenido de nuevo!
+                                </Typography>
+                                <Typography variant="h5" component="h5" style={classes.subTitleLogin}>
+                                Ingreso a su cuenta
                                 </Typography>
                                 <form onSubmit={handleSubmit}>
                                   <TextField
@@ -74,10 +79,10 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     required
                                     style={{ marginBottom: '10px' }}
                                     InputLabelProps={{
-                                      style: { color: '#ffffff' }, // Color del placeholder
+                                      style: { color: '#1A2021' }, // Color del placeholder
                                     }}
                                     InputProps={{
-                                      style: { color: '#ffffff', background: 'none' }, // Color del texto
+                                      style: { color: '#1A2021', background: 'none' }, // Color del texto
                                     }}
                                   />
                                   <TextField
@@ -90,26 +95,30 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     required
                                     style={{ marginBottom: '10px' }}
                                     InputLabelProps={{
-                                      style: { color: '#ffffff' }, // Color del placeholder
+                                      style: { color: '#1A2021' }, // Color del placeholder
                                     }}
                                     InputProps={{
-                                      style: { color: '#ffffff', background: 'none' }, // Color del texto
+                                      style: { color: '#1A2021', background: 'none' }, // Color del texto
                                     }}
                                   />
+                                  
+                                  <div style={classes.urlDivPassword}>
+                                    <Link href="/resetting/request" style={classes.passwordLoginRecover}><small>{t('remenberPassword')}</small></Link>
+                                  </div>
+
+
                                   <Button
                                     type="submit"
                                     variant="contained"
                                     color="primary"
                                     fullWidth
-                                    style={{ backgroundColor: '#51b198' }}
+                                    style={classes.buttonLogin}
                                   >
                                     {t('login')}
                                   </Button>
-                                  <div>
-                                    <Link href="/resetting/request"><small>{t('remenberPassword')}</small></Link>
-                                  </div>
+                                 
                                 </form>
-                                <Typography variant="body2" style={{ color: '#ffffff' }}>
+                                <Typography variant="body2" style={classes.footer}>
                                   <small>© People Performance International LLC</small>
                                 </Typography>
                               </div>
@@ -121,6 +130,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                   </Fade>
               </Container>
           )}
+          
         </div>
         );
 }

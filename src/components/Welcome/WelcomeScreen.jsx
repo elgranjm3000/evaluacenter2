@@ -24,11 +24,11 @@ const WelcomeScreen = () => {
     <>
     <GlobalStyles />
 
-    <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: '2rem' }}>
+    <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: isMobile ? '5rem' : "10px" }}>
    
        <Zoom in={visible} timeout={500}>
         <div>
-            <img src={logo} />
+            <img src={logo} style={{width:"8rem"}}/>
             <h1 style={styles.title_1}>People Perfomance</h1>
             <span style={styles.title_2} >INTERNATIONAL</span>
         </div>
@@ -47,7 +47,7 @@ const WelcomeScreen = () => {
 };
 
 
-const styles = {
+const styles =  {
   blackCircularProgress: {
     color: 'black',
     marginTop:'20px'
@@ -62,20 +62,21 @@ const styles = {
    
   },
   title_1:{
-    color: 'write',
+    color: '#fff',
     fontSize: '35px',
     fontFamily: 'Hiragino Sans',
     fontWeight: '300',
     wordWrap: 'break-word',
     marginBottom: '1px'
   },
-  title_2:{    
-    color: 'write',
-    fontSize: '15px',
+  title_2:{       
+    color: '#80BFF0',
     fontFamily: 'Inter',
-    marginLeft:'140px',
     letterSpacing: '2.40px',
     wordWrap: 'break-word',
+    marginLeft:'140px',
+    fontWeight: '400',    
+
   }
   
 };

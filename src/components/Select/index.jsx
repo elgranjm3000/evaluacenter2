@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import {Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon } from '@mui/material';
 import listLanguaje from './languaje'
 import { useTranslation } from 'react-i18next';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
 
 
 const SelectLanguaje = () => {
@@ -31,8 +33,17 @@ const SelectLanguaje = () => {
                           id="language-select"
                           value={i18n.language}
                           onChange={handleChange}
-                          style={{height:'40px',color:"black", borderRadius: '100px'}}
-                          
+                          sx={{
+                            height: '40px',
+                            borderRadius: '100px',
+                            border: 'none',
+                            '& .MuiOutlinedInput-notchedOutline': {
+                              border: 'none',
+                            },
+                          }}
+                          IconComponent={(props) => (
+                            <ArrowDropDownIcon {...props} sx={{ color: 'blue' }} />
+                          )}
                         >
                               {listLanguaje.map((item) => (
                                   <MenuItem key={item.key} value={item.lang}>
