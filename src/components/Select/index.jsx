@@ -28,11 +28,7 @@ const SelectLanguaje = () => {
     i18n.changeLanguage(selectedLanguage);
   };
 
-  const iconStyle = {
-    backgroundColor: 'white',
-    borderRadius: '50%', // opcional: si deseas que el fondo blanco sea redondeado
-    border: '1px solid black', // para las líneas negras alrededor del icono
-  };
+  
    
     return(
       <>
