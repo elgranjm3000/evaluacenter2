@@ -24,7 +24,7 @@ const WelcomeScreen = () => {
     <>
     <GlobalStyles />
 
-    <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: isMobile ? '5rem' : "10px" }}>
+    <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
    
        <Zoom in={visible} timeout={500}>
         <div>
@@ -64,7 +64,7 @@ const styles =  {
   title_1:{
     color: '#fff',
     fontSize: '35px',
-    fontFamily: 'Hiragino Sans',
+    fontFamily: 'Hiragino Sans GB W05 W4',
     fontWeight: '300',
     wordWrap: 'break-word',
     marginBottom: '1px'

@@ -6,6 +6,8 @@ import WelcomeScreen from './Welcome/WelcomeScreen';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import styles from './styles'
+import CommentIcon from '@mui/icons-material/Comment'; // Importa el ícono de comentario
+
 
 const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
     const [username, setUsername] = useState('');
@@ -46,7 +48,8 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                       <div className="gray-bg">
                         <Container>
                           <Grid container justifyContent="center" alignItems="center" spacing={2}>
-                            <Grid item xs={12} md={12} style={{textAlign:"right"}}>
+                            <Grid item xs={12} md={12} style={{textAlign:"right"}}>                      
+
                               <SelectLanguaje /> {/* Asegúrate de pasar las props necesarias */}
                             </Grid>
                           </Grid>

@@ -4,8 +4,10 @@ import {Paper,MenuItem, FormControl, Select, InputLabel, ListItemIcon } from '@m
 import listLanguaje from './languaje'
 import { useTranslation } from 'react-i18next';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
-
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined'; // Importa el ícono de comentario con borde
+import ForumIcon from '@mui/icons-material/Forum';
+import { IconButton } from '@mui/material';
+import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 
 const SelectLanguaje = () => {
   const { i18n } = useTranslation();
@@ -25,16 +27,28 @@ const SelectLanguaje = () => {
     localStorage.setItem('language', selectedLanguage);
     i18n.changeLanguage(selectedLanguage);
   };
+
+  const iconStyle = {
+    backgroundColor: 'white',
+    borderRadius: '50%', // opcional: si deseas que el fondo blanco sea redondeado
+    border: '1px solid black', // para las líneas negras alrededor del icono
+  };
    
     return(
+      <>
+      
+      <ForumOutlinedIcon style={{ padding:"18px 1px 10px 10px", fontSize: "20px" }} /> {/* Usando el ícono de comentario con borde */}
+      
               <FormControl>     
+      
+
                         <Select
                           labelId="language-label"
                           id="language-select"
                           value={i18n.language}
                           onChange={handleChange}
                           sx={{
-                            height: '40px',
+                            height: '60px',
                             borderRadius: '100px',
                             border: 'none',
                             '& .MuiOutlinedInput-notchedOutline': {
@@ -47,15 +61,14 @@ const SelectLanguaje = () => {
                         >
                               {listLanguaje.map((item) => (
                                   <MenuItem key={item.key} value={item.lang}>
-                                  <img src={item.flag} alt={item.language} style={{ width: '20px', marginRight: '5px' }} />
-                                 
+                                        <img src={item.flag} alt={item.language} style={{ width: '20px',height: '20px',marginRight: '5px',borderRadius: '50%'   }} />                                 
                                   </MenuItem>
                               ))}
                         </Select>
 
                       
                   </FormControl>
-        
+                  </>
     )
 }
 
