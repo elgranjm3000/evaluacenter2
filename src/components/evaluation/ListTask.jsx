@@ -17,7 +17,7 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
 
       if (profileData && profileData.userInfo.user_id) {
         try {
-          const response = await getMyEvaluation(profileData.userInfo.user_id, profileData.jwt_token);
+          const response = await getMyEvaluation(profileData.userInfo.user_id, profileData.jwt_token);                    
           console.log(response.data.data);
           setListTask(response.data.data);
         } catch (error) {

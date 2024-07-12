@@ -102,7 +102,7 @@ function App() {
           element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
         />
           <Route exact path="/register" element={<Register/>}></Route>
-          <Route exact path="/disc" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
+          <Route exact path="/disc/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
           <Route exact path="/radar" element={<Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> }></Route>
 
           <Route exact path='*' element={<NotFound/>}></Route>

@@ -5,7 +5,13 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator'; // Importa el
 import { Box, LinearProgress, Typography,useMediaQuery, useTheme } from '@mui/material';
 import styles from './style';
 import { useTranslation } from 'react-i18next';
+import { useLocation,useParams } from 'react-router-dom';
 
+
+
+const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
 
 const ProgressBar = ({ value }) => {
     console.log(value);
@@ -24,13 +30,13 @@ const List = ({ profileData, steps, valueProgress }) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const classes = styles(isMobile);
     const { t, i18n } = useTranslation();
-
+    const { instance } = useParams();
     useEffect(() => {
         const fetchData = async () => {
             if (profileData && profileData.userInfo.user_id) {
                 try {
                     const savedLanguage = localStorage.getItem('language');
-                    const response = await getMyEvaluationDisc(profileData.jwt_token,savedLanguage);
+                    const response = await getMyEvaluationDisc(profileData.jwt_token,instance,savedLanguage);
                     const numericSteps = Number(steps);
 
                     console.log(response.data.questions[numericSteps].answers);

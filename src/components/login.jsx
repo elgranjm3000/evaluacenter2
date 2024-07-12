@@ -6,6 +6,7 @@ import WelcomeScreen from './Welcome/WelcomeScreen';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import styles from './styles'
+import logo from '../assets/logo.png'
 
 
 const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
@@ -61,7 +62,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                               <div>
                                 <div>
                                   <Typography variant="h1" component="h1" className="logo-name" style={{ marginTop: '20px' }}>
-                                    <img src="https://ppi.epp3.ovh/bundles/epp3corekernel/images/logo.png" alt="Logo" />
+                                    <img src={logo} alt="Logo" />
                                   </Typography>
                                 </div>
                                 <Typography variant="h5" component="h5" style={ classes.titleLogin }>

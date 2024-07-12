@@ -45,7 +45,7 @@ return (
 
             />
           <CardContent style={classes.cardContentList}> 
-                    <MuiLink href={`/${task.cache_evaluation_category_main}`} rel="noopener noreferrer" style={classes.cardLink}>
+                    <MuiLink href={`/${task.cache_evaluation_category_main}/${task.id}`} rel="noopener noreferrer" style={classes.cardLink}>
                         {t('openTest')}
                     </MuiLink>
           </CardContent>
