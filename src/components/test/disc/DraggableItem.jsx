@@ -1,4 +1,3 @@
-// DraggableItem.jsx
 import React from 'react';
 import { useDrag } from 'react-dnd';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';

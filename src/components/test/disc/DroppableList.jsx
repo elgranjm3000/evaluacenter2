@@ -1,29 +1,39 @@
-// DroppableList.jsx
 import React from 'react';
 import { useDrop } from 'react-dnd';
 import DraggableItem from './DraggableItem';
 
 const DroppableList = ({ items, setItems }) => {
-  const [, drop] = useDrop(() => ({
-    accept: 'ITEM',
-    drop: (draggedItem) => {
-      const newItems = [...items];
-      const draggedIndex = newItems.findIndex((item) => item.id === draggedItem.id);
-      const targetIndex = newItems.findIndex((item) => item.id === draggedItem.id); // Aquí debes pasar el índice del objetivo correcto
-
-      if (draggedIndex !== -1 && targetIndex !== -1) {
-        newItems.splice(draggedIndex, 1);
-        newItems.splice(targetIndex, 0, draggedItem);
-        setItems(newItems);
-      }
-    },
-  }));
+  const moveItem = (dragIndex, hoverIndex) => {
+    const draggedItem = items[dragIndex];
+    const updatedItems = [...items];
+    updatedItems.splice(dragIndex, 1);
+    updatedItems.splice(hoverIndex, 0, draggedItem);
+    setItems(updatedItems);
+  };
 
   return (
-    <div ref={drop} className="sortable-list">
-      {items.map((item) => (
-        <DraggableItem key={item.id} item={item} />
+    <div className="sortable-list">
+      {items.map((item, index) => (
+        <DroppableItem key={item.id} item={item} index={index} moveItem={moveItem} />
       ))}
+    </div>
+  );
+};
+
+const DroppableItem = ({ item, index, moveItem }) => {
+  const [, drop] = useDrop({
+    accept: 'ITEM',
+    hover: (draggedItem) => {
+      if (draggedItem.index !== index) {
+        moveItem(draggedItem.index, index);
+        draggedItem.index = index;
+      }
+    },
+  });
+
+  return (
+    <div ref={drop}>
+      <DraggableItem item={{ ...item, index }} />
     </div>
   );
 };
