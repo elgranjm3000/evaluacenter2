@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import './App.css'
 
 const DraggableItem = ({ item }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -13,9 +14,9 @@ const DraggableItem = ({ item }) => {
 
   return (
     <div ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }}>
-      <DragIndicatorIcon style={{ color: 'black' }} />
-      <div className="details" style={{ color: 'black' }}>
-        <span>{item.text}</span>
+      <div className="item" style={{ color: 'black' }}>
+          <DragIndicatorIcon style={{ color: 'black' }} />
+            <span>{item.text}</span>
       </div>
     </div>
   );
