@@ -11,6 +11,8 @@ const DroppableList = ({ items, setItems }) => {
     setItems(updatedItems);
   };
 
+
+
   return (
     <div className="sortable-list">
       {items.map((item, index) => (
