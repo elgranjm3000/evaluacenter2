@@ -1,124 +1,69 @@
 import React, { useState, useEffect } from 'react';
 import { getMyEvaluationDisc } from '../../../api/api';
-import './App.css'
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator'; // Importa el nuevo icono
-import { Box, LinearProgress, Typography,useMediaQuery, useTheme } from '@mui/material';
+import './App.css';
+import { Box, LinearProgress, Typography, useMediaQuery, useTheme } from '@mui/material';
 import styles from './style';
 import { useTranslation } from 'react-i18next';
-import { useLocation,useParams } from 'react-router-dom';
-
-
-
-const useQuery = () => {
-    return new URLSearchParams(useLocation().search);
-  };
+import { useParams } from 'react-router-dom';
+import DndContext from './DndContext';
+import DroppableList from './DroppableList';
 
 const ProgressBar = ({ value }) => {
-    console.log(value);
-    return (
-      <Box display="flex" alignItems="center">
-        <Box width="100%" mr={1}>
-          <LinearProgress variant="determinate" value={value} />
-        </Box>
-        
+  // Asegúrate de que el valor sea un número
+  const numericValue = Number(value);
+
+  return (
+    <Box display="flex" alignItems="center">
+      <Box width="100%" mr={1}>
+        <LinearProgress variant="determinate" value={numericValue} />
       </Box>
-    );
-  };
+    </Box>
+  );
+};
+
 const List = ({ profileData, steps, valueProgress }) => {
-    const [items, setItems] = useState([]);
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const classes = styles(isMobile);
-    const { t, i18n } = useTranslation();
-    const { instance } = useParams();
-    useEffect(() => {
-        const fetchData = async () => {
-            if (profileData && profileData.userInfo.user_id) {
-                try {
-                    const savedLanguage = localStorage.getItem('language');
-                    const response = await getMyEvaluationDisc(profileData.jwt_token,instance,savedLanguage);
-                    const numericSteps = Number(steps);
+  const [items, setItems] = useState([]);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const classes = styles(isMobile);
+  const { t, i18n } = useTranslation();
+  const { instance } = useParams();
 
-                    console.log(response.data.questions[numericSteps].answers);
-                    setItems(response.data.questions[numericSteps].answers);
-                } catch (error) {
-                    // Manejo de errores
-                } finally {
-                    // Cualquier limpieza necesaria
-                }
-            }
-        };
-        fetchData();
-    }, [profileData, steps,i18n.language]); 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (profileData && profileData.userInfo.user_id) {
+        try {
+          const savedLanguage = localStorage.getItem('language');
+          const response = await getMyEvaluationDisc(profileData.jwt_token, instance, savedLanguage);
+          const numericSteps = Number(steps);
 
-   
-
-    const [draggingItem, setDraggingItem] = useState(null);
-
-    const handleDragStart = (e, item) => {
-        setDraggingItem(item);
-        e.dataTransfer.setData('text/plain', '');
-    };
-
-    const handleDragEnd = () => {
-        setDraggingItem(null);
-    };
-
-    const handleDragOver = (e) => {
-        e.preventDefault();
-    };
-
-    const handleDrop = (e, targetItem) => {
-        if (!draggingItem) return;
-
-        const currentIndex = items.indexOf(draggingItem);
-        const targetIndex = items.indexOf(targetItem);
-
-        if (currentIndex !== -1 && targetIndex !== -1) {
-            const updatedItems = [...items];
-            updatedItems.splice(currentIndex, 1);
-            updatedItems.splice(targetIndex, 0, draggingItem);
-            setItems(updatedItems);
+          console.log(response.data.questions[numericSteps].answers);
+          setItems(response.data.questions[numericSteps].answers);
+        } catch (error) {
+          // Manejo de errores
         }
+      }
     };
+    fetchData();
+  }, [profileData, steps, i18n.language]);
 
-    return (
-        <>
-        <div>
+  return (
+    <DndContext>
+      <div>
+        <Typography variant="h6" gutterBottom style={classes.moreDescription}>
+          {(steps + 1) * 4} de 24
+        </Typography>
+        <ProgressBar value={valueProgress} />
+      </div>
       <Typography variant="h6" gutterBottom style={classes.moreDescription}>
-       {(steps+1)*4} de 24
+        {t('more')}
       </Typography>
-      <ProgressBar value={valueProgress} />
-    </div>
-        <Typography variant="h6" gutterBottom style={classes.moreDescription}>
-                {t('more')}
+      <DroppableList items={items} setItems={setItems} />
+      <Typography variant="h6" gutterBottom style={classes.moreDescription}>
+        {t('minus')}
+      </Typography>
+    </DndContext>
+  );
+};
 
-        </Typography>
-        <div className="sortable-list" style={classes.sortableList}>
-            {items.map((item) => (
-                <div
-                    key={item.id}
-                    className={`item ${item === draggingItem ? 'dragging' : ''}`}
-                    draggable="true"
-                    onDragStart={(e) => handleDragStart(e, item)}
-                    onDragEnd={handleDragEnd}
-                    onDragOver={handleDragOver}
-                    onDrop={(e) => handleDrop(e, item)}
-                    style={classes.item}
-                >
-                    <DragIndicatorIcon style={{color:"black"}} />
-                    <div className="details" style={{ color: 'black' }}>
-                        <span>{item.text}</span>
-                    </div>
-                    
-                </div>
-            ))}
-        </div>
-        <Typography variant="h6" gutterBottom style={classes.moreDescription}>
-                {t('minus')}
-        </Typography>
-        </>
-    );
-} 
-  
 export default List;
