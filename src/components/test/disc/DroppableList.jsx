@@ -1,7 +1,8 @@
 import React from 'react';
-import { useDrag, useDrop } from 'react-dnd';
+import { useDrag, useDrop,DndProvider } from 'react-dnd';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import DraggableItem from './DraggableItem';
+import { TouchBackend } from 'react-dnd-touch-backend';
 
 const ItemType = 'ITEM';
 
@@ -41,6 +42,8 @@ const DroppableList = ({ items, setItems }) => {
 
   return (
     <div className="sortable-list">
+        <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
+
       {items.map((item, index) => (
         <DraggableItem
           key={item.id}
@@ -49,6 +52,7 @@ const DroppableList = ({ items, setItems }) => {
           moveItem={moveItem}
         />
       ))}
+       </DndProvider>
     </div>
   );
 };
