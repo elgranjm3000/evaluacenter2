@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import CircularSlider from '@fseehawer/react-circular-slider';
 import { Typography } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const Radars = () => {
   const labels = [0.5,1,1.5,2.5,3,3.5,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const circularPickerNumber = [
     { key: '1', number: '10/0', right: 101, top: 5 },
     { key: '2', number: 0.5, right: 70, top: 10 },
@@ -28,14 +31,14 @@ const Radars = () => {
   ]
   const [value, setValue] = useState(0);
 
-  const radius = 400;
+  const radius = 200;
   const center = radius / 2;
   const labelRadius = radius / 2.2;
 
   return (
-    <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50h' }}>
       <CircularSlider
-        width={radius} // Ancho del slider
+        width={isMobile ? 200 : 400} // Ancho del slider
         label="Points"
         min={0}
         max={10}
@@ -49,7 +52,7 @@ const Radars = () => {
         progressColorFrom="#00bfbd"
         progressColorTo="#009c9a"
         progressSize={10} // Tamaño del progreso      
-        knobSize={32} // Tamaño del botón
+        knobSize={isMobile ? 24 : 32} // Tamaño del botón
         appendToValue=" " // Agrega un espacio después del valor      
         trackSize={8} // Tamaño de la pista
         data={labels}

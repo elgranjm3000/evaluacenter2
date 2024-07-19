@@ -17,6 +17,7 @@ import asking_question from '../../../assets/test/asking-question.svg'
 import online_shopping from '../../../assets/test/online-shopping.svg'
 import Radars from './Radars'
 import Instrucction from './Instrucction';
+import { useParams } from 'react-router-dom';
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
 
@@ -28,6 +29,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
 
   const { t } = useTranslation();
+  const { instance } = useParams();
 
 
 
