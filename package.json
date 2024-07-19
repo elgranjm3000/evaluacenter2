@@ -26,6 +26,7 @@
     "d3": "^7.9.0",
     "i18next": "^23.11.5",
     "language-icons": "^0.3.0",
+    "mz-react-round-slider": "^1.0.3",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-chartjs-2": "^5.2.0",
