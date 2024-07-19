@@ -4,8 +4,8 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 const ItemType = 'DRAGGABLE_ITEM';
 
-const DraggableItem = ({ item, index, moveItem }) => {
-  const [isSelected, setIsSelected] = useState(false);
+const DraggableItem = ({ item, index, moveItem }) => {  
+  const [isDraggingOver, setIsDraggingOver] = useState(false);
   const ref = React.useRef(null);
 
   const [, drop] = useDrop({
@@ -16,6 +16,12 @@ const DraggableItem = ({ item, index, moveItem }) => {
         draggedItem.index = index;
       }
     },
+    enter: () => {
+      setIsDraggingOver(true);
+    },
+    leave: () => {
+      setIsDraggingOver(false);
+    },
   });
 
   const [{ isDragging }, drag] = useDrag({
@@ -24,28 +30,56 @@ const DraggableItem = ({ item, index, moveItem }) => {
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
+    end: () => {
+      setIsDraggingOver(false);
+    },
+    start: () => {
+      setIsDraggingOver(true);
+    }
   });
 
   drag(drop(ref));
 
-  const handleClick = () => {
-    setIsSelected((prev) => !prev);
+
+  // Event handlers for touch events
+  const handleTouchStart = (e) => {
+    setIsDraggingOver(true);
+    e.target.classList.add('touch-started');
   };
+
+  const handleTouchMove = (e) => {
+    // Custom behavior during touch move
+    e.preventDefault();
+  };
+
+  const handleTouchEnd = (e) => {
+    setIsDraggingOver(false);
+    e.target.classList.remove('touch-started');
+  };
+
+  const handleTouchCancel = (e) => {
+    setIsDraggingOver(false);
+    e.target.classList.remove('touch-started');
+  };
+
+ 
 
   return (
     <div
-      ref={ref}
-      onClick={handleClick}
+      ref={ref}      
       style={{
         opacity: isDragging ? 0.5 : 1,
         cursor: 'move',
-        border: isSelected ? '2px solid #2196f3' : '1px solid transparent',
-        borderRadius: '4px',
-        padding: '10px',
-        margin: '5px 0',
-        backgroundColor: isSelected ? 'rgba(33, 150, 243, 0.1)' : 'white',
-        transition: 'background-color 0.3s, border 0.3s',
+        backgroundColor: isDraggingOver ? 'lightblue' : 'white',
+        transition: 'background-color 0.3s ease',
       }}
+      onDragStart={() => setIsDraggingOver(true)}
+      onDragEnd={() => setIsDraggingOver(false)}
+      onDragEnter={() => setIsDraggingOver(true)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchCancel}
     >
       <div className="item" style={{ color: 'black', display: 'flex', alignItems: 'center' }}>
         <DragIndicatorIcon style={{ color: 'black', marginRight: '10px' }} />
