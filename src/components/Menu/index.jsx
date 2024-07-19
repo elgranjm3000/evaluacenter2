@@ -68,7 +68,7 @@ const handleToggleDrawer = (open) => (event) => {
  
 return ( 
     <Box style={{margin:0}} >
-        <TableContainer component={Paper} style={classes.tableContainer}>
+        <TableContainer  style={classes.tableContainer}>
             <Table style={{ fontSize:'1rem'  }}>
                 <TableHead>
                 <TableRow>
@@ -127,7 +127,7 @@ return (
                         <Box flexGrow={1} textAlign="center" style={{marginTop:"1px"}}>
                                     <Typography variant="h5" style={classes.textStyle}>{titleFist}</Typography> 
                             </Box>
-                            <SelectLanguaje />                           
+                            <SelectLanguaje  />                           
                             
                         </Box>
                     </TableCell>                           

@@ -40,7 +40,8 @@ const styles = (isMobile) => ({
   previousButton:{
     width: "100%",
     fontSize: isMobile ? "10px": "20px",
-    marginTop: "15px"
+    marginTop: "15px",
+    background: "#9b9b9b"
   }
   
 

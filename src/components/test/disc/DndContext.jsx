@@ -3,9 +3,10 @@ import React from 'react';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { TouchBackend } from 'react-dnd-touch-backend';
+import { isTouchDevice } from './Util';
 
 const DndContext = ({ children }) => (
-  <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
+  <DndProvider backend={isTouchDevice() ? TouchBackend : HTML5Backend} options={{ enableMouseEvents: true }}>
     {children}
   </DndProvider>
 );

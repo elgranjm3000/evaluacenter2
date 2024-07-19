@@ -9,7 +9,7 @@ import ForumIcon from '@mui/icons-material/Forum';
 import { IconButton } from '@mui/material';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 
-const SelectLanguaje = () => {
+const SelectLanguaje = ({ tabMessage }) => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
@@ -32,9 +32,10 @@ const SelectLanguaje = () => {
    
     return(
       <>
-      
-      <ForumOutlinedIcon style={{ padding:"18px 1px 10px 10px", fontSize: "20px" }} /> {/* Usando el ícono de comentario con borde */}
-      
+      {tabMessage && (
+        <ForumOutlinedIcon style={{ padding:"18px 1px 10px 10px", fontSize: "20px" }} /> 
+      )}
+
               <FormControl>     
       
 
