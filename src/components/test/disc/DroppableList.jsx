@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import DraggableItem from './DraggableItem';
 
 const ItemType = 'ITEM';
 
-const DraggableItem = ({ item, index, moveItem }) => {
+/*const DraggableItem = ({ item, index, moveItem }) => {
   const [, ref] = useDrag({
     type: ItemType,
     item: { index },
@@ -29,7 +30,7 @@ const DraggableItem = ({ item, index, moveItem }) => {
     </div>
   );
 };
-
+*/
 const DroppableList = ({ items, setItems }) => {
   const moveItem = (fromIndex, toIndex) => {
     const updatedItems = [...items];
