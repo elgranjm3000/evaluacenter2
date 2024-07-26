@@ -13487,6 +13487,8 @@ table.issue-tracker tbody tr td {
 /* AGILE BOARD */
 .sortable-list {
     padding: 10px 0;
+    position:"relative";
+    overflow:"hidden";
 }
 .agile-list {
     list-style: none;
