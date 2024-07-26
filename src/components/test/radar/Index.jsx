@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grid, Typography, TextField, Button, Link, Fade, Step, StepLabel, Stepper } from '@mui/material';
+import { Container, Grid, Typography, TextField, Button, Link, Fade, Step, StepLabel, Stepper,useMediaQuery, useTheme  } from '@mui/material';
 import SelectLanguaje from '../../Select/languaje'
 import { useTranslation } from 'react-i18next';
-import Styles from '../Styles';
 import Menu from '../../Menu/index'
-
-
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -18,6 +15,8 @@ import online_shopping from '../../../assets/test/online-shopping.svg'
 import Radars from './Radars'
 import Instrucction from './Instrucction';
 import { useParams } from 'react-router-dom';
+import styles from '../../styles';
+
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
 
@@ -26,7 +25,10 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   const [isOpen, setIsOpen] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
+  const theme = useTheme();
 
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const classes = styles(isMobile);
 
   const { t } = useTranslation();
   const { instance } = useParams();
@@ -41,9 +43,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
   };
 
   const toggleAccordion = () => {
-    console.log(isOpen);
     setIsOpen(!isOpen);
-    console.log(isOpen);
   };
 
   const onCheckoutList = () => {
@@ -53,6 +53,8 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setPointers([{value: 0 },{value: 0 }]);
+
   };
 
 
@@ -64,21 +66,29 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
     setActiveStep(0);
   };
 
+  const [ pointers, setPointers ] = useState([
+    { value: 0 },
+    { value: 0 }
+]);
 
-  const getStepContent = (step) => {
+
+
+
+  const getStepContent = (step,pointers,setPointers) => {
+    console.log(step);
     switch (step) {
       case 0:
-        return <Radars profileData={profileData} steps={step} valueProgress="16" />;
+        return <Radars profileData={profileData} steps={step} valueProgress="16" pointers={pointers} setPointers={setPointers} />;
       case 1:
-        return <Radars profileData={profileData} steps={step} valueProgress="32" />;
+        return <Radars profileData={profileData} steps={step} valueProgress="32" pointers={pointers} setPointers={setPointers}/>;
       case 2:
-        return <Radars profileData={profileData} steps={step} valueProgress="48" />;
+        return <Radars profileData={profileData} steps={step} valueProgress="48" pointers={pointers} setPointers={setPointers}/>;
       case 3:
-        return <Radars profileData={profileData} steps={step} valueProgress="64" />;
+        return <Radars profileData={profileData} steps={step} valueProgress="64" pointers={pointers} setPointers={setPointers}/>;
       case 4:
-        return <Radars profileData={profileData} steps={step} valueProgress="80" />;
+        return <Radars profileData={profileData} steps={step} valueProgress="80" pointers={pointers} setPointers={setPointers}/>;
       case 5:
-        return <Radars profileData={profileData} steps={step} valueProgress="100" />;
+        return <Radars profileData={profileData} steps={step} valueProgress="100" pointers={pointers} setPointers={setPointers}/>;
       default:
         return 'Unknown step';
     }
@@ -88,7 +98,6 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   return (
     <>
-      <Styles />
 
       <Container maxWidth="sm">
 
@@ -96,7 +105,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
         <Box display="flex" justifyContent="space-between" style={{ marginTop: '20px' }} onClick={toggleAccordion}>
           <Typography variant="body1" style={{ textAlign: 'left', color: 'black', fontWeight: 'bold' }}>
-            ¿Cómo realizo este test?
+            {t('howTest')}
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'right', color: 'black', fontWeight: 'bold' }}>
             X
@@ -114,20 +123,26 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
             <div>
               {activeStep === steps.length ? (
                 <div>
-                  <Typography variant="h6" gutterBottom>
+                  <Typography variant="h6" gutterBottom>                  
                     All steps completed
                   </Typography>
                   <Button onClick={handleReset}>Reset</Button>
                 </div>
               ) : (
                 <div>
-                  <div>{getStepContent(activeStep)}</div>
+
+                  <Typography variant="body1" style={{ textAlign: 'center', color: 'black', fontWeight: 'bold' }}>
+                      {t('state')}      
+                  </Typography>
+                  
+
+                  <div>{getStepContent(activeStep,pointers,setPointers)}</div>
 
 
                   <Button variant="contained" color="primary" style={{ "width": "100%" }}
                     onClick={handleNext}
                   >
-                    {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
+                    {activeStep === steps.length - 1 ? 'Finalizar' : t('next')   }
                   </Button>
 
                   <Button
@@ -135,7 +150,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
                     onClick={handleBack}
                     variant="contained" className="gray-button" style={{ "width": "100%", "marginTop": "15px" }}
                   >
-                    Anterior
+                    {t('previous')}      
                   </Button>
 
 

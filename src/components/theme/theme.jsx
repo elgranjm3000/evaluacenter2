@@ -2,9 +2,9 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontFamily: [
-      'Arial', // Puedes agregar más fuentes aquí
-      'IBM Plex Sans'
+    fontFamily: [     
+      'IBM Plex Sans',
+      'Arial'
     ].join(','),
     h1: {
       fontWeight: 100,

@@ -15,6 +15,10 @@
     "minus": "Less describes you",    
     "radar":"Radares",
     "disc":"Disc premium",
+    "howTest":"How do I perform this test?",
+    "state":"Assess your current state",
+    "next":"Next",
+    "previous":"Previous",
     "register":{
         "welcomeEvaluaCenter": "Welcome to Evaluacenter",
         "notePassword": "Create and confirm your password to activate your user",
