@@ -84,9 +84,9 @@ const DraggableItem = ({ item, index, moveItem }) => {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       onDragEnter={() => setIsDraggingOver(true)}
-      onTouchStart={handleTouchStart}
+      onTouchStart={handleDragStart}
       onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      onTouchEnd={handleDragEnd}
       onTouchCancel={handleTouchCancel}
     >
       <div className="item" style={{ color: 'black', display: 'flex', alignItems: 'center' }}>
