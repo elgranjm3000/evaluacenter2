@@ -41,7 +41,7 @@ const DroppableList = ({ items, setItems }) => {
   };
 
   return (
-    <div className="sortable-list">
+    <div style={{position:"relative",overflow:"hidden",height:"500px"}}>
         <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
 
       {items.map((item, index) => (

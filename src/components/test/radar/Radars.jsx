@@ -25,14 +25,6 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));  
   const classes = styles(isMobile);
   const labels = [0,0.5,1,1.5,2.5,3,3.5,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
-  
-
-
-
-   // Estado de los punteros
-
-
-
 
   return (
     <>

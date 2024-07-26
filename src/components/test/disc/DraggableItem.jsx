@@ -62,6 +62,14 @@ const DraggableItem = ({ item, index, moveItem }) => {
     e.target.classList.remove('touch-started');
   };
 
+
+  const handleDragStart = (e) => {
+    e.preventDefault(); // Evita el comportamiento por defecto
+  };
+  
+  const handleDragEnd = (e) => {
+    e.preventDefault(); // Evita el comportamiento por defecto
+  };
  
 
   return (
@@ -73,8 +81,8 @@ const DraggableItem = ({ item, index, moveItem }) => {
         backgroundColor: isDraggingOver ? 'lightblue' : 'white',
         transition: 'background-color 0.3s ease',
       }}
-      onDragStart={() => setIsDraggingOver(true)}
-      onDragEnd={() => setIsDraggingOver(false)}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
       onDragEnter={() => setIsDraggingOver(true)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
