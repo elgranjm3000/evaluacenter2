@@ -7,9 +7,11 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import styles from './styles'
 import logo from '../assets/logo.png'
+import { Alert, AlertTitle } from '@mui/material';
 
 
-const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
+
+const Login = ({handleLogin,onCheckout,isLoggedIn,showError,errorMessage}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showWelcome, setShowWelcome] = useState(true);
@@ -39,18 +41,18 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
         return (
          
           <div>
+             
             {showWelcome ? (
             <WelcomeScreen />
-          ) : (
-              <Container  maxWidth={isMobile ? 'xs' : 'sm'} >     
+          ) : (            
+              <Container  maxWidth={isMobile ? 'xs' : 'sm'} >  
                   <Fade in={visible} timeout={5000}>
                     <div>
                       <div className="gray-bg">
                         <Container>
                           <Grid container justifyContent="center" alignItems="center" spacing={2}>
                             <Grid item xs={12} md={12} style={{textAlign:"right",marginRight: '-40%', marginTop: '-10%'}}>                      
-
-                              <SelectLanguaje /> {/* Asegúrate de pasar las props necesarias */}
+                              <SelectLanguaje /> 
                             </Grid>
                           </Grid>
                         </Container>
@@ -65,6 +67,14 @@ const Login = ({handleLogin,onCheckout,isLoggedIn}) => {
                                     <img src={logo} alt="Logo" />
                                   </Typography>
                                 </div>
+                                {showError && (
+                                        <Alert severity="error">
+                                          <AlertTitle>Error</AlertTitle>
+                                          {errorMessage}
+                                        </Alert>
+                                )}
+                      
+                               
                                 <Typography variant="h5" component="h5" style={ classes.titleLogin }>
                                   ¡Bienvenido de nuevo!
                                 </Typography>

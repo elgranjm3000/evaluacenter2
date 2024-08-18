@@ -42,7 +42,11 @@
       "steps3": "Al contestar piense en cómo es usted sólo en el ambiente en el que está siendo evaluado (profesional, personal o social), no los mezcle",
       "steps4": "Ordene arrastrando las 4 palabras, siendo la más alta la que más le describe y la más baja la que menos le describe, aunque no se sienta 100% identificado",
       "read": "He leído y entendido cómo realizar la evaluación"
+    },
+    "radares":{
+        "competence": "Radar 360\ncompetencia"
     }
+
 
        
   }

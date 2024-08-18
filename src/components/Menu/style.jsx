@@ -18,7 +18,8 @@ const styles = (isMobile) => ({
     fontSize:'20px',
     fontWeight:"700",
     lineHeight:"28px",
-    wordWrap:"break-word"
+    wordWrap:"break-word",
+    whiteSpace: 'pre-line'
   },
   menu:{
     marginTop:'10px',

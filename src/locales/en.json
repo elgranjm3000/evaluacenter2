@@ -37,5 +37,9 @@
       "steps3": "When answering, think about what you are like only in the environment in which you are being evaluated (professional, personal or social), do not mix them",
       "steps4": "Order by dragging the 4 words, with the highest being the one that describes you the most and the lowest being the one that describes you the least, even if you do not feel 100% identified",
       "read": "I have read and understood how to perform the evaluation"
+    },
+    "radares":{
+        "competence": "Radar 360\ncompetition"
     }
+
 }

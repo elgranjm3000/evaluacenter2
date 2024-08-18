@@ -1,13 +1,17 @@
 import React, { useState,useEffect } from 'react';
 import CircularSlider from '@fseehawer/react-circular-slider';
 import { RoundSlider } from 'mz-react-round-slider';
-import { Box, LinearProgress, Typography, useMediaQuery, useTheme,Fade } from '@mui/material';
+import { Box, LinearProgress, Typography, useMediaQuery, useTheme,Fade,Modal } from '@mui/material';
 import styles from '../../styles';
-
+import Button from '@mui/material/Button';
+import Icon from '@mui/material/Icon';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import ObjectiveScreen from './ObjetiveScreen';
 
 const ProgressBar = ({ value }) => {
   // Asegúrate de que el valor sea un número
   const numericValue = Number(value);
+ 
 
   return (
     <Box display="flex" alignItems="center">      
@@ -28,6 +32,10 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));  
   const classes = styles(isMobile);
   const labels = [0,0.5,1,1.5,2.5,3,3.5,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -58,10 +66,33 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
              tickValuesColor={ '#6093a3' }
         />
 
-    
-    </Box>
 
-   
+    </Box>
+      <Button variant="contained"  endIcon={<KeyboardArrowRightIcon />} style={{background:"#ffff",color:"black",marginBottom:"10px",width:"100%",textTransform:"none"}} onClick={handleOpen}>
+      <span style={{ marginRight: "auto" }}>Valorar</span>
+      </Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'background.paper',
+            border: '2px solid #000',
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <ObjectiveScreen/>
+        </Box>
+      </Modal>
 
     </>
   );

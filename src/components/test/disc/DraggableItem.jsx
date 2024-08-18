@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import Box from '@mui/material/Box';
@@ -47,13 +47,12 @@ const DraggableItem = ({ item, index, moveItem }) => {
   // Event handlers for touch events
   const handleTouchStart = (e) => {
     setIsDraggingOver(true);
-    e.target.style.opacity = '0.5';
-    e.preventDefault(); // Evitar desplazamiento no deseado
-    //e.target.classList.add('touch-started');
+    ref.current.style.transition = 'none';
   };
 
   const handleTouchMove = (e) => {
     // Custom behavior during touch move
+   
     e.target.style.opacity = '0.5';
 
     e.preventDefault();
@@ -77,6 +76,16 @@ const DraggableItem = ({ item, index, moveItem }) => {
   const handleDragEnd = (e) => {
     e.preventDefault(); // Evita el comportamiento por defecto
   };
+
+
+  useEffect(() => {
+    const element = ref.current;
+    element.addEventListener('touchmove', handleTouchMove, { passive: false }); // Set passive to false
+
+    return () => {
+      element.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, []);
  
 
   return (

@@ -6,17 +6,21 @@ import ListTask from './components/evaluation/ListTask';
 import { login } from './api/api'
 import { Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Alert, AlertTitle } from '@mui/material';
 import i18n from './i18n'; 
 import NotFound from './components/NotFound';
 import Register from './components/users/Register';
 import Test from './components/test/disc/Test'
 import Radar from './components/test/radar/Index'
+import Radarcompetencia from './components/test/competencia/Index'
 
 const telegram = window.Telegram.WebApp;
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [profileData, setProfileData] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(''); // Estado para el mensaje de error
+  const [showError, setShowError] = useState(false); // Estado para mostrar u ocultar la alerta
   const { i18n } = useTranslation();
 
 
@@ -44,7 +48,6 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    console.log("estoy en app");
     setIsLoggedIn(false);
     setProfileData(null);
   };
@@ -59,15 +62,22 @@ function App() {
         const storedProfileDataLogin = localStorage.getItem('profileData');
 
         setProfileData(JSON.parse(storedProfileDataLogin));
+        setIsLoggedIn(true);
+        setShowError(false); // Ocultar el mensaje de error si el login es exitoso
 
-          setIsLoggedIn(true);
     })
     .catch((error) => {
       if (error.response && error.response.status === 401) {
-        setIsLoggedIn(false);
         console.error('Error 401: No autorizado');
+        setIsLoggedIn(false);
+        setErrorMessage('Usuario o contraseña incorrectos.'); 
+        setShowError(true); 
+
       } else {
         console.error('Otro error:', error);
+        setIsLoggedIn(false);
+        setErrorMessage('Ocurrió un error inesperado. Por favor, inténtalo de nuevo.'); 
+        setShowError(true); 
       }
     });
       
@@ -90,21 +100,21 @@ function App() {
     
     return () => telegram.offEvent('mainButtonClicked',onSendData)
   },[onSendData])
-  console.log(isLoggedIn);
 
   return (
     <>
     <Router>   
     
       <Routes>
-          <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} />} />
+          <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} showError={showError} errorMessage={errorMessage}  />} />
           <Route exact path="/task"
           element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
         />
           <Route exact path="/register" element={<Register/>}></Route>
           <Route exact path="/disc/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
           <Route exact path="/radar/:instance" element={<Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> }></Route>
-
+          <Route exact path="/radarcompetencia/:instance" element={<Radarcompetencia profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> }></Route>
+          
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>
     
