@@ -35,6 +35,7 @@ function App() {
 
   useEffect(() => {
     telegram.ready();
+    telegram.expand();
   })
 
   useEffect(() => {
@@ -91,7 +92,8 @@ function App() {
 
 
   const onSendData = useCallback(() =>{
-    telegram.sendData(JSON.stringify(isLoggedIn))
+   // telegram.sendData(JSON.stringify(isLoggedIn))
+   telegram.sendData(JSON.stringify("isLoggedIn"))
   },[isLoggedIn])
 
   useEffect(() => {
