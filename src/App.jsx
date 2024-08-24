@@ -106,7 +106,7 @@ function App() {
     <Router>   
     
       <Routes>
-          <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} showError={showError} errorMessage={errorMessage}  />} />
+          <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} showError={showError} errorMessage={errorMessage}  onSendData={onSendData} />} />
           <Route exact path="/task"
           element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
         />
