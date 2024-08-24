@@ -11,15 +11,18 @@ import ObjectiveScreen from './ObjetiveScreen';
 const ProgressBar = ({ value }) => {
   // Asegúrate de que el valor sea un número
   const numericValue = Number(value);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));  
+  const classes = styles(isMobile);
  
 
   return (
     <Box display="flex" alignItems="center">      
       <Box width="100%" mr={1}>        
         <LinearProgress variant="determinate" value={numericValue} />
-        <Typography variant="body1" paragraph style={{textAlign:'left',marginTop:'20px'}}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-      </Typography>
+        <Typography variant="body1" paragraph style={classes.text}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+        </Typography>
       </Box>
     </Box>
   );
@@ -27,15 +30,20 @@ const ProgressBar = ({ value }) => {
 
 
 const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
-  console.log(pointers);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));  
   const classes = styles(isMobile);
   const labels = [0,0.5,1,1.5,2.5,3,3.5,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
-  const [open, setOpen] = useState(false);
+  const [valueOpen, setValueOpen] = useState('');
+  const [openModal, setOpenModal] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  const handleOpen = () => {
+    console.log(pointers);
+     setOpenModal(true);
+  } 
+  const handleClose = () => { setOpenModal(false); }
+  const handleValuesOpen = (params) => setValueOpen(params) 
 
   return (
     <>
@@ -69,10 +77,10 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
 
     </Box>
       <Button variant="contained"  endIcon={<KeyboardArrowRightIcon />} style={{background:"#ffff",color:"black",marginBottom:"10px",width:"100%",textTransform:"none"}} onClick={handleOpen}>
-      <span style={{ marginRight: "auto" }}>Valorar</span>
+        <span style={{ marginRight: "auto" }}>{valueOpen ? (<p>{valueOpen}</p>) : ( <p>Valorar </p>) } </span>
       </Button>
       <Modal
-        open={open}
+        open={openModal}
         onClose={handleClose}
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
@@ -90,7 +98,7 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
             p: 4,
           }}
         >
-          <ObjectiveScreen/>
+          <ObjectiveScreen handleValuesOpen={handleValuesOpen} handleClose={handleClose}/>
         </Box>
       </Modal>
 

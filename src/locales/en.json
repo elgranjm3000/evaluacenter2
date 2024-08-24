@@ -19,6 +19,7 @@
     "state":"Assess your current state",
     "next":"Next",
     "previous":"Previous",
+    "endPage": "End",
     "register":{
         "welcomeEvaluaCenter": "Welcome to Evaluacenter",
         "notePassword": "Create and confirm your password to activate your user",
@@ -36,10 +37,15 @@
       "steps2": "There are no right or wrong answers, try to be as honest as possible",
       "steps3": "When answering, think about what you are like only in the environment in which you are being evaluated (professional, personal or social), do not mix them",
       "steps4": "Order by dragging the 4 words, with the highest being the one that describes you the most and the lowest being the one that describes you the least, even if you do not feel 100% identified",
-      "read": "I have read and understood how to perform the evaluation"
+      "read": "I have read and understood how to perform the evaluation",
+      "dialogTitle": "Premium disk",
+      "dialogBody": "Evaluation registered successfully"
     },
     "radares":{
-        "competence": "Radar 360\ncompetition"
+        "competence": "Radar 360\ncompetition",    
+        "dialogTitle": "Radars",
+        "dialogBody": "Evaluation registered successfully",
+        "buttonReady" : "Acept"
     }
 
 }

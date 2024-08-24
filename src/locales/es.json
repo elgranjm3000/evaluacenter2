@@ -19,6 +19,7 @@
     "state":"Valore su estado actual",
     "next":"Siguiente",
     "previous":"Anterior",
+    "endPage": "Finalizar",
     "register":{
       "welcomeEvaluaCenter": "¡Bienvenido a Evaluacenter",
       "notePassword": "Cree y confirme su contraseña para activar su usuario",
@@ -41,10 +42,15 @@
       "steps2": "No hay respuestas correctas ni equivocadas, trate de ser lo mas sincero posible",
       "steps3": "Al contestar piense en cómo es usted sólo en el ambiente en el que está siendo evaluado (profesional, personal o social), no los mezcle",
       "steps4": "Ordene arrastrando las 4 palabras, siendo la más alta la que más le describe y la más baja la que menos le describe, aunque no se sienta 100% identificado",
-      "read": "He leído y entendido cómo realizar la evaluación"
+      "read": "He leído y entendido cómo realizar la evaluación",
+      "dialogTitle": "Disc premiun",
+      "dialogBody": "Evaluación registrada con éxito"
     },
     "radares":{
-        "competence": "Radar 360\ncompetencia"
+        "competence": "Radar 360\ncompetencia",
+        "dialogTitle": "Radares",
+        "dialogBody": "Evaluación registrada con éxito",
+        "buttonReady" : "Aceptar"
     }
 
 

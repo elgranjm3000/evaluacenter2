@@ -1,6 +1,6 @@
-import React, { Component,useState,useEffect } from 'react'; 
+import React, { Component, useState, useEffect } from 'react';
 
-import {  Typography,useMediaQuery, useTheme } from '@mui/material';
+import { Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -15,100 +15,99 @@ import online_shopping from '../../../assets/test/online-shopping.svg'
 import styles from './style';
 
 
-const Instrucction = () => { 
-  
-    const { t } = useTranslation();
-    const [checked, setChecked] = useState(false);
+const Instrucction = () => {
 
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const classes = styles(isMobile);
+  const { t } = useTranslation();
+  const [checked, setChecked] = useState(false);
 
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-      };
-return ( 
-            <Box style={classes.pandingBox}>
-  
-            <Box borderBottom={1} borderColor="divider">
-                            <Card>
-                                <Box display="flex" alignItems="center">
-                                  <CardMedia
-                                    component="img"
-                                    image={people_rushing}
-                                    alt="Imagen"
-                                    sx={classes.img}
-                                  />
-                                  <CardContent>
-                                    <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                                        {t('discp.steps1')}
-                                    </Typography>          
-                                  </CardContent>
-                                </Box>
-                          </Card>
-            </Box>
- <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={done}
-                        alt="Imagen"
-                        sx={classes.img}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                          {t('discp.steps2')}
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
-</Box>
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const classes = styles(isMobile);
 
-<Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={asking_question}
-                        alt="Imagen"
-                        sx={classes.img}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                          {t('discp.steps3')}
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
-  </Box>
-  <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+  return (
+    <Box style={classes.pandingBox}>
+      <Box borderBottom={1} borderColor="divider">
+        <Card>
+          <Box display="flex" alignItems="center">
+            <CardMedia
+              component="img"
+              image={people_rushing}
+              alt="Imagen"
+              sx={classes.img}
+            />
+            <CardContent>
+              <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
+                {t('discp.steps1')}
+              </Typography>
+            </CardContent>
+          </Box>
+        </Card>
+      </Box>
+      <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
+        <Card>
+          <Box display="flex" alignItems="center">
+            <CardMedia
+              component="img"
+              image={done}
+              alt="Imagen"
+              sx={classes.img}
+            />
+            <CardContent>
+              <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
+                {t('discp.steps2')}
+              </Typography>
+            </CardContent>
+          </Box>
+        </Card>
+      </Box>
 
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={online_shopping}
-                        alt="Imagen"
-                        sx={classes.img}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                            {t('discp.steps4')}
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
-            </Box>
+      <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
+        <Card>
+          <Box display="flex" alignItems="center">
+            <CardMedia
+              component="img"
+              image={asking_question}
+              alt="Imagen"
+              sx={classes.img}
+            />
+            <CardContent>
+              <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
+                {t('discp.steps3')}
+              </Typography>
+            </CardContent>
+          </Box>
+        </Card>
+      </Box>
+      <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
 
-            <FormControlLabel
-      control={<Checkbox checked={checked} onChange={handleChange} />}
-      label={t('discp.read')}
-      style={classes.acceptCheck}
-    />
-  </Box>
-        ); 
-     
-} 
-  
+        <Card>
+          <Box display="flex" alignItems="center">
+            <CardMedia
+              component="img"
+              image={online_shopping}
+              alt="Imagen"
+              sx={classes.img}
+            />
+            <CardContent>
+              <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
+                {t('discp.steps4')}
+              </Typography>
+            </CardContent>
+          </Box>
+        </Card>
+      </Box>
+
+      <FormControlLabel
+        control={<Checkbox checked={checked} onChange={handleChange} />}
+        label={t('discp.read')}
+        style={classes.acceptCheck}
+      />
+    </Box>
+  );
+
+}
+
 export default Instrucction;

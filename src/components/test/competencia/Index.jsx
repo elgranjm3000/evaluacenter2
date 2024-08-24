@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grid, Typography, TextField, Button, Link, Fade, Step, StepLabel, Stepper,useMediaQuery, useTheme  } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Container, Grid, Typography, TextField, Button, Link, Fade, Step, StepLabel, Stepper,useMediaQuery, useTheme, Modal, Stack,Alert,AlertTitle  } from '@mui/material';
 import SelectLanguaje from '../../Select/languaje'
 import { useTranslation } from 'react-i18next';
 import Menu from '../../Menu/index'
@@ -20,11 +20,16 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useNavigate } from 'react-router-dom';
+import DialogToolbar from '../../../DialogToolbar';
+
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
 
 const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
-
+  const navigate = useNavigate(); // Hook para navegar programáticamente
+  const [openModal, setOpenModal] = useState(true); // Estado inicial del modal
+  const handleClose = () => setOpenModal(false); // Función para cerrar el modal
 
   const [isOpen, setIsOpen] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
@@ -44,6 +49,10 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
     localStorage.removeItem('profileData');
     onLogout();
   };
+
+  const handleRedirect = () => {
+    navigate('/task'); 
+  }
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
@@ -101,8 +110,9 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
   return (
     <>
 
-      <Container maxWidth="sm">
 
+
+      <Container maxWidth="sm">
         <Menu handleLogout={handleLogout} titleFist={t('radares.competence')} />
 
         <Box display="flex" justifyContent="space-between" style={{ marginTop: '20px' }} onClick={toggleAccordion}>
@@ -124,13 +134,8 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
           <Box>
 
             <div>
-              {activeStep === steps.length ? (
-                <div>
-                  <Typography variant="h6" gutterBottom>                  
-                    All steps completed
-                  </Typography>
-                  <Button onClick={handleReset}>Reset</Button>
-                </div>
+              {activeStep === steps.length ? (                             
+                <DialogToolbar titleDialog={t("radares.dialogTitle")} bodyDialog={t("radares.dialogBody")}  />               
               ) : (
                 <div>
 

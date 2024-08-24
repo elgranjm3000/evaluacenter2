@@ -23,9 +23,9 @@ const Instrucction = () => {
       };
 return (
   <>
-  <Box sx={{ position: 'relative', height: '200px' }}>
+  <Box sx={{ position: 'relative', height: '200px', transition: 'all 0.3s ease' }}>
   <Fade in={true} timeout={1000}>
-  <Slide direction="down" in={true} timeout={1000} mountOnEnter unmountOnExit>
+  <Slide direction="up" in={true} timeout={1000} mountOnEnter unmountOnExit>
             <Box style={{padding:"50px"}}>
   
             <Box borderBottom={1} borderColor="divider">

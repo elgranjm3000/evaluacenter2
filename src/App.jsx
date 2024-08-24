@@ -112,8 +112,8 @@ function App() {
         />
           <Route exact path="/register" element={<Register/>}></Route>
           <Route exact path="/disc/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
-          <Route exact path="/radar/:instance" element={<Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> }></Route>
-          <Route exact path="/radarcompetencia/:instance" element={<Radarcompetencia profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> }></Route>
+          <Route exact path="/radar/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
+          <Route exact path="/radarcompetencia/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Radarcompetencia profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
           
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>

@@ -84,6 +84,12 @@ const styles = (isMobile) => ({
     fontFamily: 'IBM Plex Sans',
     fontWeight: '400',    
     wordWrap: 'break-word'
+  },
+
+  text:{
+    textAlign:'left',
+    marginTop:'20px',
+    fontSize: isMobile ? "10px": "20px",
   }
 
 
