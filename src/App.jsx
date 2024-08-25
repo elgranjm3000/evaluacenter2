@@ -97,7 +97,7 @@ function App() {
    const data = { message: 'Hola desde la WebApp' };
 
       // Enviar datos usando Telegram WebApp API
-      window.Telegram.WebApp.sendData(JSON.stringify(data));
+      window.telegram.WebApp.WebApp.sendData(JSON.stringify(data));
   },[isLoggedIn])
 
   useEffect(() => {
