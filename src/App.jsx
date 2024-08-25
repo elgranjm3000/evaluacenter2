@@ -93,7 +93,11 @@ function App() {
 
   const onSendData = useCallback(() =>{
    // telegram.sendData(JSON.stringify(isLoggedIn))
-   telegram.sendData(JSON.stringify("isLoggedIn"))
+   //telegram.sendData(JSON.stringify("isLoggedIn"))
+   const data = { message: 'Hola desde la WebApp' };
+
+      // Enviar datos usando Telegram WebApp API
+      window.Telegram.WebApp.sendData(JSON.stringify(data));
   },[isLoggedIn])
 
   useEffect(() => {
