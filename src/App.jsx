@@ -86,8 +86,9 @@ function App() {
   };
 
   const onCheckout = () => {
-    telegram.MainButton.text = 'Comenzar la evaluacion';
-    telegram.MainButton.show();
+    telegram.sendData("¡Hola bot, estoy usando la WebApp!");
+    /*telegram.MainButton.text = 'Comenzar la evaluacion';
+    telegram.MainButton.show();*/
   }
 
 
@@ -107,6 +108,7 @@ function App() {
     return () => telegram.offEvent('mainButtonClicked',onSendData)
   },[onSendData])
 
+  onCheckout();
   return (
     <>
     
