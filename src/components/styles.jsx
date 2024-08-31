@@ -97,7 +97,9 @@ const styles = (isMobile) => ({
     display: 'flex', 
     justifyContent: 'center', 
     alignItems: 'center', 
-    height: isMobile ? "40h": "50h" 
+    width: '100%',
+    maxWidth: '300px',
+    margin: '0 auto'
   }
 
 
