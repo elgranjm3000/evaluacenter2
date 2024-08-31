@@ -1,6 +1,6 @@
 import React, { Component,useState,useEffect } from 'react'; 
 
-import {  Typography,Fade } from '@mui/material';
+import {  Typography,Fade,useTheme,useMediaQuery } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -13,20 +13,30 @@ import done from '../../../assets/test/done.svg'
 import asking_question from '../../../assets/test/asking-question.svg'
 import online_shopping from '../../../assets/test/online-shopping.svg'
 import Slide from '@mui/material/Slide';
+import styles from '../../styles';
+
+
 
 const Instrucction = () => { 
   
     const { t } = useTranslation();
     const [checked, setChecked] = useState(false);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const classes = styles(isMobile);
+
+
     const handleChange = (event) => {
         setChecked(event.target.checked);
-      };
+    };
+
+
 return (
   <>
   <Box sx={{ position: 'relative', height: '200px', transition: 'all 0.3s ease' }}>
   <Fade in={true} timeout={1000}>
   <Slide direction="up" in={true} timeout={1000} mountOnEnter unmountOnExit>
-            <Box style={{padding:"50px"}}>
+            <Box style={classes.pandingBox}>
   
             <Box borderBottom={1} borderColor="divider">
                             <Card>
@@ -38,8 +48,8 @@ return (
                                     sx={{ width: 58, height: 58, objectFit: 'cover' }}
                                   />
                                   <CardContent>
-                                    <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                                        Esta autoevaluación es para su propio beneficio, sea lo más objetivo posible.
+                                    <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
+                                    {t('radares.steps1')}
                                     </Typography>          
                                   </CardContent>
                                 </Box>
@@ -55,8 +65,8 @@ return (
                         sx={{ width: 58, height: 58, objectFit: 'cover' }}
                       />
                       <CardContent>
-                        <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                        No hay respuestas correctas ni equivocadas, trate de ser lo mas sincero posible
+                        <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
+                        {t('radares.steps2')}
                         </Typography>          
                       </CardContent>
                     </Box>
@@ -68,8 +78,8 @@ return (
 
             <FormControlLabel
       control={<Checkbox checked={checked} onChange={handleChange} />}
-      label="He leído y entendido cómo realizar la evaluación"
-      style={{color:"black", marginTop:'100px'}}
+      label={t('discp.read')}
+      style={classes.acceptCheck}
     />
   </Box>
   </Slide>

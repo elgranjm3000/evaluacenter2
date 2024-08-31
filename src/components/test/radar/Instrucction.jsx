@@ -42,29 +42,30 @@ return (
                           />
                           <CardContent>
                             <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                                Esta autoevaluación es para su propio beneficio, sea lo más objetivo posible.
+                              {t('radares.steps1')}
                             </Typography>          
                           </CardContent>
                         </Box>
                   </Card>
             </Box>
- <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
-              <Card>
-                    <Box display="flex" alignItems="center">
-                      <CardMedia
-                        component="img"
-                        image={online_shopping}
-                        alt="Imagen"
-                        sx={{ width: 58, height: 58, objectFit: 'cover' }}
-                      />
-                      <CardContent>
-                        <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
-                        No hay respuestas correctas ni equivocadas, trate de ser lo mas sincero posible
-                        </Typography>          
-                      </CardContent>
-                    </Box>
-              </Card>
-</Box>
+
+              <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
+                            <Card>
+                                  <Box display="flex" alignItems="center">
+                                    <CardMedia
+                                      component="img"
+                                      image={online_shopping}
+                                      alt="Imagen"
+                                      sx={{ width: 58, height: 58, objectFit: 'cover' }}
+                                    />
+                                    <CardContent>
+                                      <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
+                                        {t('radares.steps2')}
+                                      </Typography>          
+                                    </CardContent>
+                                  </Box>
+                            </Card>
+              </Box>
 
 
 

@@ -51,7 +51,9 @@
         "dialogTitle": "Radares",
         "dialogBody": "Evaluación registrada con éxito",
         "buttonReady" : "Aceptar",
-        "radar": "Radar 360"
+        "radar": "Radar 360",
+        "steps1":"Esta autoevaluación es para su propio beneficio, sea lo más objetivo posible.",
+        "steps2":"No hay respuestas correctas ni equivocadas, trate de ser lo mas sincero posible"
     }
 
 
