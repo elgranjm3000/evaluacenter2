@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid, Typography, TextField, Button, Link, Fade, Step, StepLabel, Stepper, useMediaQuery, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import GlobalStyles from './GlobalStyles';
+import GlobalStyles from '../../GlobalStyles';
 import Menu from '../../Menu/index'
 import Box from '@mui/material/Box';
 import List from './List'

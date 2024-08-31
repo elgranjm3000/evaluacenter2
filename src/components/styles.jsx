@@ -90,7 +90,17 @@ const styles = (isMobile) => ({
     textAlign:'left',
     marginTop:'20px',
     fontSize: isMobile ? "10px": "20px",
+  },
+
+  radar:{
+    position: 'relative', 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    height: isMobile ? "40h": "50h" 
   }
+
+
 
 
 });

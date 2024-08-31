@@ -40,7 +40,7 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
       </div>
       
 
-    <Box style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50h' }}>
+    <Box style={classes.radar}>
       
     
     <RoundSlider

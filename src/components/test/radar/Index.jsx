@@ -22,6 +22,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CloseIcon from '@mui/icons-material/Close';
+import GlobalStyles from '../../GlobalStyles';
 
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
@@ -107,7 +108,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   return (
     <>
-
+   <GlobalStyles />
       <Container maxWidth="sm">
 
         <Menu handleLogout={handleLogout} titleFist={t('radares.radar')} />
