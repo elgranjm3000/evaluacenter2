@@ -39,7 +39,9 @@
       "steps4": "Order by dragging the 4 words, with the highest being the one that describes you the most and the lowest being the one that describes you the least, even if you do not feel 100% identified",
       "read": "I have read and understood how to perform the evaluation",
       "dialogTitle": "Premium disk",
-      "dialogBody": "Evaluation registered successfully"
+      "dialogBody": "Evaluation registered successfully",
+      "orderDiscObjetivo": "Order the key behaviors required for the position or objective from most important to least important",
+      "orderOptionObjetico": "If there are two options that you consider to be of a similar level, you should give more weight to the one that is really key to the successful performance of the position or objective"
     },
     "radares":{
         "competence": "Radar 360\ncompetition",    

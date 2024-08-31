@@ -44,7 +44,9 @@
       "steps4": "Ordene arrastrando las 4 palabras, siendo la más alta la que más le describe y la más baja la que menos le describe, aunque no se sienta 100% identificado",
       "read": "He leído y entendido cómo realizar la evaluación",
       "dialogTitle": "Disc premiun",
-      "dialogBody": "Evaluación registrada con éxito"
+      "dialogBody": "Evaluación registrada con éxito",
+      "orderDiscObjetivo":"Ordene los comportamientos clave requeridos para el puesto u objetivo demás importantes a menos importantes",
+      "orderOptionObjetico" : "Si hay dos opciones que considera un nivel parecido, debe dar más peso aaquella que realmente es clave para el desempeño exitoso del puesto o del objetivo"
     },
     "radares":{
         "competence": "Radar 360\ncompetencia",

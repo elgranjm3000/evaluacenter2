@@ -10,7 +10,9 @@ import { Alert, AlertTitle } from '@mui/material';
 import i18n from './i18n'; 
 import NotFound from './components/NotFound';
 import Register from './components/users/Register';
-import Test from './components/test/disc/Test'
+import Test from './components/test/disc/Test';
+import DIscObjetivo from './components/test/discObjetivo/DiscObjetivo';
+
 import Radar from './components/test/radar/Index'
 import Radarcompetencia from './components/test/competencia/Index'
 
@@ -121,6 +123,7 @@ function App() {
         />
           <Route exact path="/register" element={<Register/>}></Route>
           <Route exact path="/disc/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
+          <Route exact path="/disc-objetivo/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <DIscObjetivo profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
           <Route exact path="/radar/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
           <Route exact path="/radarcompetencia/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Radarcompetencia profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
           

@@ -36,7 +36,19 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
   const labels = [0,0.5,1,1.5,2.5,3,3.5,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
   const [valueOpen, setValueOpen] = useState('');
   const [openModal, setOpenModal] = useState(false);
+  const [size, setSize] = useState(400); 
 
+  useEffect(() => {
+    function handleResize() {
+      const newSize = Math.min(window.innerWidth * 0.8, 350);
+      setSize(newSize);
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); 
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleOpen = () => {
     console.log(pointers);
@@ -56,8 +68,7 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
       </div>
       
 
-    <Box style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50h' }}>
-      
+    <Box style={{ width: size, height: size,  justifyContent: "center", alignItems: "center",    display: "flex", margin: "0 auto" }}>      
     
     <RoundSlider
              data={labels}
