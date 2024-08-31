@@ -15,7 +15,7 @@ import online_shopping from '../../../assets/test/online-shopping.svg'
 import styles from './style';
 
 
-const Instrucction = () => {
+const Instrucction = ({ checkend }) => {
 
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
@@ -26,6 +26,7 @@ const Instrucction = () => {
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
+    checkend(event.target.checked)
   };
   return (
     <Box style={classes.pandingBox}>

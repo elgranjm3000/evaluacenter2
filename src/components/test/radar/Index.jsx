@@ -16,12 +16,19 @@ import Radars from './Radars'
 import Instrucction from './Instrucction';
 import { useParams } from 'react-router-dom';
 import styles from '../../styles';
+import DialogToolbar from '../../../DialogToolbar';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
 
 const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
+  const [expanded, setExpanded] = useState(false);
 
   const [isOpen, setIsOpen] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
@@ -44,6 +51,8 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
+    setExpanded(!expanded);    
+
   };
 
   const onCheckoutList = () => {
@@ -103,31 +112,29 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
         <Menu handleLogout={handleLogout} titleFist="Radares" />
 
-        <Box display="flex" justifyContent="space-between" style={{ marginTop: '20px' }} onClick={toggleAccordion}>
-          <Typography variant="body1" style={{ textAlign: 'left', color: 'black', fontWeight: 'bold' }}>
-            {t('howTest')}
-          </Typography>
-          <Typography variant="body1" style={{ textAlign: 'right', color: 'black', fontWeight: 'bold' }}>
-            X
-          </Typography>
-        </Box>
+        <Accordion defaultExpanded  sx={{ boxShadow: 'none', border: 'none' }}>
+        <AccordionSummary
+          expandIcon={expanded ? <ExpandMoreIcon /> : <CloseIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+          onClick={toggleAccordion}
+        
+        >
+          {t('labelTest')}
+        </AccordionSummary>
+        <AccordionDetails>
+            <Instrucction/>
+        </AccordionDetails>
+      </Accordion>
 
 
-
-        {isOpen ?
-          <Instrucction />
-
+        {isOpen ?<></>
           :
           <Box>
 
             <div>
               {activeStep === steps.length ? (
-                <div>
-                  <Typography variant="h6" gutterBottom>                  
-                    All steps completed
-                  </Typography>
-                  <Button onClick={handleReset}>Reset</Button>
-                </div>
+                <DialogToolbar titleDialog={t("radares.dialogTitle")} bodyDialog={t("radares.dialogBody")} />
               ) : (
                 <div>
 

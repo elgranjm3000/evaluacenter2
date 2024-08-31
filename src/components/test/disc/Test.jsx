@@ -14,6 +14,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CloseIcon from '@mui/icons-material/Close';
 
+
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
 
 const Test = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
@@ -26,6 +27,7 @@ const Test = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
   const classes = styles(isMobile);
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
+  const [validChecked, setValidChecked] = useState(false);
 
 
 
@@ -38,8 +40,10 @@ const Test = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
   };
 
   const toggleAccordion = () => {
+
     setIsOpen(!isOpen);
     setExpanded(!expanded);    
+    
   };
 
   const onCheckoutList = () => {
@@ -101,7 +105,7 @@ const Test = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
           {t('labelTest')}
         </AccordionSummary>
         <AccordionDetails>
-            <Instrucction />
+            <Instrucction/>
         </AccordionDetails>
       </Accordion>
 
