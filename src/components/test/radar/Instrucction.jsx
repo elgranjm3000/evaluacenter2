@@ -32,23 +32,23 @@ return (
             <Box style={classes.pandingBox}>
   
             <Box borderBottom={1} borderColor="divider">
-                            <Card>
-                                <Box display="flex" alignItems="center">
-                                  <CardMedia
-                                    component="img"
-                                    image={done}
-                                    alt="Imagen"
-                                    sx={{ width: 58, height: 58, objectFit: 'cover' }}
-                                  />
-                                  <CardContent>
-                                    <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
-                                        Esta autoevaluación es para su propio beneficio, sea lo más objetivo posible.
-                                    </Typography>          
-                                  </CardContent>
-                                </Box>
-                          </Card>
+                    <Card>
+                        <Box display="flex" alignItems="center">
+                          <CardMedia
+                            component="img"
+                            image={done}
+                            alt="Imagen"
+                            sx={{ width: 58, height: 58, objectFit: 'cover' }}
+                          />
+                          <CardContent>
+                            <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
+                                Esta autoevaluación es para su propio beneficio, sea lo más objetivo posible.
+                            </Typography>          
+                          </CardContent>
+                        </Box>
+                  </Card>
             </Box>
- <Box borderBottom={1} borderColor="divider" style={{marginTop:'30px'}}>
+ <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
               <Card>
                     <Box display="flex" alignItems="center">
                       <CardMedia
@@ -58,7 +58,7 @@ return (
                         sx={{ width: 58, height: 58, objectFit: 'cover' }}
                       />
                       <CardContent>
-                        <Typography variant="subtitle2" component="div" style={{textAlign:"left"}}>
+                        <Typography variant="subtitle2" component="div" style={classes.contentLetter}>
                         No hay respuestas correctas ni equivocadas, trate de ser lo mas sincero posible
                         </Typography>          
                       </CardContent>
@@ -70,15 +70,16 @@ return (
 
 
        <FormControlLabel
-      control={<Checkbox checked={checked} onChange={handleChange} />}
-      label="He leído y entendido cómo realizar la evaluación"
-      style={{color:"black", marginTop:'100px'}}/>
+            control={<Checkbox checked={checked} onChange={handleChange} />}
+            label={t('discp.read')}
+            style={classes.acceptCheck}
+      />
 
   </Box>
   </Fade> 
   </>
-        ); 
-     
+  
+); 
 } 
   
 export default Instrucction;
