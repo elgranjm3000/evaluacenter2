@@ -93,13 +93,14 @@ const styles = (isMobile) => ({
   },
 
   radar:{
-    position: 'relative', 
-    display: 'flex', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    width: '100%',
-    maxWidth: '300px',
-    margin: '0 auto'
+    width: "80vw",
+    height: "80vw",
+    maxWidth: "400px",
+    maxheight: "400px",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
 
 

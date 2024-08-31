@@ -28,6 +28,19 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));  
   const classes = styles(isMobile);
   const labels = [0,0.5,1,1.5,2.5,3,3.5,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
+  const [size, setSize] = useState(400); // Tamaño inicial
+
+  useEffect(() => {
+    function handleResize() {
+      const newSize = Math.min(window.innerWidth * 0.8, 350);
+      setSize(newSize);
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Ajuste inicial
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
@@ -40,7 +53,7 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
       </div>
       
 
-    <Box style={classes.radar}>
+    <Box style={{ width: size, height: size,  justifyContent: "center", alignItems: "center",    display: "flex", border:"1px solid",     margin: "0 auto" }}>
       
     
     <RoundSlider
