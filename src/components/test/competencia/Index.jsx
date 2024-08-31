@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Container, Grid, Typography, TextField, Button, Link, Fade, Step, StepLabel, Stepper,useMediaQuery, useTheme, Modal, Stack,Alert,AlertTitle  } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Container, Grid, Typography, TextField, Button, Link, Fade, Step, StepLabel, Stepper, useMediaQuery, useTheme, Modal, Stack, Alert, AlertTitle } from '@mui/material';
 import SelectLanguaje from '../../Select/languaje'
 import { useTranslation } from 'react-i18next';
 import Menu from '../../Menu/index'
@@ -22,6 +22,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
 import DialogToolbar from '../../../DialogToolbar';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
@@ -40,6 +44,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   const { t } = useTranslation();
   const { instance } = useParams();
+  const [expanded, setExpanded] = useState(false);
 
 
 
@@ -51,11 +56,12 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
   };
 
   const handleRedirect = () => {
-    navigate('/task'); 
+    navigate('/task');
   }
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
+    setExpanded(!expanded);
   };
 
   const onCheckoutList = () => {
@@ -65,7 +71,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setPointers([{value: 0 },{value: 0 }]);
+    setPointers([{ value: 0 }, { value: 0 }]);
 
   };
 
@@ -78,28 +84,28 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
     setActiveStep(0);
   };
 
-  const [ pointers, setPointers ] = useState([
+  const [pointers, setPointers] = useState([
     { value: 0 },
     { value: 0 }
-]);
+  ]);
 
 
 
 
-  const getStepContent = (step,pointers,setPointers) => {
+  const getStepContent = (step, pointers, setPointers) => {
     switch (step) {
       case 0:
         return <Radars profileData={profileData} steps={step} valueProgress="16" pointers={pointers} setPointers={setPointers} />;
       case 1:
-        return <Radars profileData={profileData} steps={step} valueProgress="32" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="32" pointers={pointers} setPointers={setPointers} />;
       case 2:
-        return <Radars profileData={profileData} steps={step} valueProgress="48" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="48" pointers={pointers} setPointers={setPointers} />;
       case 3:
-        return <Radars profileData={profileData} steps={step} valueProgress="64" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="64" pointers={pointers} setPointers={setPointers} />;
       case 4:
-        return <Radars profileData={profileData} steps={step} valueProgress="80" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="80" pointers={pointers} setPointers={setPointers} />;
       case 5:
-        return <Radars profileData={profileData} steps={step} valueProgress="100" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="100" pointers={pointers} setPointers={setPointers} />;
       default:
         return 'Unknown step';
     }
@@ -115,58 +121,64 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
       <Container maxWidth="sm">
         <Menu handleLogout={handleLogout} titleFist={t('radares.competence')} />
 
-        <Box display="flex" justifyContent="space-between" style={{ marginTop: '20px' }} onClick={toggleAccordion}>
-          <Typography variant="body1" style={{ textAlign: 'left', color: 'black', fontWeight: 'bold' }}>
-            {t('howTest')}
-          </Typography>
-          <Typography variant="body1" style={{ textAlign: 'right', color: 'black', fontWeight: 'bold' }}>
-            {isOpen ?  <CloseIcon /> : <KeyboardArrowDownIcon />}
-          </Typography>
-        </Box>
+
+        <Accordion defaultExpanded sx={{ boxShadow: 'none', border: 'none' }}>
+          <AccordionSummary
+            expandIcon={expanded ? <ExpandMoreIcon /> : <CloseIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+            onClick={toggleAccordion}
+
+          >
+            {t('labelTest')}
+          </AccordionSummary>
+          <AccordionDetails>
+            <Instrucction />
+          </AccordionDetails>
+        </Accordion>
 
 
 
-        {isOpen ?
-          <Instrucction />
+        {isOpen ? <></>
 
           :
           <Fade in={true} timeout={1000}>
-          <Box>
+            <Box>
 
-            <div>
-              {activeStep === steps.length ? (                             
-                <DialogToolbar titleDialog={t("radares.dialogTitle")} bodyDialog={t("radares.dialogBody")}  />               
-              ) : (
-                <div>
+              <div>
+                {activeStep === steps.length ? (
+                  <DialogToolbar titleDialog={t("radares.dialogTitle")} bodyDialog={t("radares.dialogBody")} />
+                ) : (
+                  <div>
 
-                  <Typography variant="body1" style={{ textAlign: 'center', color: 'black', fontWeight: 'bold' }}>
-                      {t('state')}      
-                  </Typography>
-                  
-
-                  <div>{getStepContent(activeStep,pointers,setPointers)}</div>
+                    <Typography variant="body1" style={{ textAlign: 'center', color: 'black', fontWeight: 'bold' }}>
+                      {t('state')}
+                    </Typography>
 
 
-                  <Button variant="contained" color="primary" style={{ "width": "100%" }}
-                    onClick={handleNext}
-                  >
-                    {activeStep === steps.length - 1 ? 'Finalizar' : t('next')   }
-                  </Button>
-
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    variant="contained" className="gray-button" style={{ "width": "100%", "marginTop": "15px" }}
-                  >
-                    {t('previous')}      
-                  </Button>
+                    <div>{getStepContent(activeStep, pointers, setPointers)}</div>
 
 
+                    <Button variant="contained" color="primary" style={{ "width": "100%" }}
+                      onClick={handleNext}
+                    >
+                      {activeStep === steps.length - 1 ? 'Finalizar' : t('next')}
+                    </Button>
 
-                </div>
-              )}
-            </div>
-          </Box>
+                    <Button
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      variant="contained" className="gray-button" style={{ "width": "100%", "marginTop": "15px" }}
+                    >
+                      {t('previous')}
+                    </Button>
+
+
+
+                  </div>
+                )}
+              </div>
+            </Box>
           </Fade>
         }
 

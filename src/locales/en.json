@@ -45,7 +45,8 @@
         "competence": "Radar 360\ncompetition",    
         "dialogTitle": "Radars",
         "dialogBody": "Evaluation registered successfully",
-        "buttonReady" : "Acept"
+        "buttonReady" : "Acept",
+        "radar": "Radar 360"
     }
 
 }

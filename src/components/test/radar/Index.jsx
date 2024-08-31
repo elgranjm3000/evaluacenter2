@@ -110,7 +110,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
       <Container maxWidth="sm">
 
-        <Menu handleLogout={handleLogout} titleFist="Radares" />
+        <Menu handleLogout={handleLogout} titleFist={t('radares.radar')} />
 
         <Accordion defaultExpanded  sx={{ boxShadow: 'none', border: 'none' }}>
         <AccordionSummary

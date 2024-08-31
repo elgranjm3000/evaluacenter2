@@ -50,7 +50,8 @@
         "competence": "Radar 360\ncompetencia",
         "dialogTitle": "Radares",
         "dialogBody": "Evaluación registrada con éxito",
-        "buttonReady" : "Aceptar"
+        "buttonReady" : "Aceptar",
+        "radar": "Radar 360"
     }
 
 
