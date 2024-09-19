@@ -20,6 +20,7 @@
     "next":"Next",
     "previous":"Previous",
     "endPage": "End",
+    "option":"select an option",
     "register":{
         "welcomeEvaluaCenter": "Welcome to Evaluacenter",
         "notePassword": "Create and confirm your password to activate your user",
@@ -50,7 +51,10 @@
         "buttonReady" : "Acept",
         "radar": "Radar 360",
         "steps1":"This self-assessment is for your own benefit, please be as objective as possible.",
-        "steps2":"There are no right or wrong answers, try to be as honest as possible"
+        "steps2":"There are no right or wrong answers, try to be as honest as possible",
+        "radarObservadores":"Radar 360\nobservers",
+        "appreciate":"Appreciate a",
+        "addcomment":"Add comment"
     }
 
 }

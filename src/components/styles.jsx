@@ -101,6 +101,19 @@ const styles = (isMobile) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
+  },
+  modalRadarObservadores: {
+    position: 'absolute',
+    bottom: 0,
+    left: '50%',
+    transform: 'translate(-50%, 0%)',
+    width: '100%',
+    maxWidth: 400,
+    height:300,
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    borderRadius: '8px 8px 0 0',
+    p: 4,
   }
 
 
