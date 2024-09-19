@@ -15,6 +15,7 @@ import DIscObjetivo from './components/test/discObjetivo/DiscObjetivo';
 import Radar from './components/test/radar/Index'
 import Observadores from './components/test/observadores/Index'
 import Radarcompetencia from './components/test/competencia/Index'
+import Motivational from './components/test/motivacionales/Motivational';
 
 const telegram = window.Telegram.WebApp;
 
@@ -127,6 +128,7 @@ function App() {
           <Route exact path="/radar/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
           <Route exact path="/radarcompetencia/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Radarcompetencia profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
           <Route exact path="/radar-observadores/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Observadores profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
+          <Route exact path="/motivational/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Motivational profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
           
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>

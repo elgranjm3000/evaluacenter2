@@ -20,7 +20,8 @@
     "next":"Next",
     "previous":"Previous",
     "endPage": "End",
-    "option":"select an option",
+    "option":"Select an option",
+    "motivational":"Motivational Values",
     "register":{
         "welcomeEvaluaCenter": "Welcome to Evaluacenter",
         "notePassword": "Create and confirm your password to activate your user",
@@ -55,6 +56,13 @@
         "radarObservadores":"Radar 360\nobservers",
         "appreciate":"Appreciate a",
         "addcomment":"Add comment"
+    },
+    "motivationalPass":{
+            "steps1":"Order what you value most from most important to least important",
+            "steps2":"Do not choose what you think should be most important, but rather what moves you most in reality",
+            "steps3": "Answer without thinking too much about the answers, do not analyze them. There is no right or wrong answer",
+            "dialogTitle": "Motivational",
+            "dialogBody": "Evaluation registered successfully"
     }
 
 }

@@ -21,6 +21,7 @@
     "previous":"Anterior",
     "endPage": "Finalizar",
     "option":"Seleccione una opcion",
+    "motivational":"Valores Motivacionales",
     "register":{
       "welcomeEvaluaCenter": "¡Bienvenido a Evaluacenter",
       "notePassword": "Cree y confirme su contraseña para activar su usuario",
@@ -60,8 +61,14 @@
         "radarObservadores":"Radar 360\nobservadores",
         "appreciate":"Valorar a",
         "addcomment":"Agregar comentario"
+    },
+    "motivationalPass":{
+            "steps1":"Ordene de más importante a menos importante lo que más valoras",
+            "steps2":"No elija lo que cree que debería ser más importante, sino lo que más le mueve en la realidad",
+            "steps3":"Conteste sin pensar demasiado en las respuestas, no las analice. No hay respuesta correctas ni equivocadas",
+            "dialogTitle": "Motivational",
+            "dialogBody": "Evaluación registrada con éxito"
     }
-
 
        
   }
