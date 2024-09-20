@@ -22,8 +22,39 @@ const List = ({listTask,onCheckoutList}) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const classes = styles(isMobile);
-
-
+  const listTask2 = [
+    {
+      cache_evaluation_category_main: 'radar',
+      cache_evaluation_type_main: 'radarrevaluation',
+      id: 107918
+    },
+    {
+      cache_evaluation_category_main: 'Disc objetivo',
+      cache_evaluation_type_main: 'disc-objetivo',
+      id: 114716
+    },
+    {
+      cache_evaluation_category_main: 'Radar competencia',
+      cache_evaluation_type_main: 'radarcompetencia',
+      id: 128381
+    },
+    {
+      cache_evaluation_category_main: 'Radar observadores',
+      cache_evaluation_type_main: 'radar-observadores',
+      id: 129850
+    },
+    {
+      cache_evaluation_category_main: 'Valores motivaciones',
+      cache_evaluation_type_main: 'motivational',
+      id: 129878
+    },
+    {
+      cache_evaluation_category_main: 'Vital personal',
+      cache_evaluation_type_main: 'welfare',
+      id: 129898
+    }
+  ];
+  
 
 return ( 
 
@@ -32,20 +63,20 @@ return (
     <Box> 
         
 
-{listTask.length > 0 ? (
-    listTask.map((task, index) => (
+{listTask2.length > 0 ? (
+    listTask2.map((task, index) => (
 
           <Card style={classes.cardStyle}>
         
             <CardHeader 
                 style={classes.cardContent}
-                title={t(task.cache_evaluation_category_main)}                
+                title={task.cache_evaluation_category_main}                
                 titleTypographyProps={{ align: 'left',style:  classes.cardText  }}
                 subheaderTypographyProps={{ align: 'left' }}              
 
             />
           <CardContent style={classes.cardContentList}> 
-                    <MuiLink href={`/${task.cache_evaluation_category_main}/${task.id}`} rel="noopener noreferrer" style={classes.cardLink}>
+                    <MuiLink href={`/${task.cache_evaluation_type_main}/${task.id}`} rel="noopener noreferrer" style={classes.cardLink}>
                         {t('openTest')}
                     </MuiLink>
           </CardContent>

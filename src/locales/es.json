@@ -22,6 +22,7 @@
     "endPage": "Finalizar",
     "option":"Seleccione una opcion",
     "motivational":"Valores Motivacionales",
+    "welfare":"Vital personal",
     "register":{
       "welcomeEvaluaCenter": "¡Bienvenido a Evaluacenter",
       "notePassword": "Cree y confirme su contraseña para activar su usuario",
@@ -68,7 +69,11 @@
             "steps3":"Conteste sin pensar demasiado en las respuestas, no las analice. No hay respuesta correctas ni equivocadas",
             "dialogTitle": "Motivational",
             "dialogBody": "Evaluación registrada con éxito"
+    },
+  "welfarePass":{
+        "steps1":"Responda lo más objetivamente que pueda",
+        "steps2":"Trate de no dejar ninguna pregunta con valoración \"No lo sé\"",
+        "steps3":"Seleccione la respuesta marcando el botón"
     }
-
        
   }

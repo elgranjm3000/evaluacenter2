@@ -22,6 +22,7 @@
     "endPage": "End",
     "option":"Select an option",
     "motivational":"Motivational Values",
+    "welfare":"Personal life",
     "register":{
         "welcomeEvaluaCenter": "Welcome to Evaluacenter",
         "notePassword": "Create and confirm your password to activate your user",
@@ -63,6 +64,11 @@
             "steps3": "Answer without thinking too much about the answers, do not analyze them. There is no right or wrong answer",
             "dialogTitle": "Motivational",
             "dialogBody": "Evaluation registered successfully"
+    },
+    "welfarePass":{
+        "steps1":"Please answer as objectively as you can",
+        "steps2":"Try not to leave any questions rated \"I don't know\"",
+        "steps3":"Select the answer by checking the button"
     }
 
 }
