@@ -49,7 +49,7 @@ function App() {
   };
 
   // Envía los datos a Telegram
-    telegram.sendData(JSON.stringify(data));
+    window.Telegram.WebApp.sendData(JSON.stringify(data));
     const loggedIn = localStorage.getItem('isLoggedIn');
     console.log(loggedIn);
     const storedProfileData = localStorage.getItem('profileData');
