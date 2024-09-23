@@ -48,9 +48,15 @@ function App() {
       age: 30,
   };
 
-
+  if (window.Telegram.WebApp) {
+    console.log('Telegram WebApp está disponible');
+    window.Telegram.WebApp.ready();  // Indica que la app está lista
+} else {
+    console.log('Telegram WebApp NO está disponible. Asegúrate de estar en el entorno correcto.');
+}
 
   // Envía los datos a Telegram
+    window.Telegram.WebApp.sendData(JSON.stringify(data));
     const loggedIn = localStorage.getItem('isLoggedIn');
     console.log(loggedIn);
     const storedProfileData = localStorage.getItem('profileData');
@@ -98,13 +104,18 @@ function App() {
   };
 
   const onCheckout = () => {
-    telegram.MainButton.text = 'Comenzar la evaluacion';
-    telegram.MainButton.show();
+    telegram.sendData("¡Hola bot, estoy usando la WebApp!");
+    /*telegram.MainButton.text = 'Comenzar la evaluacion';
+    telegram.MainButton.show();*/
   }
 
 
   const onSendData = useCallback(() =>{
-      const data = { message: 'Hola desde la WebApp' };      
+   // telegram.sendData(JSON.stringify(isLoggedIn))
+   //telegram.sendData(JSON.stringify("isLoggedIn"))
+   const data = { message: 'Hola desde la WebApp' };
+
+      // Enviar datos usando Telegram WebApp API
       telegram.sendData(JSON.stringify(data));
   },[isLoggedIn])
 
@@ -115,6 +126,7 @@ function App() {
     return () => telegram.offEvent('mainButtonClicked',onSendData)
   },[onSendData])
 
+  onCheckout();
   return (
     <>
     
@@ -141,7 +153,7 @@ function App() {
 
     </Router>
 
-      <button onCheckout={onCheckout}>Aqui</button>
+
     </>
   )
 }

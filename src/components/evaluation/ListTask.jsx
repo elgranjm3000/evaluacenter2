@@ -9,6 +9,7 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const telegram = window.Telegram.WebApp;
 
 
   useEffect(() => {
@@ -36,9 +37,26 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
     onLogout();
   };
 
-  const onCheckoutList = () => {
-    onCheckout();
+  const onCheckout3 = () => {
+    telegram.MainButton.text = 'Comenzar la evaluacion';
+    telegram.MainButton.show();
   }
+
+
+  const onSendData = useCallback(() =>{
+      const data = {
+        name: 'John Doe',
+        age: 30,
+    };  
+      telegram.sendData(JSON.stringify(data));
+  },[isLoggedIn])
+
+  useEffect(() => {
+
+    telegram.onEvent('mainButtonClicked',onSendData);
+    
+    return () => telegram.offEvent('mainButtonClicked',onSendData)
+  },[onSendData])
 
   return (
    /* <div>
@@ -57,7 +75,8 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
     <Container maxWidth={isMobile ? 'xs' : 'sm'} style={{ marginTop: '1rem' }}>     
           <Grid item xs={12}>
             <Menu handleLogout={handleLogout} titleFist="Evaluacion" position="static"/>
-            <List listTask={listTask} onCheckoutList={onCheckoutList} />
+            <List listTask={listTask} />
+            <button onClick={onCheckout3}>Logout</button>
         </Grid>
       </Container>
   );
