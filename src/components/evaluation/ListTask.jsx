@@ -38,6 +38,7 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
   };
 
   const onCheckout3 = () => {
+    console.log("aqui");
     telegram.MainButton.text = 'Comenzar la evaluacion';
     telegram.MainButton.show();
   }
@@ -49,7 +50,7 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
         age: 30,
     };  
       telegram.sendData(JSON.stringify(data));
-  },[isLoggedIn])
+  },[])
 
   useEffect(() => {
 
