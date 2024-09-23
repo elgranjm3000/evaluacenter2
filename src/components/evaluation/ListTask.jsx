@@ -43,14 +43,14 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
     telegram.MainButton.show();
   }
 
-
+  const data = {
+    name: 'John Doe',
+    age: 30,
+};  
   const onSendData = useCallback(() =>{
-      const data = {
-        name: 'John Doe',
-        age: 30,
-    };  
+      
       telegram.sendData(JSON.stringify(data));
-  },[])
+  },[data])
 
   useEffect(() => {
 
