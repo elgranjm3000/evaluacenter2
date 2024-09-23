@@ -45,20 +45,29 @@ const ProgressBar = ({ value }) => {
 };
 
 
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight: personName.includes(name)
+      ? theme.typography.fontWeightMedium
+      : theme.typography.fontWeightRegular,
+    backgroundColor: personName.includes(name)
+      ? '#70ad47'
+      : 'transparent',
+    color: personName.includes(name)
+      ? '#fcfcfc'
+      : '#000000',
+
+  };
+}
 
 
 const Radars = ({ profileData, steps, valueProgress, pointers, setPointers }) => {
 
-
   const { t } = useTranslation();
-
   const [open, setOpen] = useState(false);
   const [openObservation, setOpenObservation] = useState(false);
-
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const handleOpenObs = () => setOpenObservation(true);
   const handleCloseObs = () => setOpenObservation(false);
 
@@ -82,7 +91,7 @@ const Radars = ({ profileData, steps, valueProgress, pointers, setPointers }) =>
   const [size, setSize] = useState(400);
 
 
-  const [option, setOption] = useState('');
+  const [option, setOption] = useState([]);
   const [comment, setComment] = useState('');
 
   const handleChange = (event) => {
@@ -164,18 +173,20 @@ const Radars = ({ profileData, steps, valueProgress, pointers, setPointers }) =>
             <FormControl fullWidth >
               <InputLabel id="demo-simple-select-label">{t('option')}</InputLabel>
               <Select
+                multiple
+                displayEmpty
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={option}
                 label={t('option')}
-                onChange={handleChange}
-                onClick={handleClose}
-
+                onChange={handleChange} 
               >
                 {names.map((name) => (
                   <MenuItem
                     key={name}
                     value={name}
+                    style={getStyles(name, option, theme)}
+
                   >
                     {name}
                   </MenuItem>
