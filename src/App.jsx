@@ -48,15 +48,10 @@ function App() {
       age: 30,
   };
 
-  if (window.Telegram.WebApp) {
-    console.log('Telegram WebApp está disponible');
-    window.Telegram.WebApp.ready();  // Indica que la app está lista
-} else {
-    console.log('Telegram WebApp NO está disponible. Asegúrate de estar en el entorno correcto.');
-}
+
 
   // Envía los datos a Telegram
-    window.Telegram.WebApp.sendData(JSON.stringify(data));
+    telegram.sendData(JSON.stringify(data));
     const loggedIn = localStorage.getItem('isLoggedIn');
     console.log(loggedIn);
     const storedProfileData = localStorage.getItem('profileData');
