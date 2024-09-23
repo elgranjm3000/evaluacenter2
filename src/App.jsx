@@ -43,6 +43,13 @@ function App() {
   })
 
   useEffect(() => {
+    const data = {
+      name: 'John Doe',
+      age: 30,
+  };
+
+  // Envía los datos a Telegram
+    telegram.WebApp.sendData(JSON.stringify(data));
     const loggedIn = localStorage.getItem('isLoggedIn');
     console.log(loggedIn);
     const storedProfileData = localStorage.getItem('profileData');
