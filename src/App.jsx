@@ -141,7 +141,7 @@ function App() {
 
     </Router>
 
-      <button onCheckout={onCheckout}></button>
+      <button onCheckout={onCheckout}>Aqui</button>
     </>
   )
 }
