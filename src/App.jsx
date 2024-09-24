@@ -126,7 +126,7 @@ function App() {
     return () => telegram.offEvent('mainButtonClicked',onSendData)
   },[onSendData])
 
-  onCheckout();
+  
   return (
     <>
     
