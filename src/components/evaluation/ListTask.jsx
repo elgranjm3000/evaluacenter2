@@ -41,8 +41,8 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
 
   const onCheckout3 = () => {
     console.log("aqui");
-    telegram.MainButton.text = 'Comenzar la evaluacion';
-    telegram.MainButton.show();
+    telegram.MainButtonNew.text = 'Comenzar la evaluacion';
+    telegram.MainButtonNew.show();
   }
 
   const data = {
@@ -54,9 +54,9 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
   },[data])
 
   useEffect(() => {
-    telegram.onEvent('mainButtonClicked',onSendData_new);
+    telegram.onEvent('MainButtonNewClicked',onSendData_new);
     
-    return () => telegram.offEvent('mainButtonClicked',onSendData_new);
+    return () => telegram.offEvent('MainButtonNewClicked',onSendData_new);
   },[onSendData_new])
 
   return (
@@ -77,7 +77,7 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
           <Grid item xs={12}>
             <Menu handleLogout={handleLogout} titleFist="Evaluacion" position="static"/>
             <List listTask={listTask} />
-            <button data={data} onClick={onCheckout3}>Logout</button>
+            <button onClick={onCheckout3}>Logout</button>
         </Grid>
       </Container>
   );
