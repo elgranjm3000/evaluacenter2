@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Container, Grid, Typography, TextField, Button, Link, Fade, Step, StepLabel, Stepper, useMediaQuery, useTheme, Modal, Stack, Alert, AlertTitle } from '@mui/material';
 import SelectLanguaje from '../../Select/languaje'
 import { useTranslation } from 'react-i18next';
+import GlobalStyles from '../../GlobalStyles';
 import Menu from '../../Menu/index'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -113,6 +114,7 @@ const Index = ({ profileData, onLogout, isLoggedIn }) => {
     <>
 
 
+<GlobalStyles />
 
       <Container maxWidth="sm">
         <Menu handleLogout={handleLogout} titleFist={t('radares.competence')} />
@@ -155,7 +157,7 @@ const Index = ({ profileData, onLogout, isLoggedIn }) => {
                     <div>{getStepContent(activeStep, pointers, setPointers)}</div>
 
 
-                    <Button variant="contained" color="primary" style={{ "width": "100%" }}
+                    <Button variant="contained" color="primary" style={classes.nextButton}
                       onClick={handleNext}
                     >
                       {activeStep === steps.length - 1 ? 'Finalizar' : t('next')}
@@ -164,7 +166,7 @@ const Index = ({ profileData, onLogout, isLoggedIn }) => {
                     <Button
                       disabled={activeStep === 0}
                       onClick={handleBack}
-                      variant="contained" className="gray-button" style={{ "width": "100%", "marginTop": "15px" }}
+                      variant="contained" className="gray-button" style={classes.previousButton}
                     >
                       {t('previous')}
                     </Button>
