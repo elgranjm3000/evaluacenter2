@@ -147,7 +147,7 @@ function App() {
     telegram.onEvent('mainButtonClicked',onSendData2);
     
     return () => telegram.offEvent('mainButtonClicked',onSendData2)
-  },[onSendData])
+  },[onSendData2])
 
   
   return (
