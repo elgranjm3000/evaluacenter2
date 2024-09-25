@@ -45,18 +45,18 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
     telegram.MainButtonNew.show();
   }
 
-  const data = {
+  const datas = {
     name: 'John Doe',
     age: 30,
 };  
   const onSendData_new = useCallback(() =>{      
-      telegram.sendData(JSON.stringify(data));
-  },[data])
+      telegram.sendData(JSON.stringify(datas));
+  },[datas])
 
   useEffect(() => {
-    telegram.onEvent('MainButtonNewClicked',onSendData_new);
+    telegram.onEvent('mainButtonClicked',onSendData_new);
     
-    return () => telegram.offEvent('MainButtonNewClicked',onSendData_new);
+    return () => telegram.offEvent('mainButtonClicked',onSendData_new);
   },[onSendData_new])
 
   return (

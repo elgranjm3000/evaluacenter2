@@ -76,12 +76,7 @@ function App() {
       age: 30,
   };
 
-  if (window.Telegram.WebApp) {
-    console.log('Telegram WebApp está disponible');
-    window.Telegram.WebApp.ready();  // Indica que la app está lista
-} else {
-    console.log('Telegram WebApp NO está disponible. Asegúrate de estar en el entorno correcto.');
-}
+
 
   // Envía los datos a Telegram
  
@@ -138,20 +133,20 @@ function App() {
   }
 
 
-  const onSendData = useCallback(() =>{
+  const onSendData2 = useCallback(() =>{
    // telegram.sendData(JSON.stringify(isLoggedIn))
    //telegram.sendData(JSON.stringify("isLoggedIn"))
    const data = { message: 'Hola desde la WebApp' };
 
       // Enviar datos usando Telegram WebApp API
-      telegram.sendData(JSON.stringify(data));
+      
   },[isLoggedIn])
 
   useEffect(() => {
 
-    telegram.onEvent('mainButtonClicked',onSendData);
+    telegram.onEvent('mainButtonClicked',onSendData2);
     
-    return () => telegram.offEvent('mainButtonClicked',onSendData)
+    return () => telegram.offEvent('mainButtonClicked',onSendData2)
   },[onSendData])
 
   
