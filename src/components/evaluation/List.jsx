@@ -25,7 +25,7 @@ const List = ({listTask,onCheckoutList}) => {
   const listTask2 = [
     {
       cache_evaluation_category_main: 'radar',
-      cache_evaluation_type_main: 'radarrevaluation',
+      cache_evaluation_type_main: 'radar',
       id: 107918
     },
     {

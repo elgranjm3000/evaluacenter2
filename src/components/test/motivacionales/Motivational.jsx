@@ -17,7 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
 
-const Motivational = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
+const Motivational = ({ profileData, onLogout, isLoggedIn }) => {
 
 
   const [isOpen, setIsOpen] = useState(true);
@@ -46,9 +46,7 @@ const Motivational = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   };
 
-  const onCheckoutList = () => {
-    onCheckout();
-  }
+ 
 
 
   const handleNext = () => {

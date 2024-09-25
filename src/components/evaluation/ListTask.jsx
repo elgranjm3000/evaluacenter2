@@ -4,12 +4,11 @@ import Menu from '../Menu/index'
 import List from './List';
 import {Container,Grid, useMediaQuery, useTheme } from '@mui/material';
 
-const ListTask = ({ profileData, onLogout, onCheckout }) => {
+const ListTask = ({ profileData, onLogout,telegram }) => {
   const [listTask, setListTask] = useState([]);
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const telegram = window.Telegram.WebApp;
 
   // Inicializar los parámetros de tema con valores por defecto
 

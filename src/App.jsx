@@ -70,16 +70,7 @@ function App() {
     telegram.expand();
   })
 
-  useEffect(() => {
-    const data = {
-      name: 'John Doe',
-      age: 30,
-  };
-
-
-
-  // Envía los datos a Telegram
- 
+useEffect(() => {  
     const loggedIn = localStorage.getItem('isLoggedIn');
     console.log(loggedIn);
     const storedProfileData = localStorage.getItem('profileData');
@@ -126,28 +117,10 @@ function App() {
     
   };
 
-  const onCheckout = () => {
-    telegram.sendData("¡Hola bot, estoy usando la WebApp!");
-    /*telegram.MainButton.text = 'Comenzar la evaluacion';
-    telegram.MainButton.show();*/
-  }
 
 
-  const onSendData2 = useCallback(() =>{
-   // telegram.sendData(JSON.stringify(isLoggedIn))
-   //telegram.sendData(JSON.stringify("isLoggedIn"))
-   const data = { message: 'Hola desde la WebApp' };
 
-      // Enviar datos usando Telegram WebApp API
-      
-  },[isLoggedIn])
 
-  useEffect(() => {
-
-    telegram.onEvent('mainButtonClicked',onSendData2);
-    
-    return () => telegram.offEvent('mainButtonClicked',onSendData2)
-  },[onSendData2])
 
   
   return (
@@ -156,18 +129,18 @@ function App() {
     <Router>   
     
       <Routes>
-          <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} onCheckout={onCheckout} isLoggedIn={isLoggedIn} showError={showError} errorMessage={errorMessage}  onSendData={onCheckout} />} />
+          <Route exact path="/" element={isLoggedIn ? <Navigate to="/task" /> : <Login handleLogin={handleLogin} isLoggedIn={isLoggedIn} showError={showError} errorMessage={errorMessage}   />} />
           <Route exact path="/task"
-          element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" />}
+          element={isLoggedIn ? <ListTask profileData={profileData} onLogout={handleLogout} telegram={telegram}  /> : <Navigate to="/" />}
         />
           <Route exact path="/register" element={<Register/>}></Route>
-          <Route exact path="/disc/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
-          <Route exact path="/disc-objetivo/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <DIscObjetivo profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} />: <Navigate to="/" /> }></Route>
-          <Route exact path="/radar/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Radar profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
-          <Route exact path="/radarcompetencia/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Radarcompetencia profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
-          <Route exact path="/radar-observadores/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Observadores profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
-          <Route exact path="/motivational/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Motivational profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
-          <Route exact path="/welfare/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Welfare profileData={profileData} onLogout={handleLogout} onCheckout={onCheckout} /> : <Navigate to="/" /> }></Route>
+          <Route exact path="/disc/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Test profileData={profileData} onLogout={handleLogout}  />: <Navigate to="/" /> }></Route>
+          <Route exact path="/disc-objetivo/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <DIscObjetivo profileData={profileData} onLogout={handleLogout} />: <Navigate to="/" /> }></Route>
+          <Route exact path="/radar/:instance" element={isLoggedIn === null ? null : isLoggedIn ? <Radar profileData={profileData} onLogout={handleLogout}  /> : <Navigate to="/" /> }></Route>
+          <Route exact path="/radarcompetencia/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Radarcompetencia profileData={profileData} onLogout={handleLogout}  /> : <Navigate to="/" /> }></Route>
+          <Route exact path="/radar-observadores/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Observadores profileData={profileData} onLogout={handleLogout}/> : <Navigate to="/" /> }></Route>
+          <Route exact path="/motivational/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Motivational profileData={profileData} onLogout={handleLogout} /> : <Navigate to="/" /> }></Route>
+          <Route exact path="/welfare/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Welfare profileData={profileData} onLogout={handleLogout}  /> : <Navigate to="/" /> }></Route>
           
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>

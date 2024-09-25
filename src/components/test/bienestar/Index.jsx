@@ -30,7 +30,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
 
-const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
+const Index = ({ profileData, onLogout, isLoggedIn }) => {
   const navigate = useNavigate(); // Hook para navegar programáticamente
   const [openModal, setOpenModal] = useState(true); // Estado inicial del modal
   const handleClose = () => setOpenModal(false); // Función para cerrar el modal
@@ -64,9 +64,6 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
     setExpanded(!expanded);
   };
 
-  const onCheckoutList = () => {
-    onCheckout();
-  }
 
 
   const handleNext = () => {

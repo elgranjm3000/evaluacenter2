@@ -11,7 +11,7 @@ import { Alert, AlertTitle } from '@mui/material';
 
 
 
-const Login = ({handleLogin,onCheckout,isLoggedIn,showError,errorMessage,onSendData}) => {
+const Login = ({handleLogin,isLoggedIn,showError,errorMessage}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showWelcome, setShowWelcome] = useState(true);
@@ -35,8 +35,7 @@ const Login = ({handleLogin,onCheckout,isLoggedIn,showError,errorMessage,onSendD
     const handleSubmit = async (e) => {
         e.preventDefault();       
         handleLogin(username,password)
-        onSendData()
-        //onCheckout() 
+        
     }
     
         return (

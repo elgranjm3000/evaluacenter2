@@ -27,7 +27,7 @@ import GlobalStyles from '../../GlobalStyles';
 
 const steps = ['Step One', 'Step Two', 'Step Three', 'Step For', 'Step Five', 'Step Six'];
 
-const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
+const Index = ({ profileData, onLogout, isLoggedIn }) => {
 
   const [expanded, setExpanded] = useState(false);
 
@@ -56,9 +56,7 @@ const Index = ({ profileData, onLogout, onCheckout, isLoggedIn }) => {
 
   };
 
-  const onCheckoutList = () => {
-    onCheckout();
-  }
+  
 
 
   const handleNext = () => {
