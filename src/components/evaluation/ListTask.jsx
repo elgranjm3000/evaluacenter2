@@ -49,15 +49,15 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
     name: 'John Doe',
     age: 30,
 };  
-  const onSendData = useCallback(() =>{      
+  const onSendData_new = useCallback(() =>{      
       telegram.sendData(JSON.stringify(data));
   },[data])
 
   useEffect(() => {
-    telegram.onEvent('mainButtonClicked',onSendData);
+    telegram.onEvent('mainButtonClicked',onSendData_new);
     
-    return () => telegram.offEvent('mainButtonClicked',onSendData);
-  },[onSendData])
+    return () => telegram.offEvent('mainButtonClicked',onSendData_new);
+  },[onSendData_new])
 
   return (
    /* <div>
