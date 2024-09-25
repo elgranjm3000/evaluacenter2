@@ -41,8 +41,8 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
 
   const onCheckout3 = () => {
     console.log("aqui");
-    telegram.MainButtonNew.text = 'Comenzar la evaluacion';
-    telegram.MainButtonNew.show();
+    telegram.MainButton.text = 'Comenzar la evaluacion';
+    telegram.MainButton.show();
   }
 
   const datas = {
