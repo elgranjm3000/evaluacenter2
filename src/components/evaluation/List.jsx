@@ -29,6 +29,11 @@ const List = ({listTask,onCheckoutList}) => {
       id: 107918
     },
     {
+      cache_evaluation_category_main: 'Disc',
+      cache_evaluation_type_main: 'disc',
+      id: 129095
+    },
+    {
       cache_evaluation_category_main: 'Disc objetivo',
       cache_evaluation_type_main: 'disc-objetivo',
       id: 114716
