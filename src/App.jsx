@@ -27,6 +27,12 @@ function App() {
   const [showError, setShowError] = useState(false); // Estado para mostrar u ocultar la alerta
   const { i18n } = useTranslation();
 
+  const [themeParams, setThemeParams] = useState({
+    bg_color: "#ffffff",
+    text_color: "#000000",
+    button_color: "#0088cc",
+    button_text_color: "#ffffff",
+  });
 
 
 
@@ -38,6 +44,28 @@ function App() {
   }, [i18n]);
 
   useEffect(() => {
+
+
+    const theme = telegram.themeParams;
+
+    // Actualizar los parámetros de tema en el estado
+    setThemeParams({
+      bg_color: theme.bg_color || "#ffffff",
+      text_color: theme.text_color || "#000000",
+      button_color: theme.button_color || "#0088cc",
+      button_text_color: theme.button_text_color || "#ffffff",
+    });
+
+    telegram.onEvent("themeChanged", () => {
+      const updatedTheme = telegram.themeParams;
+      setThemeParams({
+        bg_color: updatedTheme.bg_color || "#ffffff",
+        text_color: updatedTheme.text_color || "#000000",
+        button_color: updatedTheme.button_color || "#0088cc",
+        button_text_color: updatedTheme.button_text_color || "#ffffff",
+      });
+    });
+
     telegram.ready();
     telegram.expand();
   })

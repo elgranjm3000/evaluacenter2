@@ -11,6 +11,8 @@ const ListTask = ({ profileData, onLogout, onCheckout }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const telegram = window.Telegram.WebApp;
 
+  // Inicializar los parámetros de tema con valores por defecto
+
 
   useEffect(() => {
     const fetchData = async () => {
