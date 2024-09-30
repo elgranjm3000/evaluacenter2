@@ -56,7 +56,14 @@ const List = ({listTask,onCheckoutList}) => {
     {
       cache_evaluation_category_main: 'Vital personal',
       cache_evaluation_type_main: 'welfare',
-      id: 129898
+      id: 129898,
+      type:1  
+    },
+    {
+      cache_evaluation_category_main: 'Vital bienestar',
+      cache_evaluation_type_main: 'welfare',
+      id: 129898,
+      type:2  
     }
   ];
   
@@ -81,9 +88,15 @@ return (
 
             />
           <CardContent style={classes.cardContentList}> 
-                    <MuiLink href={`/${task.cache_evaluation_type_main}/${task.id}`} rel="noopener noreferrer" style={classes.cardLink}>
-                        {t('openTest')}
-                    </MuiLink>
+
+          <MuiLink
+      href={`/${task.cache_evaluation_type_main}/${task.id}${task.cache_evaluation_type_main === "welfare" ? `/${task.type}` : ''}`}
+      rel="noopener noreferrer"
+      style={classes.cardLink}
+    >
+      {t('openTest')}
+    </MuiLink>    
+
           </CardContent>
             
           </Card>

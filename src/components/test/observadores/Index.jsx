@@ -59,6 +59,8 @@ const Index = ({ profileData, onLogout, isLoggedIn }) => {
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setPointers([{value: 0 },{value: 0 }]);
+    setOption([]);
+    setComment('');
 
   };
 
@@ -75,7 +77,16 @@ const Index = ({ profileData, onLogout, isLoggedIn }) => {
     { value: 0 },
     { value: 0 }
 ]);
+const [option, setOption] = useState([]);
+const [comment, setComment] = useState('');
 
+const handleChange = (value) => {
+  console.log("toma la opcion");
+  setOption(value);
+};
+const handleChangeComment = (value) => {
+  setComment(value)
+};
 
 
 
@@ -83,17 +94,17 @@ const Index = ({ profileData, onLogout, isLoggedIn }) => {
     console.log(step);
     switch (step) {
       case 0:
-        return <Radars profileData={profileData} steps={step} valueProgress="16" pointers={pointers} setPointers={setPointers} />;
+        return <Radars profileData={profileData} steps={step} valueProgress="16" pointers={pointers} option={option} comment={comment} handleChange={handleChange} handleChangeComment={handleChangeComment}/>;
       case 1:
-        return <Radars profileData={profileData} steps={step} valueProgress="32" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="32" pointers={pointers} option={option} comment={comment} handleChange={handleChange} handleChangeComment={handleChangeComment}/>;
       case 2:
-        return <Radars profileData={profileData} steps={step} valueProgress="48" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="48" pointers={pointers} option={option} comment={comment} handleChange={handleChange} handleChangeComment={handleChangeComment}/>;
       case 3:
-        return <Radars profileData={profileData} steps={step} valueProgress="64" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="64" pointers={pointers} option={option} comment={comment} handleChange={handleChange} handleChangeComment={handleChangeComment}/>;
       case 4:
-        return <Radars profileData={profileData} steps={step} valueProgress="80" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="80" pointers={pointers} option={option} comment={comment} handleChange={handleChange} handleChangeComment={handleChangeComment}/>;
       case 5:
-        return <Radars profileData={profileData} steps={step} valueProgress="100" pointers={pointers} setPointers={setPointers}/>;
+        return <Radars profileData={profileData} steps={step} valueProgress="100" pointers={pointers} option={option} comment={comment} handleChange={handleChange} handleChangeComment={handleChangeComment}/>;
       default:
         return 'Unknown step';
     }

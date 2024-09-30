@@ -50,7 +50,7 @@ const Instrucction = ({ checkend }) => {
         </Card>
       </Box>
       <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
-        <Card>
+        <Card style={classes.noBboxShadow}>
           <Box display="flex" alignItems="center">
             <CardMedia
               component="img"

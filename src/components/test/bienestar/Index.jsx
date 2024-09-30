@@ -43,7 +43,7 @@ const Index = ({ profileData, onLogout, isLoggedIn }) => {
   const classes = styles(isMobile);
 
   const { t } = useTranslation();
-  const { instance } = useParams();
+  const { instance,type } = useParams();
   const [expanded, setExpanded] = useState(false);
 
 
@@ -116,8 +116,8 @@ const Index = ({ profileData, onLogout, isLoggedIn }) => {
 
 
       <Container maxWidth="sm">
-        <Menu handleLogout={handleLogout} titleFist={t('welfare')} />
-
+        <Menu handleLogout={handleLogout} titleFist={type == 1 ? t('welfare') : t('welfareCustom') } />
+        
 
         <Accordion defaultExpanded sx={{ boxShadow: 'none', border: 'none' }}>
           <AccordionSummary

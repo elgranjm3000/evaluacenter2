@@ -32,7 +32,7 @@ return (
             <Box style={classes.pandingBox}>
   
             <Box borderBottom={1} borderColor="divider">
-                    <Card>
+                    <Card style={classes.noBboxShadow}>
                         <Box display="flex" alignItems="center">
                           <CardMedia
                             component="img"
@@ -50,7 +50,7 @@ return (
             </Box>
 
               <Box borderBottom={1} borderColor="divider" style={classes.boxMargin}>
-                            <Card>
+                            <Card style={classes.noBboxShadow}>
                                   <Box display="flex" alignItems="center">
                                     <CardMedia
                                       component="img"

@@ -125,7 +125,7 @@ useEffect(() => {
           <Route exact path="/radarcompetencia/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Radarcompetencia profileData={profileData} onLogout={handleLogout}  /> : <Navigate to="/" /> }></Route>
           <Route exact path="/radar-observadores/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Observadores profileData={profileData} onLogout={handleLogout}/> : <Navigate to="/" /> }></Route>
           <Route exact path="/motivational/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Motivational profileData={profileData} onLogout={handleLogout} /> : <Navigate to="/" /> }></Route>
-          <Route exact path="/welfare/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Welfare profileData={profileData} onLogout={handleLogout}  /> : <Navigate to="/" /> }></Route>
+          <Route exact path="/welfare/:instance/:type" element={ isLoggedIn === null ? null : isLoggedIn ? <Welfare profileData={profileData} onLogout={handleLogout}  /> : <Navigate to="/" /> }></Route>
           
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>

@@ -8,8 +8,9 @@ import { styled } from '@mui/material/styles';
 export default function ObjectiveScreen({handleValuesOpen,handleClose}) {
   
 const StyledBox = styled(Box)(({ theme, selected }) => ({
-        width: 100,
-        height: 100,
+        fontSize:"10px",
+        width: 70,
+        height: 70,
         borderRadius: '50%',
         border: `2px solid ${selected ? theme.palette.primary.main : 'black'}`,
         display: 'flex',
@@ -28,16 +29,22 @@ const [value, setValue] = useState('suficiente');
   };
 
   const handleConfirm = () => {
-    if(value === 'suficiente'){
-      handleValuesOpen("Suficiente como esta");
-    }else if(value === 'mejorar_maximo'){
-      handleValuesOpen("Mejorar al máximo");
-    }else if(value === 'mejorar_mucho'){
-      handleValuesOpen("Mejorar mucho");
-    }else if(value === 'mejorar_bastante'){
-      handleValuesOpen("Mejorar bastante");
-    }else if(value === 'mejorar_poco'){
-      handleValuesOpen("Mejorar un poco");
+    if(value === 'siempre'){
+      handleValuesOpen("Siempre");
+    }else if(value === 'no_lo_se'){
+      handleValuesOpen("No lo se");
+    }else if(value === 'muy_a_menudo'){
+      handleValuesOpen("Muy a menudo");
+    }else if(value === 'nunca'){
+      handleValuesOpen("Nunca");
+    }else if(value === 'frecuentemente'){
+      handleValuesOpen("Frecuentemente");
+    }else if(value === 'pocas_veces'){
+      handleValuesOpen("Pocas veces");
+    }else if(value === 'regularmente'){
+      handleValuesOpen("Mas o menos regulamente");
+    }else if(value === 'algunas_veces'){
+      handleValuesOpen("Algunas veces");
     }else{
       handleValuesOpen(value);
     }
@@ -47,19 +54,7 @@ const [value, setValue] = useState('suficiente');
 
   return (
     <Box sx={{ p: 1, textAlign: 'center' }}>
-      <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="back">
-            <ArrowBackIcon />
-          </IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1, textAlign: 'center', color:"black" }}>
-            Valore su estado objetivo
-          </Typography>
-          <IconButton edge="end" color="inherit" aria-label="close">
-            <CloseIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+      
 
       {/* Texto de descripción */}
       <Typography variant="body1">
@@ -74,60 +69,15 @@ const [value, setValue] = useState('suficiente');
         sx={{ display: 'flex', justifyContent: 'center', gap: 3 }}
         >
        
-      <Grid container  spacing={2} justifyContent="space-between">   
-        <Grid item xs={12}  sm={12} md={12} style={{textAlign:"center"}}>
-          <FormControlLabel
-            value="suficiente"
-            control={<Radio sx={{ display: 'none' }}/>}
-            selected={value === 'suficiente'}
-            label={
-              <StyledBox selected={value === 'suficiente'}>
-                    Suficiente como esta
-              </StyledBox>
-            }
-          />
-        </Grid>
-      </Grid>
-
-          
-      <Grid container  spacing={2} justifyContent="space-between" >
-          <Grid item xs={6}  sm={6} md={6} style={{textAlign:"left"}}>
-          <FormControlLabel
-            value="mejorar_maximo"
-            control={<Radio sx={{ display: 'none' }}/>}
-            selected={value === 'mejorar_maximo'}
-            label={
-
-              <StyledBox selected={value === 'mejorar_maximo'}>
-                    Mejorar al máximo
-              </StyledBox>
-              
-            }
-          />
-          </Grid>
-          <Grid item xs={6} sm={6} md={6} style={{ textAlign: "right" }}>
-          <FormControlLabel
-            value="mejorar_poco"
-            control={<Radio sx={{ display: 'none' }} />}
-            selected={value === 'mejorar_poco'}
-            label={
-              <StyledBox selected={value === 'mejorar_poco'}>
-                    Mejorar un poco
-              </StyledBox>              
-            }
-          />
-          </Grid>
-          </Grid>
-
-    <Grid container  spacing={2} justifyContent="space-between">   
+       <Grid container  spacing={2} justifyContent="space-between">   
       <Grid item xs={6}  sm={6} md={6} style={{textAlign:"right"}}>     
           <FormControlLabel
-            value="mejorar_mucho"
+            value="siempre"
             control={<Radio sx={{ display: 'none' }} />}
-            selected={value === 'mejorar_mucho'}
+            selected={value === 'siempre'}
             label={
-              <StyledBox selected={value === 'mejorar_mucho'}>
-                    Mejorar mucho
+              <StyledBox selected={value === 'siempre'}>
+                    Siempre
               </StyledBox>      
               
             }
@@ -138,12 +88,104 @@ const [value, setValue] = useState('suficiente');
         <Grid item xs={6}  sm={6} md={6} style={{textAlign:"left"}}>     
 
           <FormControlLabel
-            value="mejorar_bastante"
+            value="no_lo_se"
             control={<Radio sx={{ display: 'none' }} />}
-            selected={value === 'mejorar_bastante'}
+            selected={value === 'no_lo_se'}
             label={
-              <StyledBox selected={value === 'mejorar_bastante'}>
-                    Mejorar bastante
+              <StyledBox selected={value === 'no_lo_se'}>
+                    No lo se
+              </StyledBox> 
+              
+            }
+          />
+
+          </Grid>
+        </Grid>
+
+          
+      <Grid container  spacing={2} justifyContent="space-between" >
+          <Grid item xs={6}  sm={6} md={6} style={{textAlign:"left"}}>
+          <FormControlLabel
+            value="muy_a_menudo"
+            control={<Radio sx={{ display: 'none' }}/>}
+            selected={value === 'muy_a_menudo'}
+            label={
+
+              <StyledBox selected={value === 'muy_a_menudo'}>
+                    Muy a menudo
+              </StyledBox>
+              
+            }
+          />
+          </Grid>
+          <Grid item xs={6} sm={6} md={6} style={{ textAlign: "right" }}>
+          <FormControlLabel
+            value="nunca"
+            control={<Radio sx={{ display: 'none' }} />}
+            selected={value === 'nunca'}
+            label={
+              <StyledBox selected={value === 'nunca'}>
+                    Nunca
+              </StyledBox>              
+            }
+          />
+          </Grid>
+    </Grid>
+
+    <Grid container  spacing={2} justifyContent="space-between" >
+          <Grid item xs={6}  sm={6} md={6} style={{textAlign:"left"}}>
+          <FormControlLabel
+            value="frecuentemente"
+            control={<Radio sx={{ display: 'none' }}/>}
+            selected={value === 'frecuentemente'}
+            label={
+
+              <StyledBox selected={value === 'frecuentemente'}>
+                    Frecuentemente
+              </StyledBox>
+              
+            }
+          />
+          </Grid>
+          <Grid item xs={6} sm={6} md={6} style={{ textAlign: "right" }}>
+          <FormControlLabel
+            value="pocas_veces"
+            control={<Radio sx={{ display: 'none' }} />}
+            selected={value === 'pocas_veces'}
+            label={
+              <StyledBox selected={value === 'pocas_veces'}>
+                    Pocas veces
+              </StyledBox>              
+            }
+          />
+          </Grid>
+    </Grid>
+
+    <Grid container  spacing={2} justifyContent="space-between">   
+      <Grid item xs={6}  sm={6} md={6} style={{textAlign:"right"}}>     
+          <FormControlLabel
+            value="regularmente"
+            control={<Radio sx={{ display: 'none' }} />}
+            selected={value === 'regularmente'}
+            label={
+              <StyledBox selected={value === 'regularmente'}>
+                    Mas o menos regulamente
+              </StyledBox>      
+              
+            }
+          />
+        
+        </Grid>
+      
+        <Grid item xs={6}  sm={6} md={6} style={{textAlign:"left"}}>     
+
+          <FormControlLabel
+            value="algunas_veces"
+            control={<Radio sx={{ display: 'none' }} />}
+            selected={value === 'algunas_veces'}
+            label={
+              <StyledBox selected={value === 'algunas_veces'}>
+                    Algunas veces
               </StyledBox> 
               
             }

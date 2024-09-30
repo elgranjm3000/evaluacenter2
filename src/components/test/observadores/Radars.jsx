@@ -14,8 +14,10 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  TextField
+  TextField,
+  ListItemIcon
 } from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check';
 
 
 
@@ -51,17 +53,17 @@ function getStyles(name, personName, theme) {
       ? theme.typography.fontWeightMedium
       : theme.typography.fontWeightRegular,
     backgroundColor: personName.includes(name)
-      ? '#70ad47'
+      ? '#E3FDDD'
       : 'transparent',
     color: personName.includes(name)
-      ? '#fcfcfc'
+      ? '#1A2021'
       : '#000000',
 
   };
 }
 
 
-const Radars = ({ profileData, steps, valueProgress, pointers, setPointers }) => {
+const Radars = ({ profileData, steps, valueProgress, pointers,option,comment, handleChange,handleChangeComment }) => {
 
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -91,14 +93,11 @@ const Radars = ({ profileData, steps, valueProgress, pointers, setPointers }) =>
   const [size, setSize] = useState(400);
 
 
-  const [option, setOption] = useState([]);
-  const [comment, setComment] = useState('');
-
-  const handleChange = (event) => {
-    setOption(event.target.value);
+  const handleChangeOption = (event) => {
+    handleChange(event.target.value);
   };
-  const handleChangeComment = (event) => {
-    setComment(event.target.value)
+  const handleChangeCommentOption = (event) => {
+    handleChangeComment(event.target.value)
   };
 
   useEffect(() => {
@@ -179,16 +178,15 @@ const Radars = ({ profileData, steps, valueProgress, pointers, setPointers }) =>
                 id="demo-simple-select"
                 value={option}
                 label={t('option')}
-                onChange={handleChange} 
+                onChange={handleChangeOption} 
               >
                 {names.map((name) => (
-                  <MenuItem
+                  <MenuItem                   
                     key={name}
                     value={name}
                     style={getStyles(name, option, theme)}
-
                   >
-                    {name}
+                    {name}                    
                   </MenuItem>
                 ))}
               </Select>
@@ -216,7 +214,7 @@ const Radars = ({ profileData, steps, valueProgress, pointers, setPointers }) =>
                 label={t('radares.addcomment')}
                 multiline
                 rows={4}
-                onChange={handleChangeComment}
+                onChange={handleChangeCommentOption}
                 placeholder={t('radares.addcomment')}
               />
               <Button variant="contained" color="success" onClick={handleCloseObs}>Confirmar</Button>

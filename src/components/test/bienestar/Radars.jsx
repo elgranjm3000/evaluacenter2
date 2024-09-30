@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import Icon from '@mui/material/Icon';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ObjectiveScreen from './ObjetiveScreen';
+import Objective from './Objetive';
+import { useTranslation } from 'react-i18next';
+
 
 const ProgressBar = ({ value }) => {
   // Asegúrate de que el valor sea un número
@@ -14,7 +17,6 @@ const ProgressBar = ({ value }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));  
   const classes = styles(isMobile);
- 
 
   return (
     <Box display="flex" alignItems="center">      
@@ -36,7 +38,10 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
   const labels = [0,0.5,1,1.5,2.5,3,3.5,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
   const [valueOpen, setValueOpen] = useState('');
   const [openModal, setOpenModal] = useState(false);
+  const [valueOpenObjetive, setValueOpenObjetive] = useState('');
+  const [openModalObjetive, setOpenModalObjetive] = useState(false);
   const [size, setSize] = useState(400); 
+  const { t } = useTranslation();
 
   useEffect(() => {
     function handleResize() {
@@ -51,11 +56,18 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
   }, []);
 
   const handleOpen = () => {
-    console.log(pointers);
      setOpenModal(true);
   } 
+  const handleOpenObjetive = () => {
+    setOpenModalObjetive(true);
+ } 
+
   const handleClose = () => { setOpenModal(false); }
   const handleValuesOpen = (params) => setValueOpen(params) 
+
+
+  const handleCloseObjetive = () => { setOpenModalObjetive(false); }
+  const handleValuesOpenObjetive = (params) => setValueOpenObjetive(params) 
 
   return (
     <>
@@ -68,9 +80,21 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
       </div>
       
 
+
+      <Typography variant="h6" gutterBottom style={classes.moreDescription}>        
+            {t('state')} 
+      </Typography>
   
       <Button variant="contained"  endIcon={<KeyboardArrowRightIcon />} style={{background:"#ffff",color:"black",marginBottom:"10px",width:"100%",textTransform:"none"}} onClick={handleOpen}>
         <span style={{ marginRight: "auto" }}>{valueOpen ? (<p>{valueOpen}</p>) : ( <p>Valorar </p>) } </span>
+      </Button>
+
+
+      <Typography variant="h6" gutterBottom style={classes.moreDescription}>        
+          {t('stateForm')} 
+      </Typography>
+      <Button variant="contained"  endIcon={<KeyboardArrowRightIcon />} style={{background:"#ffff",color:"black",marginBottom:"10px",width:"100%",textTransform:"none"}} onClick={handleOpenObjetive}>
+        <span style={{ marginRight: "auto" }}>{valueOpenObjetive ? (<p>{valueOpenObjetive}</p>) : ( <p>Valorar </p>) } </span>
       </Button>
       
       <Modal
@@ -93,6 +117,30 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
           }}
         >
           <ObjectiveScreen handleValuesOpen={handleValuesOpen} handleClose={handleClose}/>
+        </Box>
+      </Modal>
+
+     
+      <Modal
+        open={openModalObjetive}
+        onClose={handleCloseObjetive}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'background.paper',
+            border: '2px solid #000',
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Objective handleValuesOpenObjetive={handleValuesOpenObjetive} handleCloseObjetive={handleCloseObjetive}/>
         </Box>
       </Modal>
 

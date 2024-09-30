@@ -1,8 +1,13 @@
 const fontFamily = 'IBM Plex Sans';
 
 const styles = (isMobile) => ({
+  noBboxShadow : {
+    boxShadow: "none"
+  },
+
   pandingBox: {
-    padding: isMobile ? "5px" : "50px", 
+    padding: isMobile ? "5px" : "50px"
+   
   },
   img: {
     width: 58, 
@@ -31,7 +36,8 @@ const styles = (isMobile) => ({
     color:"black", 
     textAlign:"center", 
     marginTop:"10px",
-    fontSize: isMobile ? "10px": "20px"
+    fontSize: isMobile ? "10px": "20px",
+    whiteSpace: 'pre-line' 
   },
   nextButton:{
     width: "100%",

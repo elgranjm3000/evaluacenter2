@@ -42,7 +42,7 @@ const Instrucction = () => {
             <Box style={classes.pandingBox}>
 
               <Box borderBottom={1} borderColor="divider">
-                <Card>
+                <Card style={classes.noBboxShadow}>
                   <Box display="flex" alignItems="center">
                     <CardMedia
                       component="img"
@@ -59,7 +59,7 @@ const Instrucction = () => {
                 </Card>
               </Box>
               <Box borderBottom={1} borderColor="divider" style={{ marginTop: '30px' }}>
-                <Card>
+                <Card style={classes.noBboxShadow}>
                   <Box display="flex" alignItems="center">
                     <CardMedia
                       component="img"
@@ -76,7 +76,7 @@ const Instrucction = () => {
                 </Card>
               </Box>
               <Box borderBottom={1} borderColor="divider" style={{ marginTop: '30px' }}>
-                <Card>
+                <Card style={classes.noBboxShadow}>
                   <Box display="flex" alignItems="center">
                     <CardMedia
                       component="img"

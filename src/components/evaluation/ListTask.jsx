@@ -76,7 +76,7 @@ const ListTask = ({ profileData, onLogout,telegram }) => {
           <Grid item xs={12}>
             <Menu handleLogout={handleLogout} titleFist="Evaluacion" position="static"/>
             <List listTask={listTask} />
-            <button onClick={onCheckout3}>Logout</button>
+           {/* <button onClick={onCheckout3}>Logout</button> */}
         </Grid>
       </Container>
   );
