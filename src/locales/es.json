@@ -76,6 +76,10 @@
         "steps1":"Responda lo más objetivamente que pueda",
         "steps2":"Trate de no dejar ninguna pregunta con valoración \"No lo sé\"",
         "steps3":"Seleccione la respuesta marcando el botón"
+    },
+    "monitores":{
+        "steps1":"Las respuestas a esta encuesta son anónimas, por favor, responden con total imparcialidad.",
+        "read":"Acepto la política de privacidad"
     }
        
   }

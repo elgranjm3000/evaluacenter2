@@ -64,7 +64,13 @@ const List = ({listTask,onCheckoutList}) => {
       cache_evaluation_type_main: 'welfare',
       id: 129898,
       type:2  
-    }
+    },
+    {
+      cache_evaluation_category_main: 'Monitores',
+      cache_evaluation_type_main: 'monitores',
+      id: 128381
+    },
+    
   ];
   
 

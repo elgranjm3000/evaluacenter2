@@ -15,6 +15,7 @@ import DIscObjetivo from './components/test/discObjetivo/DiscObjetivo';
 import Radar from './components/test/radar/Index'
 import Observadores from './components/test/observadores/Index'
 import Radarcompetencia from './components/test/competencia/Index'
+import Monitores from './components/test/monitores/Index'
 import Motivational from './components/test/motivacionales/Motivational';
 import Welfare from './components/test/bienestar/Index'
 
@@ -126,6 +127,7 @@ useEffect(() => {
           <Route exact path="/radar-observadores/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Observadores profileData={profileData} onLogout={handleLogout}/> : <Navigate to="/" /> }></Route>
           <Route exact path="/motivational/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Motivational profileData={profileData} onLogout={handleLogout} /> : <Navigate to="/" /> }></Route>
           <Route exact path="/welfare/:instance/:type" element={ isLoggedIn === null ? null : isLoggedIn ? <Welfare profileData={profileData} onLogout={handleLogout}  /> : <Navigate to="/" /> }></Route>
+          <Route exact path="/monitores/:instance" element={ isLoggedIn === null ? null : isLoggedIn ? <Monitores profileData={profileData} onLogout={handleLogout} /> : <Navigate to="/" /> }></Route>
           
           <Route exact path='*' element={<NotFound/>}></Route>
       </Routes>

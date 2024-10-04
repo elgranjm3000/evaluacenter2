@@ -71,6 +71,9 @@
         "steps1":"Please answer as objectively as you can",
         "steps2":"Try not to leave any questions rated \"I don't know\"",
         "steps3":"Select the answer by checking the button"
+    },
+    "monitores":{
+        "steps1":"The responses to this survey are anonymous, please respond with total impartiality."
     }
 
 }
