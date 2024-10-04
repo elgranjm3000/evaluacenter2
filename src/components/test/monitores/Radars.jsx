@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Icon from '@mui/material/Icon';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ObjectiveScreen from './ObjetiveScreen';
+import Commentrs from './Comment';
 import { StarBorder,Comment } from '@mui/icons-material'; // Importa el ícono de estrella
 
 const ProgressBar = ({ value }) => {
@@ -37,6 +38,8 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
   const labels = [0,0.5,1,1.5,2.5,3,3.5,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10];
   const [valueOpen, setValueOpen] = useState('');
   const [openModal, setOpenModal] = useState(false);
+  const [valueOpenComment, setValueOpenComment] = useState('');
+
   const [openModalComment, setOpenModalComment] = useState(false);
   const [size, setSize] = useState(400); 
 
@@ -89,8 +92,8 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
 
 
     </Box>
-    <Button variant="contained"  endIcon={<KeyboardArrowRightIcon />} style={{background:"#ffff",color:"black",marginBottom:"10px",width:"100%",textTransform:"none"}} onClick={handleOpen}>
-        <span style={{ marginRight: "auto" }}>{valueOpen ? (<p>{valueOpen}</p>) : ( <p>Agregar un comentario   <Comment sx={{ verticalAlign: 'middle' }} fontSize="medium" /> </p> ) } </span>
+    <Button variant="contained"  endIcon={<KeyboardArrowRightIcon />} style={{background:"#ffff",color:"black",marginBottom:"10px",width:"100%",textTransform:"none"}} onClick={handleOpenComment}>
+        <span style={{ marginRight: "auto" }}>{valueOpenComment ? (<p>{valueOpenComment}</p>) : ( <p>Agregar un comentario   <Comment sx={{ verticalAlign: 'middle' }} fontSize="medium" /> </p> ) } </span>
       </Button>
       <Button variant="contained"  endIcon={<KeyboardArrowRightIcon />} style={{background:"#ffff",color:"black",marginBottom:"10px",width:"100%",textTransform:"none"}} onClick={handleOpen}>
         <span style={{ marginRight: "auto" }}>{valueOpen ? (<p>{valueOpen}</p>) : ( <p>Valore el objetivo deseado   <StarBorder sx={{ verticalAlign: 'middle' }} fontSize="medium" /> </p> ) } </span>
@@ -115,7 +118,7 @@ const Radars = ({ profileData, steps, valueProgress,pointers,setPointers }) => {
             p: 4,
           }}
         >
-          <ObjectiveScreen handleValuesOpenComment={handleValuesOpenComment} handleCloseComment={handleCloseComment}/>
+          <Commentrs handleValuesOpenComment={handleValuesOpenComment} handleCloseComment={handleCloseComment}/>
         </Box>
       </Modal>
 
