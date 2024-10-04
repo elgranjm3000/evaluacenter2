@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 
 
 //borderColor: 'primary.main',
-export default function Comment({handleValuesOpen,handleClose}) {
+export default function Comment({handleValuesOpen,handleCloseComment}) {
   
 const StyledBox = styled(Box)(({ theme, selected }) => ({
         width: 100,
@@ -29,21 +29,9 @@ const [value, setValue] = useState('suficiente');
   };
 
   const handleConfirm = () => {
-    if(value === 'suficiente'){
-      handleValuesOpen("Suficiente como esta");
-    }else if(value === 'mejorar_maximo'){
-      handleValuesOpen("Mejorar al máximo");
-    }else if(value === 'mejorar_mucho'){
-      handleValuesOpen("Mejorar mucho");
-    }else if(value === 'mejorar_bastante'){
-      handleValuesOpen("Mejorar bastante");
-    }else if(value === 'mejorar_poco'){
-      handleValuesOpen("Mejorar un poco");
-    }else{
-      handleValuesOpen(value);
-    }
+  
     
-    handleClose();
+    handleCloseComment();
   }
 
   return (
@@ -56,6 +44,8 @@ const [value, setValue] = useState('suficiente');
           variant="outlined"
           fullWidth
           margin="normal"
+          rows={5}
+          multiline
         />
 
         {/* Botón de enviar */}
